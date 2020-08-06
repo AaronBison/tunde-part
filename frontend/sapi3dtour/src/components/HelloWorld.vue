@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <p>Hello</p>
+    <p>Kezdhetjük a munkát!</p>
   </v-container>
 </template>
 
