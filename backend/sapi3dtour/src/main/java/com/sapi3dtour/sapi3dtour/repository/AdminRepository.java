@@ -9,5 +9,7 @@ import com.sapi3dtour.sapi3dtour.model.Admin;
 public interface AdminRepository extends JpaRepository<Admin, Long> {
 	
 	public List<Admin> findAll();
-
+	
+	public Admin findAllById(Long id);
+	
 }

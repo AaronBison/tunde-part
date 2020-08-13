@@ -1,12 +1,12 @@
 <template>
   <v-container>
-    <p>Kezdhetjük a munkát!</p>
+    <p style="color:black">Valami oldal</p>
   </v-container>
 </template>
 
 <script>
   export default {
-    name: 'HelloWorld',
+    name: 'Valami',
     data: () => ({
     }),
   }

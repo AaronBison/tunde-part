@@ -36,9 +36,9 @@ public class Admin {
 	private String phone_number;
 	
 	public enum Status {
-		admin,
-		teacher,
-		student
+		Admin,
+		Tanár,
+		Diák
 	}
 	@Enumerated(EnumType.STRING)
 	@Column(name = "status")

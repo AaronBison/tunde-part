@@ -1,0 +1,48 @@
+<template>
+    <div id="app">
+      <v-app-bar prominent src="https://cloudflare1.360gigapixels.com/pano/alienrc/00550669_vegsopano.jpg/equirect_crop_3_1/6.jpg"/>
+      <v-app id="inspire">
+        <v-layout>
+          <v-navigation-drawer :temporary="!mini" :mini-variant.sync="mini" app permanent>
+            <v-list>
+              <v-btn @click.stop="mini = !mini" icon>
+                <v-icon>mdi-chevron-left</v-icon>
+              </v-btn>
+            </v-list>
+            <v-divider/>
+            <v-list dense>
+              <v-list-item v-for="item in tabs" :key="item.title" router :to="item.route" link>
+                <v-list-item-icon>
+                  <v-icon>{{ item.icon }}</v-icon>
+                </v-list-item-icon>
+                <v-list-item-content>
+                  <v-list-item-title>{{ item.title }}</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list>
+          </v-navigation-drawer>
+          <v-container class="justify-center">
+            <router-view  />
+          </v-container>
+        </v-layout>
+      </v-app>
+    </div>
+</template>
+
+<script>
+
+export default {
+  name: 'RootEvery',
+  data () {
+    return {
+      mini: true,
+      tabs: [
+        {title: 'Valami', route: '/every/valami', icon:"fab fa-apple"},
+      ]
+    }
+  }
+}
+</script>
+
+<style>
+</style>

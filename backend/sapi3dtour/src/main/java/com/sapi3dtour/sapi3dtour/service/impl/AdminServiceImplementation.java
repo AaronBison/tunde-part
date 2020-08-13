@@ -20,4 +20,14 @@ public class AdminServiceImplementation implements AdminService {
 		
 	}
 
+	@Override
+	public Admin returnAdminBy(Long id) {
+		return adminRepo.findAllById(id);
+	}
+
+	@Override
+	public void updateAdminData(Admin admin) {
+		// TODO Auto-generated method stub
+		
+	}
 }

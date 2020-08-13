@@ -1,14 +1,13 @@
 package com.sapi3dtour.sapi3dtour.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.Column;
 import javax.persistence.Table;
 
 import com.sapi3dtour.sapi3dtour.messages.BranchMsg;
@@ -21,12 +20,12 @@ public class Branch {
 	@SequenceGenerator(sequenceName = "BRANCH_ID_SEQ", name = "BRANCH_ID_SEQ_GEN")
 	private Long id;
 	
-	@OneToOne
-	@JoinColumn(name = "contact_person_id", referencedColumnName = "id")
+	@ManyToOne
+	@JoinColumn(name = "contact_person_id", nullable = false)
 	private ContactPerson contactPerson;
 	
 	@ManyToOne
-	@JoinColumn(name = "department_id")
+	@JoinColumn(name = "department_id", nullable = false)
 	private Department department;
 	
 	@Column(name = "name")

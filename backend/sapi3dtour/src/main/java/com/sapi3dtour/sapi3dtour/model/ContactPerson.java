@@ -4,7 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Table;
 
@@ -15,6 +20,9 @@ public class ContactPerson {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CONTACT_PERSON_ID_SEQ_GEN")
 	@SequenceGenerator(sequenceName = "CONTACT_PERSON_ID_SEQ", name = "CONTACT_PERSON_ID_SEQ_GEN")
 	private Long id;
+	
+	@OneToMany(mappedBy = "contactPerson", cascade = CascadeType.ALL)
+	private Set<Branch> branches;
 	
 	@Column(name = "name")
 	private String name;
@@ -56,4 +64,13 @@ public class ContactPerson {
 	public void setPhone_number(String phone_number) {
 		this.phone_number = phone_number;
 	}
+
+	public Set<Branch> getBranches() {
+		return branches;
+	}
+
+	public void setBranches(Set<Branch> branches) {
+		this.branches = branches;
+	}
+	
 }
