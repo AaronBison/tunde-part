@@ -11,6 +11,7 @@
             </v-list>
             <v-divider/>
             <v-list dense>
+              <LoginDialog />
               <v-list-item v-for="item in tabs" :key="item.title" router :to="item.route" link>
                 <v-list-item-icon>
                   <v-icon>{{ item.icon }}</v-icon>
@@ -31,13 +32,16 @@
 
 <script>
 
+import LoginDialog from "./fittings/LoginDialog"
+
 export default {
   name: 'RootEvery',
+  components: {LoginDialog},
   data () {
     return {
       mini: true,
       tabs: [
-        {title: 'Valami', route: '/every/valami', icon:"fab fa-apple"},
+        {title: 'Model3D', route: '/model3de', icon:"fas fa-university"},
       ]
     }
   }

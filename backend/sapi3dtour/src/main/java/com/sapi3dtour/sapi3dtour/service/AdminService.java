@@ -1,5 +1,6 @@
 package com.sapi3dtour.sapi3dtour.service;
 
+import com.sapi3dtour.sapi3dtour.messages.LoginMsg;
 import com.sapi3dtour.sapi3dtour.model.Admin;
 
 public interface AdminService {
@@ -9,5 +10,6 @@ public interface AdminService {
 	public Admin returnAdminBy(Long id);
 	
 	public void updateAdminData(Admin admin);
-
+	
+	public Admin loginUser(LoginMsg user);
 }

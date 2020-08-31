@@ -1,0 +1,74 @@
+\contentsline {section}{\numberline {1}Bevezető}{3}%
+\contentsline {paragraph}{}{3}%
+\contentsline {paragraph}{}{3}%
+\contentsline {paragraph}{}{3}%
+\contentsline {paragraph}{}{3}%
+\contentsline {paragraph}{}{4}%
+\contentsline {paragraph}{}{4}%
+\contentsline {paragraph}{}{4}%
+\contentsline {section}{\numberline {2}Technológiai áttekintés}{5}%
+\contentsline {subsection}{\numberline {2.1}Adatbázisok}{5}%
+\contentsline {paragraph}{}{5}%
+\contentsline {subsubsection}{\numberline {2.1.1}SQL(Structured Query Language)}{5}%
+\contentsline {paragraph}{}{5}%
+\contentsline {subsubsection}{\numberline {2.1.2}NoSQL(Not only Structured Query Language)}{5}%
+\contentsline {paragraph}{}{5}%
+\contentsline {subsubsection}{\numberline {2.1.3}SQL vs NoSQL}{5}%
+\contentsline {paragraph}{}{5}%
+\contentsline {paragraph}{}{6}%
+\contentsline {subsection}{\numberline {2.2}Keretrendszerek}{7}%
+\contentsline {paragraph}{}{7}%
+\contentsline {subsubsection}{\numberline {2.2.1}Angular}{7}%
+\contentsline {paragraph}{}{7}%
+\contentsline {subsubsection}{\numberline {2.2.2}Vue.js}{8}%
+\contentsline {paragraph}{}{8}%
+\contentsline {subsubsection}{\numberline {2.2.3}Angular vs Vue.js}{8}%
+\contentsline {paragraph}{}{8}%
+\contentsline {paragraph}{}{8}%
+\contentsline {subsubsection}{\numberline {2.2.4}NodeJs}{9}%
+\contentsline {paragraph}{}{9}%
+\contentsline {subsubsection}{\numberline {2.2.5}Spring Boot}{9}%
+\contentsline {paragraph}{}{9}%
+\contentsline {paragraph}{}{9}%
+\contentsline {subsubsection}{\numberline {2.2.6}NodeJs vs Spring Boot}{9}%
+\contentsline {paragraph}{}{9}%
+\contentsline {paragraph}{}{10}%
+\contentsline {paragraph}{}{10}%
+\contentsline {section}{\numberline {3}Nyári fejlesztés}{11}%
+\contentsline {subsection}{\numberline {3.1}Célkitűzések}{11}%
+\contentsline {paragraph}{}{11}%
+\contentsline {paragraph}{}{11}%
+\contentsline {paragraph}{}{11}%
+\contentsline {paragraph}{}{11}%
+\contentsline {paragraph}{}{11}%
+\contentsline {paragraph}{}{11}%
+\contentsline {paragraph}{}{11}%
+\contentsline {paragraph}{}{11}%
+\contentsline {paragraph}{}{12}%
+\contentsline {subsection}{\numberline {3.2}Funkcionalitások}{12}%
+\contentsline {paragraph}{}{12}%
+\contentsline {paragraph}{}{12}%
+\contentsline {paragraph}{}{13}%
+\contentsline {paragraph}{}{13}%
+\contentsline {paragraph}{}{13}%
+\contentsline {paragraph}{}{13}%
+\contentsline {paragraph}{}{13}%
+\contentsline {paragraph}{}{13}%
+\contentsline {paragraph}{}{13}%
+\contentsline {paragraph}{}{14}%
+\contentsline {paragraph}{}{14}%
+\contentsline {subsection}{\numberline {3.3}Megvalósítások}{14}%
+\contentsline {paragraph}{}{14}%
+\contentsline {paragraph}{}{14}%
+\contentsline {paragraph}{}{14}%
+\contentsline {paragraph}{}{14}%
+\contentsline {paragraph}{}{15}%
+\contentsline {paragraph}{}{15}%
+\contentsline {paragraph}{}{15}%
+\contentsline {paragraph}{}{16}%
+\contentsline {paragraph}{}{16}%
+\contentsline {paragraph}{}{16}%
+\contentsline {paragraph}{}{16}%
+\contentsline {paragraph}{}{18}%
+\contentsline {section}{\numberline {4}Összefoglaló}{19}%
+\contentsline {paragraph}{}{19}%

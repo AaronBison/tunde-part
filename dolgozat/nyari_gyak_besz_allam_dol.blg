@@ -1,0 +1,73 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: nyari_gyak_besz_allam_dol.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+The style file: plainnat.bst
+Reallocating 'name_of_file' (item size: 1) to 22 items.
+Database file #1: nyarigyakbeszallamdol.bib
+Warning--entry type for "dbms" isn't style-file defined
+--line 19 of file nyarigyakbeszallamdol.bib
+Warning--entry type for "frameworks" isn't style-file defined
+--line 48 of file nyarigyakbeszallamdol.bib
+Warning--entry type for "vuevsang" isn't style-file defined
+--line 58 of file nyarigyakbeszallamdol.bib
+Warning--entry type for "vueanginterest" isn't style-file defined
+--line 62 of file nyarigyakbeszallamdol.bib
+Warning--entry type for "nodejsspring" isn't style-file defined
+--line 79 of file nyarigyakbeszallamdol.bib
+Warning--entry type for "nodejsspring1" isn't style-file defined
+--line 83 of file nyarigyakbeszallamdol.bib
+Warning--to sort, need author or key in vueanginterest
+Warning--to sort, need author or key in vuevsang
+Warning--to sort, need author or key in dbms
+Warning--to sort, need author or key in frameworks
+Warning--to sort, need author or key in nodejsspring
+Warning--to sort, need author or key in nodejsspring1
+Warning--empty year in dbms
+Warning--empty year in frameworks
+Warning--empty year in nodejsspring
+Warning--empty year in nodejsspring1
+Warning--empty year in vueanginterest
+Warning--empty year in vuevsang
+You've used 14 entries,
+            2773 wiz_defined-function locations,
+            657 strings with 7047 characters,
+and the built_in function-call counts, 5980 in all, are:
+= -- 562
+> -- 256
+< -- 6
++ -- 94
+- -- 78
+* -- 463
+:= -- 781
+add.period$ -- 39
+call.type$ -- 14
+change.case$ -- 67
+chr.to.int$ -- 12
+cite$ -- 46
+duplicate$ -- 301
+empty$ -- 565
+format.name$ -- 88
+if$ -- 1334
+int.to.chr$ -- 3
+int.to.str$ -- 1
+missing$ -- 7
+newline$ -- 72
+num.names$ -- 32
+pop$ -- 186
+preamble$ -- 1
+purify$ -- 54
+quote$ -- 0
+skip$ -- 251
+stack$ -- 0
+substring$ -- 226
+swap$ -- 60
+text.length$ -- 4
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 154
+warning$ -- 12
+while$ -- 40
+width$ -- 0
+write$ -- 171
+(There were 18 warnings)

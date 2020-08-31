@@ -3,7 +3,8 @@ import Router from 'vue-router'
 import RootUsers from '@/components/RootUsers'
 import RootEvery from '@/components/RootEvery'
 import Admin from '@/components/Admin'
-import Valami from '@/components/Valami'
+import Model3d from '@/components/Model3d'
+import Model3dE from '@/components/Model3d'
 
 Vue.use(Router)
 
@@ -11,6 +12,18 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'RootEvery',
+      component: RootEvery,
+      children: [
+        {
+          path: '/model3de',
+          name: 'Model3d',
+          component: Model3dE
+        },
+      ]
+    },
+    {
+      path: '/user',
       name: 'RootUsers',
       component: RootUsers,
       children: [
@@ -20,22 +33,10 @@ export default new Router({
           component: Admin
         },
         {
-          path: '/valami',
-          name: 'Valami',
-          component: Valami
+          path: '/model3d',
+          name: 'Model3d',
+          component: Model3d
         },
-      ]
-    },
-    {
-      path: '/every',
-      name: 'RootEvery',
-      component: RootEvery,
-      children: [
-        {
-          path: '/every/valami',
-          name: 'Valami',
-          component: Valami
-        }
       ]
     }
   ]

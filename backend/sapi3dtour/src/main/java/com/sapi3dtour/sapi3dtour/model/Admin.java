@@ -20,20 +20,20 @@ public class Admin {
 	@SequenceGenerator(sequenceName = "ADMIN_ID_SEQ", name = "ADMIN_ID_SEQ_GEN")
 	private Long id;
 	
-	@Column(name = "full_name")
-	private String full_name;
+	@Column(name = "fullName")
+	private String fullName;
 	
-	@Column(name = "created_at")
-	private Timestamp created_at;
+	@Column(name = "createdAt")
+	private Timestamp createdAt;
 	
 	@Column(name = "password")
 	private String password;
 	
-	@Column(name = "email_address")
-	private String email_address;
+	@Column(name = "emailAddress")
+	private String emailAddress;
 	
-	@Column(name = "phone_number")
-	private String phone_number;
+	@Column(name = "phoneNumber")
+	private String phoneNumber;
 	
 	public enum Status {
 		Admin,
@@ -41,26 +41,25 @@ public class Admin {
 		Diák
 	}
 	@Enumerated(EnumType.STRING)
-	@Column(name = "status")
+	@Column(name = "Status")
 	private Status status;
-	
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getFull_name() {
-		return full_name;
+	public String getFullName() {
+		return fullName;
 	}
-	public void setFull_name(String full_name) {
-		this.full_name = full_name;
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
-	public Timestamp getCreated_at() {
-		return created_at;
+	public Timestamp getCreatedAt() {
+		return createdAt;
 	}
-	public void setCreated_at(Timestamp created_at) {
-		this.created_at = created_at;
+	public void setCreatedAt(Timestamp createdAt) {
+		this.createdAt = createdAt;
 	}
 	public String getPassword() {
 		return password;
@@ -68,17 +67,17 @@ public class Admin {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getEmail_address() {
-		return email_address;
+	public String getEmailAddress() {
+		return emailAddress;
 	}
-	public void setEmail_address(String email_address) {
-		this.email_address = email_address;
+	public void setEmailAddress(String emailAddress) {
+		this.emailAddress = emailAddress;
 	}
-	public String getPhone_number() {
-		return phone_number;
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
-	public void setPhone_number(String phone_number) {
-		this.phone_number = phone_number;
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 	public Status getStatus() {
 		return status;

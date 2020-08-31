@@ -1,0 +1,88 @@
+\begin{thebibliography}{14}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[dbm()]{dbms}
+Dbms.
+\newblock URL \url{https://www.tutorialspoint.com/dbms/index.htm}.
+
+\bibitem[fra()]{frameworks}
+Frameworks.
+\newblock URL \url{https://hackr.io/blog/what-is-frameworks}.
+
+\bibitem[nod({\natexlab{a}})]{nodejsspring}
+Nodejs vs spring boot, {\natexlab{a}}.
+\newblock URL
+  \url{https://www.chapter247.com/blog/node-js-vs-springboot-java-which-one-to-choose-and-when/}.
+
+\bibitem[nod({\natexlab{b}})]{nodejsspring1}
+Nodejs and spring boot, {\natexlab{b}}.
+\newblock URL \url{https://stackshare.io/stackups/nodejs-vs-spring-boot}.
+
+\bibitem[vue({\natexlab{a}})]{vueanginterest}
+Vue and angular interest, {\natexlab{a}}.
+\newblock URL \url{https://2019.stateofjs.com/front-end-frameworks/}.
+
+\bibitem[vue({\natexlab{b}})]{vuevsang}
+Vue and angular comparison, {\natexlab{b}}.
+\newblock URL \url{https://www.educative.io/blog/react-angular-vue-comparison}.
+
+\bibitem[Dedov et~al.(2017)Dedov, Krasnyanskiy, Obukhov, and
+  Arkhipov]{dedov2017design}
+DL~Dedov, MN~Krasnyanskiy, AD~Obukhov, and AE~Arkhipov.
+\newblock Design and development of adaptive simulators using 3d modeling.
+\newblock \emph{International Journal of Applied Engineering Research},
+  12\penalty0 (20):\penalty0 10415--10422, 2017.
+
+\bibitem[Gupta et~al.(2017)Gupta, Tyagi, Panwar, Sachdeva, and
+  Saxena]{gupta2017nosql}
+Adity Gupta, Swati Tyagi, Nupur Panwar, Shelly Sachdeva, and Upaang Saxena.
+\newblock Nosql databases: Critical analysis and comparison.
+\newblock In \emph{2017 International Conference on Computing and Communication
+  Technologies for Smart Nation (IC3TSN)}, pages 293--299. IEEE, 2017.
+
+\bibitem[Jovanovi{\'c} et~al.(2017)Jovanovi{\'c}, Jagodi{\'c}, and
+  Vuji{\v{c}}i{\'c}]{jovanovic2017java}
+{\v{Z}}eljko Jovanovi{\'c}, Dijana Jagodi{\'c}, and Vuji{\v{c}}i{\'c}.
+\newblock Java spring boot rest web service integration with java artificial
+  intelligence weka framework.
+\newblock In \emph{International Scientific Conference “UNITECH 2017}, pages
+  323--327, 2017.
+
+\bibitem[Js and JS(2016)]{js2016node}
+Node Js and NODE JS.
+\newblock Node. js.
+\newblock \emph{Tradu{\c{c}}{\~a}o de: SILVA, AG Dispon{\'\i}vel em}, 2016.
+
+\bibitem[Martins et~al.(2019)Martins, Abbasi, and S{\'a}]{martins2019study}
+Pedro Martins, Maryam Abbasi, and Filipe S{\'a}.
+\newblock A study over nosql performance.
+\newblock In \emph{World Conference on Information Systems and Technologies},
+  pages 603--611. Springer, 2019.
+
+\bibitem[Moloo et~al.(2016)Moloo, Pudaruth, Ramodhin, and
+  Rozbully]{moloo20163d}
+Raj~Kishen Moloo, Sameerchand Pudaruth, Mahendranath Ramodhin, and
+  Reezwanah~Bibi Rozbully.
+\newblock A 3d virtual tour of the university of mauritius using webgl.
+\newblock In \emph{2016 International Conference on Electrical, Electronics,
+  and Optimization Techniques (ICEEOT)}, pages 2891--2894. IEEE, 2016.
+
+\bibitem[Venkatraman et~al.(2016)Venkatraman, Fahd, Kaspi, and
+  Venkatraman]{venkatraman2016sql}
+Sitalakshmi Venkatraman, Kiran Fahd, Samuel Kaspi, and Ramanathan Venkatraman.
+\newblock Sql versus nosql movement with big data analytics.
+\newblock \emph{Int. J. Inform. Technol. Comput. Sci}, 8:\penalty0 59--66,
+  2016.
+
+\bibitem[Wohlgethan(2018)]{wohlgethan2018supportingweb}
+Eric Wohlgethan.
+\newblock \emph{SupportingWeb Development Decisions by Comparing Three Major
+  JavaScript Frameworks: Angular, React and Vue. js}.
+\newblock PhD thesis, Hochschule f{\"u}r Angewandte Wissenschaften Hamburg,
+  2018.
+
+\end{thebibliography}

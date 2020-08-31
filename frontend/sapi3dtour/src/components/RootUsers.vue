@@ -30,6 +30,18 @@
                 </v-list-item-content>
               </v-list-item>
             </v-list>
+            <v-divider/>
+            <v-list dense>
+            <v-list-item router :to="logout.route" link>
+              <v-list-item-icon>
+                <v-icon>{{ logout.icon }}</v-icon>
+              </v-list-item-icon>
+
+              <v-list-item-content>
+                <v-list-item-title>{{ logout.title }}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
           </v-navigation-drawer>
           <v-container class="justify-center">
             <router-view  />
@@ -60,18 +72,20 @@ export default {
       user_icon: "fas fa-user",
       tabs: [
         {title: 'Admin', route: '/admin', icon:"fas fa-hammer"},
-        {title: 'Valami', route: '/valami', icon:"fab fa-apple"},
-      ]
+        {title: 'Model3D', route: '/model3d', icon:"fas fa-university"},
+      ],
+      logout: { title: "Kilépés", route: "/model3de", icon: "fas fa-power-off" }
     }
   },
   methods: {
     async getUserData() {
-      const response = await AuthRequest.getUser(155);
-      this.created_at = response.created_at;
-      this.email = response.email_address;
-      this.full_name = response.full_name;
+      const userid = localStorage.getItem("userid");
+      const response = await AuthRequest.getUser(userid);
+      this.created_at = response.createdAt;
+      this.email = response.emailAddress;
+      this.full_name = response.fullName;
       this.status = response.status;
-      this.phone_number = response.phone_number;
+      this.phone_number = response.phoneNumber;
     }
   },
   mounted() {

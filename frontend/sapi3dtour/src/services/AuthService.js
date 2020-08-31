@@ -8,5 +8,13 @@ export default{
     addNewAdmin: async(newAdmin) => {
         let page = 'admin/addNewAdmin';
         return Api().post(page, newAdmin);
+    },
+    updateAdmin: async(admin) => {
+        let page = 'admin/updateAdminData';
+        return Api().put(page, admin);
+    },
+    loginVerification: async(user) => {
+        let page = 'admin/loginUser';
+        return Api().post(page, user);
     }
 }
