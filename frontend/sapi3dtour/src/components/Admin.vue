@@ -82,10 +82,6 @@ export default {
             }
         },
         async registerUser(){
-            // var passwordHash = require('password-hash');
-            // var hashedPassword = passwordHash.generate(this.password);
-            // this.password = hashedPassword;
-            // console.log(this.password)
             const response = await AuthRequest.addNewAdmin({
                 fullName: this.name,
                 emailAddress: this.email,

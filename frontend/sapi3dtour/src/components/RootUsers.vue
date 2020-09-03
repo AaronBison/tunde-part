@@ -31,17 +31,7 @@
               </v-list-item>
             </v-list>
             <v-divider/>
-            <v-list dense>
-            <v-list-item router :to="logout.route" link>
-              <v-list-item-icon>
-                <v-icon>{{ logout.icon }}</v-icon>
-              </v-list-item-icon>
-
-              <v-list-item-content>
-                <v-list-item-title>{{ logout.title }}</v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list>
+            <LogOut/>
           </v-navigation-drawer>
           <v-container class="justify-center">
             <router-view  />
@@ -57,10 +47,11 @@ import AuthRequest from "@/services/AuthService";
 import axios from "axios";
 
 import ChangeUserDataDialog from "./fittings/ChangeUserDataDialog"
+import LogOut from "./LogOut"
 
 export default {
   name: 'RootAdmin',
-  components:{ ChangeUserDataDialog },
+  components:{ ChangeUserDataDialog, LogOut},
   data () {
     return {
       mini: true,
@@ -73,8 +64,7 @@ export default {
       tabs: [
         {title: 'Admin', route: '/admin', icon:"fas fa-hammer"},
         {title: 'Model3D', route: '/model3d', icon:"fas fa-university"},
-      ],
-      logout: { title: "Kilépés", route: "/model3de", icon: "fas fa-power-off" }
+      ]
     }
   },
   methods: {

@@ -44,7 +44,8 @@ export default {
     },
     methods: {
         async getUserData() {
-            const response = await AuthRequest.getUser(2);
+            const userid = localStorage.getItem("userid");
+            const response = await AuthRequest.getUser(userid);
             this.created_at = response.createdAt;
             this.email = response.emailAddress;
             this.full_name = response.fullName;

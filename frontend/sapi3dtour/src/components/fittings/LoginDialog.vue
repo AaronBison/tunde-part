@@ -107,6 +107,7 @@
             1000
           );
           localStorage.setItem("userid", response.data.id);
+          localStorage.setItem("token", response.data.token);
           this.toAdmin();
         }
         setTimeout(() => (this.loadingCard = false), 1000);
