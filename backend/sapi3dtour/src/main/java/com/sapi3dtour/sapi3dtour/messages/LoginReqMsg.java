@@ -2,14 +2,16 @@ package com.sapi3dtour.sapi3dtour.messages;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Pattern;
+
 public class LoginReqMsg implements Serializable {
 	
 	private static final long serialVersionUID = 5926468583005150707L;
 	
-	//@Pattern(regexp="^(.+)@(.+)$")
+	@Pattern(regexp="^(.+)@(.+)$")
 	private String emailAddress;
 	
-	//@Pattern(regexp="^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{5,20}")  
+	@Pattern(regexp="^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{5,20}")  
 	private String password;
 	
 	public LoginReqMsg() {

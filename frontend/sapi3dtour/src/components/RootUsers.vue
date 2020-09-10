@@ -62,20 +62,21 @@ export default {
       status: "",
       user_icon: "fas fa-user",
       tabs: [
-        {title: 'Admin', route: '/admin', icon:"fas fa-hammer"},
-        {title: 'Model3D', route: '/model3d', icon:"fas fa-university"},
+        {title: 'Admin', route: '/user/admin', icon:"fas fa-hammer"},
+        {title: 'Model3D', route: '/user/model3d', icon:"fas fa-university"},
       ]
     }
   },
   methods: {
-    async getUserData() {
+    getUserData() {
       const userid = localStorage.getItem("userid");
-      const response = await AuthRequest.getUser(userid);
-      this.created_at = response.createdAt;
-      this.email = response.emailAddress;
-      this.full_name = response.fullName;
-      this.status = response.status;
-      this.phone_number = response.phoneNumber;
+      AuthRequest.getUser(userid).then((res)=>{
+        this.created_at = res.data.createdAt;
+        this.email = res.data.emailAddress;
+        this.full_name = res.data.fullName;
+        // this.status = response.status;
+        this.phone_number = res.data.phoneNumber;
+      })
     }
   },
   mounted() {

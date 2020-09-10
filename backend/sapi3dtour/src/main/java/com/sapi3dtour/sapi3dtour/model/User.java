@@ -15,6 +15,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -33,9 +35,10 @@ public class User {
 	
 	@ManyToMany(cascade=CascadeType.MERGE,fetch = FetchType.EAGER)
 	@JoinTable(name="USER_ROLES", joinColumns=@JoinColumn(name="USER_ID", referencedColumnName="ID"), inverseJoinColumns=@JoinColumn(name="ROLE_ID", referencedColumnName="ID")) 
-	private Collection<UserRole> roles = new ArrayList<UserRole>();
+	private Collection<Role> roles = new ArrayList<Role>();
 	
 	@Column(name = "createdAt")
+	@CreationTimestamp
 	private Timestamp createdAt;
 	
 	@Column(name = "password")
@@ -98,10 +101,10 @@ public class User {
 //	public void setStatus(Status status) {
 //		this.status = status;
 //	}
-	public Collection<UserRole> getRoles() {
+	public Collection<Role> getRoles() {
 		return roles;
 	}
-	public void setRoles(Collection<UserRole> roles) {
+	public void setRoles(Collection<Role> roles) {
 		this.roles = roles;
 	}
 	

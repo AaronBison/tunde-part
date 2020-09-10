@@ -1,5 +1,7 @@
 package com.sapi3dtour.sapi3dtour.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -22,6 +24,7 @@ import com.sapi3dtour.sapi3dtour.service.impl.LoginUserDetailsService;
 
 import com.sapi3dtour.sapi3dtour.messages.LoginReqMsg;
 import com.sapi3dtour.sapi3dtour.messages.LoginResMsg;
+import com.sapi3dtour.sapi3dtour.messages.RegReqMsg;
 import com.sapi3dtour.sapi3dtour.model.User;
 
 @RestController
@@ -42,7 +45,7 @@ public class UserLoginConroller {
 	private LoginUserDetailsService userDetailsService;
 	
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
-	public ResponseEntity<?> createAuthenticationToken(@RequestBody LoginReqMsg authenticationRequest) throws Exception {
+	public ResponseEntity<?> createAuthenticationToken(@Valid @RequestBody LoginReqMsg authenticationRequest) throws Exception {
 
 		authenticate(authenticationRequest.getEmailAddress(), authenticationRequest.getPassword());
 
@@ -60,8 +63,8 @@ public class UserLoginConroller {
 	
 	@PostMapping
 	@RequestMapping("/registration")
-	public ResponseEntity<Object> registrateUser(@RequestBody User user) {
-		userService.saveUser(user);
+	public ResponseEntity<Object> registrateUser(@Valid @RequestBody RegReqMsg registrationRequest) throws Exception {
+		userDetailsService.registerNewUser(registrationRequest);
 		return ResponseEntity.ok("Save successed");
 	}
 	

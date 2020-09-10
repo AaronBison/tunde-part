@@ -41,7 +41,7 @@ export default {
     return {
       mini: true,
       tabs: [
-        {title: 'Model3D', route: '/model3de', icon:"fas fa-university"},
+        {title: 'Model3D', route: '/model3d', icon:"fas fa-university"},
       ]
     }
   }

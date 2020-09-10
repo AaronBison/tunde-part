@@ -10,7 +10,7 @@ import javax.persistence.SequenceGenerator;
 import org.springframework.security.core.GrantedAuthority;
 
 @Entity(name="ROLES")
-public class UserRole  implements GrantedAuthority{
+public class Role  implements GrantedAuthority{
 
 	private static final long serialVersionUID = 1L;
 

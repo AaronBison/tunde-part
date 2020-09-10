@@ -34,7 +34,6 @@ export default {
         return {
             dialog: false,
             show: false,
-            password: "",
             created_at: "",
             email: "",
             full_name: "",
@@ -43,14 +42,15 @@ export default {
         };
     },
     methods: {
-        async getUserData() {
+        getUserData() {
             const userid = localStorage.getItem("userid");
-            const response = await AuthRequest.getUser(userid);
-            this.created_at = response.createdAt;
-            this.email = response.emailAddress;
-            this.full_name = response.fullName;
-            this.status = response.status;
-            this.phone_number = response.phoneNumber;
+            AuthRequest.getUser(userid).then((res)=>{
+                this.created_at = res.data.createdAt;
+                this.email = res.data.emailAddress;
+                this.full_name = res.data.fullName;
+                // this.status = response.status;
+                this.phone_number = res.data.phoneNumber;
+            })
         },
         validateData(){
             if (this.$refs.form.validate()) {

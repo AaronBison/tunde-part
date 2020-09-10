@@ -16,21 +16,24 @@
       <v-container fluid grid-list-lg class="pt-3">
         <v-form ref="form" lazy-validation>
           <v-layout row wrap>
-            <v-flex>
-              <v-text-field class="mx-5" type="email" name="email" v-model="email" label="E-mail cím" color="grey"
-                prepend-icon="fas fa-user" @keyup.enter="validateUser" 
+            <v-flex xs12>
+              <v-text-field class="mx-5" name="email" v-model="email" label="E-mail cím" color="grey"
+                prepend-icon="fas fa-user" 
+                @keyup.enter="validateUser" 
                 :rules="[ value =>!! value || 'E-mail cím megadása kötelező!', value => /.+@.+\..+/.test(value) || 'E-mail cím helytelen',]"
-              ></v-text-field>
+              />
             </v-flex>
             <v-flex xs12>
-              <v-text-field name="password" v-model="password" class="mx-5" label="Jelszó" color="grey"
-                :append-icon="show ? 'fas fa-eye' : 'fas fa-eye-slash'" :type="show ? 'text' : 'password'"
-                @keyup.enter="validateUser" @click:append="show = !show"
+              <v-text-field class="mx-5" name="password" v-model="password" label="Jelszó" color="grey"
+                 prepend-icon="fas fa-lock"
+                :append-icon="show ? 'fas fa-eye' : 'fas fa-eye-slash'" 
+                @keyup.enter="validateUser" 
+                @click:append="show = !show"
+                :type="show ? 'text' : 'password'"
                 :rules="[value => !!value || 'A jelszó megadása kötelező!', 
                         value => /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,20}$/.test(value) || 'A jelszó helytelen' , 
-                        value => value.length >= 5 || 'Legalább 5 karakter hosszúságú kell legyen']"
-                prepend-icon="fas fa-lock"/>
-              </v-flex>
+                        value => value.length >= 5 || 'Legalább 5 karakter hosszúságú kell legyen']"/>
+            </v-flex>
           </v-layout>
         </v-form>
         <v-card-actions class="justify-center">
@@ -38,12 +41,12 @@
           <v-btn color="#2B405D" outlined text @click="dialog = false"> Vissza </v-btn>
         </v-card-actions>
       </v-container>
-      </v-card>
+    </v-card>
       <v-snackbar v-model="loginSuccesSnackbar" absolute rounded="pill" color="grey" class="mb-5">
         {{ loginSuccesMsg }}
         <v-btn text @click="loginSuccesSnackbar = false">Close</v-btn>
       </v-snackbar>
-      <v-snackbar v-model="loginFailedSnackbar" class="mb-5">
+      <v-snackbar v-model="loginFailedSnackbar" absolute rounded="pill" color="grey" class="mb-5">
         {{ loginFailedMsg }}
         <v-btn text @click="loginFailedSnackbar = false">Close</v-btn>
       </v-snackbar>
@@ -63,7 +66,6 @@
         show: false,
         loadingCard: false,
         loadingButton: false,
-        show: false,
         loginFailedMsg: "",
         loginSuccesMsg: "",
         loginFailedSnackbar: false,
@@ -77,7 +79,7 @@
       toAdmin() {
         this.loadingCard = "grey";
         setTimeout(
-          () => ((this.loadingCard = false), this.$router.push({ path: "/admin" })),
+          () => ((this.loadingCard = false), this.$router.push({ path: "/user/admin" })),
           1000
         );
     },
@@ -86,30 +88,29 @@
           this.loginUser();
         }
       },
-      async loginUser(){
+      loginUser(){
         this.loadingCard = "grey";
-        const response = await AuthRequest.loginVerification({
+        AuthRequest.loginVerification({
           emailAddress: this.email,
           password: this.password
-        })
-        if (response.data.error){
-          this.loginFailedMsg = response.data.error;
-          setTimeout(
-            () => (this.loginSuccesSnackbar = false),
-            (this.loginFailedSnackbar = true),
-            1000
-          );
-        } else {
+        }).then((res)=>{
           this.loginSuccesMsg = "Sikeres bejelentkezés!";
           setTimeout(
             () => (this.loginFailedSnackbar = false),
             (this.loginSuccesSnackbar = true),
             1000
           );
-          localStorage.setItem("userid", response.data.id);
-          localStorage.setItem("token", response.data.token);
+          localStorage.setItem("userid", res.data.id);
+          localStorage.setItem("token", res.data.token);
           this.toAdmin();
-        }
+        }).catch((err)=>{
+          this.loginFailedMsg = "Sikertelen bejelentkezés!";
+          setTimeout(
+            () => (this.loginSuccesSnackbar = false),
+            (this.loginFailedSnackbar = true),
+            1000
+          );
+        })
         setTimeout(() => (this.loadingCard = false), 1000);
       }
     },
