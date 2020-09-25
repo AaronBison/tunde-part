@@ -91,8 +91,10 @@ public class LoginUserDetailsService implements UserDetailsService{
         	MimeMessage mimeMessage = emailSender.createMimeMessage();
     		MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
     		String htmlMsg = "Üdvözöljük! Önt sikeresen jelentkeztették az alkalmazás használatára. A jelentkezés véglegesítésére a következő linken adja meg jelszavát! "
-    				+ "http://localhost:8080/#/model3d "
-            		+ "Figyelem a link elérhetősége korlátozott!";
+    				+ "http://localhost:8080/#/password"
+    				+ " Azonosító kódja a következő: "
+    				+ token 
+            		+ " Figyelem a link elérhetősége korlátozott!";
     		helper.setText(htmlMsg, true);
     		helper.setTo(newUser.getEmailAddress());
     		helper.setSubject("A sapi 3d alkalmazás jelentkeztetése");

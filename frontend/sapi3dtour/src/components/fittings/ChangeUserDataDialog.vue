@@ -48,7 +48,6 @@ export default {
                 this.created_at = res.data.createdAt;
                 this.email = res.data.emailAddress;
                 this.full_name = res.data.fullName;
-                // this.status = response.status;
                 this.phone_number = res.data.phoneNumber;
             })
         },

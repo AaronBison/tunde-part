@@ -14,8 +14,13 @@ export default{
         let page = 'user/registration';
         return Api().post(page, user);
     },
+    addPassword: (password) => {
+        let page = 'user/password';
+        return Api().post(page, password);
+    },
     updateAdmin: async(admin) => {
         let page = 'user/updateAdminData';
         return Api().put(page, admin);
     }
+    
 }
