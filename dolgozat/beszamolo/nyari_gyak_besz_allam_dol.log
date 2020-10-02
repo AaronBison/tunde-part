@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.8.25)  2 SEP 2020 11:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.8.25)  29 SEP 2020 14:02
 entering extended mode
 **./nyari_gyak_besz_allam_dol.tex
 (nyari_gyak_besz_allam_dol.tex
@@ -339,7 +339,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 30--32
 ) [20] (nyari_gyak_besz_allam_dol.aux) ) 
 Here is how much of TeX's memory you used:
  3825 strings out of 481212
- 61385 string characters out of 2915727
+ 61465 string characters out of 2915727
  339982 words of memory out of 3000000
  19282 multiletter control sequences out of 15000+200000
  543243 words of font info for 97 fonts, out of 3000000 for 9000
@@ -353,7 +353,7 @@ mr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/
 Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files
 /MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX/font
 s/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on nyari_gyak_besz_allam_dol.pdf (20 pages, 1576282 bytes).
+Output written on nyari_gyak_besz_allam_dol.pdf (20 pages, 1576468 bytes).
 PDF statistics:
  127 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

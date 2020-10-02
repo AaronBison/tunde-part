@@ -1,0 +1,19 @@
+\section{Felhasználói követelmények}
+	\paragraph{}
+	Az alkalmazás elkészítésénél az egyszerűség megvalósítására törekedtem. Ezzel szerettem volna, biztosítani a felhasználók számára a könnyű használatot és kellemes időtöltést. 
+	\paragraph{}
+	A rendszer működése érdekében semmi előfeltételt nem kell teljesítenie a felhasználónak mivel a weboldal egyik része teljesen nyitott, elérhető bárki számára. A rendszer megértésének érdekében tekintsük meg a \ref{fig:UseCase} ábrát amely bemutatja a rendszer különböző részeit.
+	\paragraph{}
+	Az \ref{fig:UseCase} ábrát tekintve észre vehetünk három aktort amelyek különböző vagy ugyan azt a tevékenységet végezhetik el. Megfigyelhető, hogy a visitor(látogató) átváltozhat user felhasználóvá. Az admin felhasználó tulajdonképpen egy user felhasználó aki admin jogosultsággal rendelkezik. A user és admin típusú felhasználók azok a személyek akik az oldal karbantartásáért felelősek.
+	\paragraph{}
+	A visitor(látogató) első lépése az oldal használatának érdekében, hogy egy böngészőben megnyissa az oldalt. Amint megnyílt az oldal rögtön látható az egyetemről készített modell. Ezen a modellen tud nézelődni, esetleg körbe is tudja járni, vagy adott helységekre el is tud jutni(például: titkárság, adott tanszék). Ezen kívül lehetősége van információk, elérhetőségek, események részleteinek elolvasására is. Minden visitor(látogató) ugyan akkor leírhatja saját véleményét, meglátásait az oldallal kapcsolatban is. A fent említett műveletek elvégzéséhez nem kell sem bejelentkezés, sem regisztráció.
+	\paragraph{}
+	Amint már említettem a visitor(látogató) át tud alakulni user felhasználóra. Ez abban különbözik a látogatótól, hogy be is tud jelentkezni és több műveletet tud elvégezni. A műveletek elvégzésének engedélyezése azon múlik hogy a bejelentkező felhasználó user vagy admin. Ha user képes bejelentkezni, eseményeket megadni, az egyetemmel kapcsolatos információkat módosítani, új 3D modellt is hozzáadni. Ezeken kívül mivel jelen van bejelentkezés így a kijelentkezés opció is a rendelkezésükre áll. A visitor(látogató) által elvégezhető műveleteket szintén eltudja végezni.
+	\paragraph{}
+	Az alkalmazás nem követeli mindenki számára a regisztrációt, belépést ennek érdekében nem is tud mindenki regisztrálni, belépni. A belépéshez a felhasználónak kell legyen egy regisztrált felhasználó neve(e-mail cím) és egy elfogadott jelszava, különben semmiképpen nem tud belépni. A regisztrációs feladatot egy admin jogosultsággal rendelkező ember végezheti el. Nem csak a regisztrálás tartozik az ő feladatköreihez hanem a userek törlése is az ő feladata. Ezen plusz műveletek mellett szintén elvégezheti az user és a visitor műveleteit is.
+	\begin{figure}
+		\centering
+		\includegraphics[scale=0.6]{figures/images/UseCase.png}
+		\caption{Use Case diagram}
+		\label{fig:UseCase}
+	\end{figure}

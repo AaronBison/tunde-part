@@ -1,0 +1,71 @@
+\documentclass[12pt]{report}
+
+\include{preamble}
+
+\title{
+	{Sapi3D tour - UI}\\
+	{\large Sapientia\\
+		Erdélyi Magyar Tudományegyetem, Marosvásárhely}
+}
+
+\author{
+	Nagy-Serbán Tünde\\
+	\texttt{nagy.serban.tunde@student.ms.sapientia.ro}
+	\and
+	Szántó, Zoltán\\
+	\texttt{zoltan.szanto@ms.sapientia.ro}	
+}
+\date{2020}
+
+\begin{document}
+	
+	\maketitle
+	
+	\pagenumbering{gobble}
+	
+	\tableofcontents
+	
+	\listoffigures
+	
+	\listoftables
+	
+	\chapter{Bevezetés}
+	\pagenumbering{arabic}
+	\input{chapters/introduction.tex}
+	
+	\chapter{Irodalmi áttekintés}
+	
+	\chapter{Technológiai áttekintés}
+	\input{chapters/technologies/databases.tex}
+	\input{chapters/technologies/frameworks.tex}
+	
+	\chapter{Célkitűzések}
+	\input{chapters/aims.tex}
+	
+	\chapter{Követelmény specifikáció}
+	\input{chapters/functionalities.tex}
+	\input{chapters/specificationRequirments/userRequirements.tex}
+	\pagebreak
+	\input{chapters/specificationRequirments/systemsRequirements.tex}
+	
+	\chapter{Architektúra}
+	
+	%\chapter{Modulok leírása}
+	%\chapter{Adatbázis leírása}
+	%\chapter{UI terv}
+	%\chapter{Proiect menegment}
+	%\chapter{Verzió követés}
+	
+	\chapter{Tesztelés/Gyakorlati megvalósítás}
+	\input{chapters/executions.tex}
+	
+	\chapter{Összefoglalás}
+	\input{chapters/summary.tex}
+	
+	\pagebreak
+	
+	\addcontentsline{toc}{chapter}{Irodalomjegyzék}
+	\bibliographystyle{ieeetr}
+	\bibliography{References}
+	
+\end{document}

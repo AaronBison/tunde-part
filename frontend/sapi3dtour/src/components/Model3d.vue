@@ -43,7 +43,7 @@
       ></model-ply>-->
 
       <model-gltf :lights="vilagitas" @on-load="onLoad" :backgroundColor="backgroundcolor"
-        src="static/models/lowpoly_well.gltf" ></model-gltf>
+        src="static/models/aula_scratch.gltf" ></model-gltf>
     </v-card>
   </v-container>
 </template>
