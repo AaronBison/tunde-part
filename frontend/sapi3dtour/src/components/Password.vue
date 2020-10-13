@@ -44,6 +44,16 @@
                         <v-card-actions class="justify-center">
                             <v-btn outlined color="#2B405D" class="mr-4" @click="passwordAdd" text>Jelszó megerősítése</v-btn>
                         </v-card-actions>
+                        <transition >
+                            <v-list-item  v-if="loadingButton" >
+                                <v-list-item-icon  >
+                                    <v-icon>{{ regIcon }}</v-icon>
+                                </v-list-item-icon>
+                                <v-list-item-content >
+                                    <v-list-item-title >{{ passwordMsg }}</v-list-item-title>
+                                </v-list-item-content>
+                            </v-list-item>
+                    </transition>
                     </v-form>  
                     
                 </v-card>
@@ -65,6 +75,9 @@ export default {
             tokenCode:"",
             show: false,
             showAgain: false,
+            loadingButton: false,
+            regIcon: "",
+            passwordMsg: ""
         }
     },
     methods: {
@@ -74,9 +87,17 @@ export default {
                 password : this.password,
                 passwordAgain : this.passwordAgain
             }).then((res)=>{
-                console.log("Sikeres jelszó megadás!")
+                this.passwordMsg = "Sikeres jelszó megadás!";
+                this.loadingButton = true;
+                this.regIcon = "fas fa-check";
+                setTimeout(() => (this.loadingButton = true),
+                                2000);
             }).catch((err)=>{
-                console.log("Sikertelen jelszó megadás!")
+                this.passwordMsg = "Sikertelen jelszó megadás!";
+                this.regIcon = "fas fa-times";
+                this.loadingButton = true;
+                setTimeout(() => (this.loadingButton = false),
+                                2000);
             })
         }
     }

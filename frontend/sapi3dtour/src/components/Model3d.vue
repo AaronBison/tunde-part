@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="justify-center">
     <v-card id="card">
       <!-- OBJ -->
       <!-- <model-obj

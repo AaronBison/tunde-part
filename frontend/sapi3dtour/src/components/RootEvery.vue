@@ -1,9 +1,9 @@
 <template>
     <div id="app">
       <v-app-bar prominent src="https://cloudflare1.360gigapixels.com/pano/alienrc/00550669_vegsopano.jpg/equirect_crop_3_1/6.jpg"/>
-      <v-app id="inspire">
+      <v-app id="inspire" style="background-color: #F7F7F7">
         <v-layout>
-          <v-navigation-drawer :temporary="!mini" :mini-variant.sync="mini" app permanent>
+          <v-navigation-drawer style="background-color: #F7F7F7" :temporary="!mini" :mini-variant.sync="mini" app permanent>
             <v-list>
               <v-btn @click.stop="mini = !mini" icon>
                 <v-icon>mdi-chevron-left</v-icon>
@@ -32,7 +32,7 @@
 
 <script>
 
-import LoginDialog from "./fittings/LoginDialog"
+import LoginDialog from "./dialogs/LoginDialog"
 
 export default {
   name: 'RootEvery',

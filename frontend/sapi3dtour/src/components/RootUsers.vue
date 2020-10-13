@@ -46,7 +46,7 @@
 import AuthRequest from "@/services/AuthService";
 import axios from "axios";
 
-import ChangeUserDataDialog from "./fittings/ChangeUserDataDialog"
+import ChangeUserDataDialog from "./dialogs/ChangeUserDataDialog"
 import LogOut from "./LogOut"
 
 export default {
