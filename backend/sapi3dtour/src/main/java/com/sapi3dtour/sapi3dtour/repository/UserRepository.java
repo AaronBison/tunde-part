@@ -16,4 +16,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	
 	public User findAllByPhoneNumber(String phoneNumber);
 	
+	public void deleteByEmailAddress(String emailAddress);
 }

@@ -2,8 +2,10 @@ package com.sapi3dtour.sapi3dtour.model;
 
 import java.sql.Timestamp;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,7 +21,7 @@ public class RegRole {
 	@SequenceGenerator(name = "REGROLE_ID_SEQ_GEN", sequenceName = "REGROLE_ID_SEQ", allocationSize = 1)
 	private Long id;
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId", nullable = false)
 	private User user;
 	

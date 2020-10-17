@@ -50,15 +50,6 @@ public class User {
 	@Column(name = "phoneNumber", unique = true)
 	private String phoneNumber;
 	
-//	public enum Status {
-//		Admin,
-//		Tanár,
-//		Diák
-//	}
-//	@Enumerated(EnumType.STRING)
-//	@Column(name = "Status")
-//	private Status status;
-	
 	public Long getId() {
 		return id;
 	}
@@ -95,12 +86,6 @@ public class User {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-//	public Status getStatus() {
-//		return status;
-//	}
-//	public void setStatus(Status status) {
-//		this.status = status;
-//	}
 	public Collection<Role> getRoles() {
 		return roles;
 	}

@@ -55,7 +55,7 @@ import { ModelFbx } from "vue-3d-model";
 import { ModelStl } from "vue-3d-model";
 import { ModelPly } from "vue-3d-model";
 import { ModelGltf } from "vue-3d-model";
-// import * as THREE from 'three'
+
 
 export default {
   name: "Model3D",

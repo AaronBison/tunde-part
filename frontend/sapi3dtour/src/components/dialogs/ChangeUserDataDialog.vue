@@ -1,7 +1,7 @@
 <template>
     <v-dialog v-model="dialog" width="700">
         <template v-slot:activator="{ on }">
-            <v-btn v-on="on" outlined text class="mt-5">Adatok szerkesztése</v-btn>
+            <v-btn color="#2B405D" v-on="on" outlined text class="mt-5">Adatok szerkesztése</v-btn>
         </template>
         <v-card class="mt-5" id="card">
             <v-card-title> Személyes adatok változtatása </v-card-title>
@@ -25,6 +25,7 @@
 <script>
 
 import AuthRequest from "@/services/AuthService";
+import UserTasks from "@/services/userTasks";
 import axios from "axios";
 
 export default {
@@ -58,7 +59,7 @@ export default {
         },
         async updateUser(){
             const userid = localStorage.getItem("userid");
-            const response = await AuthRequest.updateAdmin({
+            const response = await UserTasks.updateAdmin({
                 id: userid,
                 fullName: this.full_name,
                 emailAddress: this.email,

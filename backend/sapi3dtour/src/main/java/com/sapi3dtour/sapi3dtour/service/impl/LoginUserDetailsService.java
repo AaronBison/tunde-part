@@ -100,7 +100,7 @@ public class LoginUserDetailsService implements UserDetailsService{
     		helper.setSubject("A sapi 3d alkalmazás jelentkeztetése");
     		emailSender.send(mimeMessage);
         }catch (Exception e) {
-        	throw new UserAlreadyExistException("Emai send is wrong!");
+        	throw new UserAlreadyExistException("Email send is wrong!");
 		}
         
 	}

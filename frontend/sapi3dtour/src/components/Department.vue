@@ -1,21 +1,15 @@
 <template>
     <v-container class="justify-center" >
-        <v-row>
-            <AddUsers/>
-            <DeleteUsers/>
-        </v-row>
+       <p>Tanszékek oldala</p>
     </v-container>
 </template>
 
 <script>
 import AuthRequest from "@/services/AuthService";
 import axios from "axios";
-import AddUsers from "./userTasks/addUsers.vue";
-import DeleteUsers from "./userTasks/deleteUser.vue"
 
 export default {
-    name: 'Admin',
-    components:{AddUsers, DeleteUsers},
+    name: 'Department',
     data () {
         return {
             

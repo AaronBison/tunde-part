@@ -62,8 +62,9 @@ export default {
       status: "",
       user_icon: "fas fa-user",
       tabs: [
-        {title: 'Admin', route: '/user/admin', icon:"fas fa-hammer"},
+        {title: 'Beállítások', route: '/user/admin', icon:"fas fa-hammer"},
         {title: 'Model3D', route: '/user/model3d', icon:"fas fa-university"},
+        {title: 'Tanszékek', route: '/user/department', icon:"fas fa-book-reader"},
       ]
     }
   },

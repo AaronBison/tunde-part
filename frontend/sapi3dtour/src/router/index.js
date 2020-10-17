@@ -5,6 +5,7 @@ import RootEvery from '@/components/RootEvery'
 import Admin from '@/components/Admin'
 import Model3d from '@/components/Model3d'
 import Password from '@/components/Password'
+import Department from '@/components/Department'
 
 Vue.use(Router)
 
@@ -12,7 +13,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'RootEvery',
+      // name: 'RootEvery',
       component: RootEvery,
       children: [
         { path: '', redirect: { name: 'Model3d' } },
@@ -20,6 +21,11 @@ export default new Router({
           path: '/model3d',
           name: 'Model3d',
           component: Model3d
+        },
+        {
+          path: '/department',
+          name: 'Department',
+          component: Department
         },
       ]
     },
@@ -37,6 +43,11 @@ export default new Router({
           path: '/user/model3d',
           name: 'Model3d1',
           component: Model3d
+        },
+        {
+          path: '/user/department',
+          name: 'Department1',
+          component: Department
         },
       ]
     },

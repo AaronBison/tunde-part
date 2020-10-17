@@ -45,15 +45,25 @@
                             <v-btn outlined color="#2B405D" class="mr-4" @click="passwordAdd" text>Jelszó megerősítése</v-btn>
                         </v-card-actions>
                         <transition >
-                            <v-list-item  v-if="loadingButton" >
+                            <v-list-item  v-if="loadingButtonX" >
                                 <v-list-item-icon  >
-                                    <v-icon>{{ regIcon }}</v-icon>
+                                    <v-icon color="red">{{ regIcon }}</v-icon>
                                 </v-list-item-icon>
                                 <v-list-item-content >
-                                    <v-list-item-title >{{ passwordMsg }}</v-list-item-title>
+                                    <v-list-item-title class="red--text" >{{ passwordMsg }}</v-list-item-title>
                                 </v-list-item-content>
                             </v-list-item>
-                    </transition>
+                        </transition>
+                        <transition >
+                            <v-list-item  v-if="loadingButtonTick" >
+                                <v-list-item-icon  >
+                                    <v-icon color="green" >{{ regIcon }}</v-icon>
+                                </v-list-item-icon>
+                                <v-list-item-content >
+                                    <v-list-item-title class="green--text" >{{ passwordMsg }}</v-list-item-title>
+                                </v-list-item-content>
+                            </v-list-item>
+                        </transition>
                     </v-form>  
                     
                 </v-card>
@@ -75,7 +85,8 @@ export default {
             tokenCode:"",
             show: false,
             showAgain: false,
-            loadingButton: false,
+            loadingButtonX: false,
+            loadingButtonTick:false,
             regIcon: "",
             passwordMsg: ""
         }
@@ -88,15 +99,15 @@ export default {
                 passwordAgain : this.passwordAgain
             }).then((res)=>{
                 this.passwordMsg = "Sikeres jelszó megadás!";
-                this.loadingButton = true;
+                this.loadingButtonTick = true;
                 this.regIcon = "fas fa-check";
-                setTimeout(() => (this.loadingButton = true),
+                setTimeout(() => (this.loadingButtonTick = false),
                                 2000);
             }).catch((err)=>{
                 this.passwordMsg = "Sikertelen jelszó megadás!";
                 this.regIcon = "fas fa-times";
-                this.loadingButton = true;
-                setTimeout(() => (this.loadingButton = false),
+                this.loadingButtonX= true;
+                setTimeout(() => (this.loadingButtonX = false),
                                 2000);
             })
         }
