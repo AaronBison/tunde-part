@@ -1,7 +1,7 @@
 <template>
     <v-card id="card" width="550" class="mx-3 my-3">
         <v-card-title> Felhasználó törlése </v-card-title>
-        <v-divider class="mx-5"></v-divider>
+        <v-divider class="mx-5 my-3"></v-divider>
         <v-form ref="form" class="mx-5 my-3" lazy-validation>
             <v-combobox v-model="selectedItem" class="ml-5" color="grey" dense :items="members" 
                         label="Válaszd ki a törlendő Felhasználót!" hide-selected persistent-hint small-chips></v-combobox>
@@ -65,7 +65,7 @@ export default {
             selectedItem:null,
             members:null,
             deletMem:false,
-            deletMsg:"alam",
+            deletMsg:"",
             deletResp:false,
             resp:false,
             userId:null,

@@ -42,8 +42,29 @@
         mtl="static/models/lowpoly_well.mtl"
       ></model-ply>-->
 
-      <model-gltf :lights="vilagitas" @on-load="onLoad" :backgroundColor="backgroundcolor"
-        src="static/models/aula_scratch.gltf" ></model-gltf>
+      <model-gltf :lights="vilagitas" @on-load="onLoad" :backgroundColor="backgroundcolor" :position="cameraPosition" 
+        src="static/models/sapi3D.gltf">
+      </model-gltf>
+      <v-btn class="mx-2" fab dark small color="grey" @click="stepedLeft">
+        <v-icon dark>
+         far fa-arrow-alt-circle-left
+        </v-icon>
+      </v-btn>
+      <v-btn class="mx-2" fab dark small color="grey" @click="stepedUp">
+        <v-icon dark>
+          far fa-arrow-alt-circle-up
+        </v-icon>
+      </v-btn>
+      <v-btn class="mx-2" fab dark small color="grey" @click="stepedRight">
+        <v-icon dark>
+          far fa-arrow-alt-circle-right
+        </v-icon>
+      </v-btn>
+      <v-btn class="mx-2" fab dark small color="grey" @click="stepedDown">
+        <v-icon dark>
+          far fa-arrow-alt-circle-down
+        </v-icon>
+      </v-btn>
     </v-card>
   </v-container>
 </template>
@@ -55,6 +76,7 @@ import { ModelFbx } from "vue-3d-model";
 import { ModelStl } from "vue-3d-model";
 import { ModelPly } from "vue-3d-model";
 import { ModelGltf } from "vue-3d-model";
+// import { MglMap, MglGeolocateControl, MglNavigationControl, MglPopup, MglMarker  } from "vue-mapbox/dist/vue-mapbox.umd.js";
 
 
 export default {
@@ -66,6 +88,11 @@ export default {
     ModelStl,
     ModelPly,
     ModelGltf,
+    // MglMap, 
+    // MglGeolocateControl, 
+    // MglNavigationControl,
+    // MglPopup, 
+    // MglMarker
   },
   data() {
     return {
@@ -111,6 +138,7 @@ export default {
           intensity: 3,
         },
       ],
+      cameraPosition: { x: 0, y: 0, z: 0 },
     };
   },
   methods: {
@@ -121,6 +149,22 @@ export default {
       this.rotation.y -= 0.009;
       requestAnimationFrame(this.rotate);
     },
+    stepedUp() {
+      //előre
+      this.cameraPosition.z += 10;
+    },
+    stepedRight() {
+      //jobbra
+      this.cameraPosition.x -= 4;
+    },
+    stepedLeft(){
+      // ballra
+      this.cameraPosition.x += 4;
+    },
+    stepedDown(){
+      //vissza
+      this.cameraPosition.z -= 4;
+    }
   },
 };
 </script>

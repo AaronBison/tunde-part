@@ -103,6 +103,8 @@ export default {
                 this.regIcon = "fas fa-check";
                 setTimeout(() => (this.loadingButtonTick = false),
                                 2000);
+                this.password="Alma123";
+                this.passwordAgain="Alma123";
             }).catch((err)=>{
                 this.passwordMsg = "Sikertelen jelszó megadás!";
                 this.regIcon = "fas fa-times";
