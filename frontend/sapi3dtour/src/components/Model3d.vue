@@ -44,7 +44,7 @@
                 label="Válaszd ki hová szeretnél menni!" @input="walkingSetUp" dense solo></v-select>
 
     <model-gltf :lights="vilagitas" @on-click="examp" :backgroundColor="backgroundcolor" :position="cameraPosition" 
-        src="static/models/sapi3Dreg.gltf">
+        src="static/models/sapi3Dreg.gltf?">
     </model-gltf>
     <v-btn class="mx-2" fab dark small color="grey" @click="stepedLeft">
         <v-icon dark>
@@ -66,7 +66,12 @@
             far fa-arrow-alt-circle-down
         </v-icon>
     </v-btn>
-    <v-btn class="mx-2" fab dark small color="grey" @click="walking">
+    <v-btn v-if="walkingBottunDis == false" class="mx-2"  fab dark small color="grey" @click="walking">
+        <v-icon dark>
+            fas fa-walking
+        </v-icon>
+    </v-btn>
+	<v-btn v-if="walkingBottunDis" class="mx-2" disabled fab dark small color="grey">
         <v-icon dark>
             fas fa-walking
         </v-icon>
@@ -84,108 +89,116 @@ import { ModelGltf } from "vue-3d-model";
 // import { OrbitControls } from "three-orbitcontrols"
 // import { MglMap, MglGeolocateControl, MglNavigationControl, MglPopup, MglMarker  } from "vue-mapbox/dist/vue-mapbox.umd.js";
 
-
 export default {
-  name: "Model3D",
-  components: {
-    ModelObj,
-    ModelCollada,
-    ModelFbx,
-    ModelStl,
-    ModelPly,
-    ModelGltf,
-    // OrbitControls
-    // MglMap, 
-    // MglGeolocateControl, 
-    // MglNavigationControl,
-    // MglPopup, 
-    // MglMarker
-  },
-  data() {
-    return {
-		fab: false,
-		firstRoadInd: 0,
-		items: [
-				{place:'Aula', id:'al'},
-				{place:'Gépész tanszék', id:'gt'},
-				{place:'Gépész labor', id:'gl'},
-				{place:'Dékáni hivatal', id:'dh'},
-				{place:'Matematika-informatika tanszék', id:'mt'},
+	name: "Model3D",
+	components: {
+		ModelObj,
+		ModelCollada,
+		ModelFbx,
+		ModelStl,
+		ModelPly,
+		ModelGltf,
+		// OrbitControls
+		// MglMap, 
+		// MglGeolocateControl, 
+		// MglNavigationControl,
+		// MglPopup, 
+		// MglMarker
+	},
+	data() {
+		return {
+			fab: false,
+			firstRoadInd: 0,
+			walkingBottunDis:true,
+			items: [
+					{place:'Aula', id:'al'},
+					{place:'Gépész tanszék', id:'gt'},
+					{place:'Gépész labor', id:'gl'},
+					{place:'Dékáni hivatal', id:'dh'},
+					{place:'Matematika-informatika tanszék', id:'mt'},
+				],
+			selectElement:{place:'', id:''},
+			// rotation: {
+			//   x: 0,
+			//   y: 0,
+			//   z: 0,
+			// },
+			backgroundcolor: "rgb(225, 225, 222)",
+			vilagitas: [
+				// x - jobbról
+				// y - felülről
+				// z - hátulról
+				{
+					// Álltalános fényerő az egész mezőn
+					type: "HemisphereLight",
+					position: { x: 0, y: 1, z: 0 },
+					skyColor: 0xffd7b8,
+					groundColor: 0x000000,
+					intensity: 2,
+				},
+				{
+					// Direkcionális fény, különböző irányokból
+					type: "DirectionalLight",
+					position: { x: -1, y: 2, z: -1 },
+					color: 0xffd7b8,
+					intensity: 3,
+				},
+				{
+					// Direkcionális fény, különböző irányokból
+					type: "DirectionalLight",
+					position: { x: 1, y: 2, z: -1 },
+					color: 0xffd7b8,
+					intensity: 3,
+				},
+				{
+					// Direkcionális fény, különböző irányokból
+					type: "DirectionalLight",
+					position: { x: 0, y: 1, z: 1 },
+					color: 0xfffcf2,
+					intensity: 3,
+				},
 			],
-		selectElement:{place:'', id:''},
-		// rotation: {
-		//   x: 0,
-		//   y: 0,
-		//   z: 0,
-		// },
-      	backgroundcolor: "rgb(225, 225, 222)",
-		vilagitas: [
-			// x - jobbról
-			// y - felülről
-			// z - hátulról
-			{
-				// Álltalános fényerő az egész mezőn
-				type: "HemisphereLight",
-				position: { x: 0, y: 1, z: 0 },
-				skyColor: 0xffd7b8,
-				groundColor: 0x000000,
-				intensity: 2,
-			},
-			{
-				// Direkcionális fény, különböző irányokból
-				type: "DirectionalLight",
-				position: { x: -1, y: 2, z: -1 },
-				color: 0xffd7b8,
-				intensity: 3,
-			},
-			{
-				// Direkcionális fény, különböző irányokból
-				type: "DirectionalLight",
-				position: { x: 1, y: 2, z: -1 },
-				color: 0xffd7b8,
-				intensity: 3,
-			},
-			{
-				// Direkcionális fény, különböző irányokból
-				type: "DirectionalLight",
-				position: { x: 0, y: 1, z: 1 },
-				color: 0xfffcf2,
-				intensity: 3,
-			},
-		],
-		cameraPosition: { x:0, y: 0, z: 0 },
-		road: [],
-		roadInd: 0,
-		aulaRoad:[
-			{ x:0.45, y: 8.5, z: 99 },
-			{ x:0.45, y: 8.503465, z: 111.14366 },
-		],
-		gtRoad:[
-			{ x:0.45, y: 8.5, z: 99 },
-			{ x:0.45, y: 8.503465, z: 111.14366 },
-			{ x:9.1286, y: 8.503458, z: 124.451 },
-		],
-		glRoad:[
-			{ x:0.45, y: 8.5, z: 99 },
-			{ x:0.45, y: 8.503465, z: 111.14366 },
-			{ x:9.1991, y: 8.503465, z: 76.805 }
-		],
-		dkRoad:[
-			{ x:0.45, y: 8.5, z: 99 },
-			{ x:0.45, y: 8.503465, z: 111.14366 },
-			{ x:9.1286, y: 8.503458, z: 124.451 },
-			{ x:-8.7151, y: 4.947, z: 126.409 },
-		],
-		mtRoad:[
-			{ x:0.45, y: 8.5, z: 99 },
-			{ x:0.45, y: 8.503465, z: 111.14366 },
-			{ x:9.1286, y: 8.503458, z: 124.451 },
-			{ x:-8.7151, y: 4.947, z: 126.409 },
-			{ x:6.3104, y: 1.397, z: 121.895 },
-		],
-	};
-  },
-  methods: {
+			cameraPosition: { x:0, y: 0, z: 0 },
+			road: [],
+			roadInd: 0,
+			markers:[
+				{
+					name:"start",
+					coordinates: { x:0, y: 0, z: 0 }
+				},
+				{
+					name:"startDoor",
+					coordinates:{ x:0.45, y: 8.5, z: 99 }
+				},
+				{
+					name:"aula",
+					coordinates:{ x:0.45, y: 8.503465, z: 111.14366 }
+				},
+				{
+					name:"geptan",
+					coordinates:{ x:9.1286, y: 8.503458, z: 124.451 }
+				},
+				{
+					name:"geplab",
+					coordinates:{ x:9.1991, y: 8.503465, z: 76.805 }
+				},
+				{
+					name:"dekhiv",
+					coordinates:{  x:-8.7151, y: 4.947, z: 126.409 }
+				},
+				{
+					name:"mattan",
+					coordinates:{  x:6.3104, y: 1.397, z: 121.895 }
+				}
+			],
+			aula:[{el:"startDoor"},{el:"aula"}],
+			geptan:[{el:"startDoor"},{el:"aula"},{el:"geptan"}],
+			geplab:[{el:"startDoor"},{el:"aula"},{el:"geplab"}],
+			dekhiv:[{el:"startDoor"},{el:"aula"},{el:"geptan"},{el:"dekhiv"}],
+			mattan:[{el:"startDoor"},{el:"aula"},{el:"geptan"},{el:"dekhiv"},{el:"mattan"}]
+		};
+	},
+  	methods: {
 		stepedUp() {
 		//előre
 			this.cameraPosition.z += 1;
@@ -202,32 +215,120 @@ export default {
 		//vissza
 			this.cameraPosition.z -= 1;
 		},
+		roadUpload(array)
+		{
+			this.markers.forEach(element => {
+				array.forEach(element1 => {
+					if (element.name == element1.el)
+					{
+						this.road.push(element.coordinates);
+					}
+				});
+			});
+		},
 		walkingSetUp()
 		{
 			switch (this.selectElement){
 				case "al":
-					this.road = this.aulaRoad;
+					this.walkingBottunDis = false;
+					this.road=[];
+					this.roadUpload(this.aula);
 					this.roadInd = 0;
 					break;
 				case "gt":
-					this.road = this.gtRoad;
+					this.walkingBottunDis = false;
+					this.road=[];
+					this.roadUpload(this.geptan);
 					this.roadInd = 0;
 					break;
 				case "gl":
-					this.road = this.glRoad;
+					this.walkingBottunDis = false;
+					this.road=[];
+					this.roadUpload(this.geplab);
 					this.roadInd = 0;
 					break;
 				case "dh":
-					this.road = this.dkRoad;
+					this.walkingBottunDis = false;
+					this.road=[];
+					this.roadUpload(this.dekhiv);
 					this.roadInd = 0;
 					break;
 				case "mt":
-					this.road = this.mtRoad;
+					this.walkingBottunDis = false;
+					this.road=[];
+					this.roadUpload(this.mattan);
 					this.roadInd = 0;
 					break;
 				default:
+					this.walkingBottunDis = true;
 					this.road = [];
 					break;
+			}
+		},
+		sleep(milliseconds) {
+			const date = Date.now();
+			let currentDate = null;
+			do {
+				currentDate = Date.now();
+			} while (currentDate - date < milliseconds);
+		},
+		cordCompre(cord1, cord2)
+		{
+			if(cord1 <= cord2)
+			{
+				cord1++;
+				if(cord1 > cord2) return cord2;
+				else return cord1;
+			}
+			if(cord1 >= cord2)
+			{
+				cord1--;
+				if(cord1 <= cord2) return cord2;
+				else return cord1;
+			}
+		},
+		annimation(lastCord, newCord)
+		{
+			console.log("lastCord: " + lastCord.x + " " + lastCord.y + " " + lastCord.z);
+			console.log("newtCord: " + newCord.x + " " + newCord.y + " " + newCord.z);
+			while(true)
+			{
+				lastCord.x = this.cordCompre(lastCord.x, newCord.x)
+				lastCord.y = this.cordCompre(lastCord.y, newCord.y)
+				lastCord.z = this.cordCompre(lastCord.z, newCord.z)
+				this.cameraPosition.x = lastCord.x;
+				this.cameraPosition.y = lastCord.y;
+				this.cameraPosition.z = lastCord.z;
+				console.log(this.cameraPosition.x+ " " + this.cameraPosition.y + " " + this.cameraPosition.z)
+				if(lastCord.x == newCord.x && lastCord.y == newCord.y && lastCord.z == newCord.z)
+				{
+					break;
+				}
+			}
+			this.walkingBottunDis = true;
+		},
+		walking1(){
+			if (this.roadInd >= this.road.length)
+			{
+				this.roadInd = 0;
+				this.cameraPosition.x = 0;
+				this.cameraPosition.y = 0;
+				this.cameraPosition.z = 0;	
+			}
+			else
+			{
+				if(this.roadInd !=0)
+				{
+					this.walkingBottunDis = false;
+					this.annimation(this.road[this.roadInd-1],this.road[this.roadInd]);
+				}
+				else
+				{
+					this.cameraPosition.x = this.road[this.roadInd].x;
+					this.cameraPosition.y = this.road[this.roadInd].y;
+					this.cameraPosition.z = this.road[this.roadInd].z;
+				}
+				this.roadInd++;
 			}
 		},
 		walking(){
@@ -241,10 +342,13 @@ export default {
 			}
 			else
 			{
+				this.walkingBottunDis = true;
+				// this.sleep(5000);
 				this.cameraPosition.x = this.road[this.roadInd].x;
 				this.cameraPosition.y = this.road[this.roadInd].y;
 				this.cameraPosition.z = this.road[this.roadInd].z;
 				this.roadInd++;
+				this.walkingBottunDis = false;
 			}
 		},
 		examp(cord){

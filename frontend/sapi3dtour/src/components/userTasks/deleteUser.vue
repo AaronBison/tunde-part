@@ -85,13 +85,15 @@ export default {
         researchUser(){
             if (this.selectedItem != null)
             {
-                UserTasks.getUserEmail(this.selectedItem).then((res) => {
+                UserTasks.getUserEmail({ 
+                    emailAddress :this.selectedItem 
+                }).then((res) => {
                     this.deletMem = true;
                     this.deletResp = false;
-                    this.name = res.data.fullName;
+                    this.name = res.data.username;
                     this.phoneNumber = res.data.phoneNumber;
                     this.emailAddress = res.data.emailAddress;
-                    this.userId = res.data.id;
+                    this.userId = res.data._id;
                     const userid = localStorage.getItem("userid");
                     if (this.userId == userid)
                     {
@@ -110,7 +112,9 @@ export default {
             }
         },
         deleteUser(){
-            UserTasks.deleteUserEmail(this.emailAddress).then((res) =>{
+            UserTasks.deleteUserEmail(
+                {emailAddress : this.emailAddress}
+            ).then((res) =>{
                 this.selectedItem = null;
                 this.deletMsg = "A törlés sikeresen megtörtént!";
                 this.resp = true;

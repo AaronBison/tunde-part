@@ -4,6 +4,9 @@
             <AddUsers/>
             <DeleteUsers/>
         </v-row>
+        <v-row>
+            <InformationDepartmentAddUpdate/>
+        </v-row>
     </v-container>
 </template>
 
@@ -12,10 +15,11 @@ import AuthRequest from "@/services/AuthService";
 import axios from "axios";
 import AddUsers from "./userTasks/addUsers.vue";
 import DeleteUsers from "./userTasks/deleteUser.vue"
+import InformationDepartmentAddUpdate from "./userTasks/InfDepAddUpd.vue"
 
 export default {
     name: 'Admin',
-    components:{AddUsers, DeleteUsers},
+    components:{AddUsers, DeleteUsers,InformationDepartmentAddUpdate},
     data () {
         return {
             

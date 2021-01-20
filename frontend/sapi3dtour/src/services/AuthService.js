@@ -3,19 +3,19 @@ import authHeader from './AuthHeader';
 
 export default{
     
-    getUser: (id) => {
-        let page = 'user/returnAdmin?id=' + String(id);
-        return Api().get(page, { headers: authHeader() });
-    },
-    loginVerification: (user) => {
-        let page = 'user/authenticate';
+    loginVerification: async(user) => {
+        let page = 'api/auth/signin';
         return Api().post(page, user);
     },
-    registerUser: (user) => {
-        let page = 'user/registration';
+    getUser: async(id) => {
+        let page = 'api/user/getUserById';
+        return Api().post(page, id,{ headers: authHeader() });
+    },
+    registerUser: async(user) => {
+        let page = 'api/auth/registration';
         return Api().post(page, user, { headers: authHeader() });
     },
-    addPassword: (password) => {
+    addPassword: async(password) => {
         let page = 'user/password';
         return Api().post(page, password);
     }

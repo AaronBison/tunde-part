@@ -79,7 +79,7 @@ export default {
         },
         registration(){
             AuthRequest.registerUser({
-                fullName : this.name,
+                username : this.name,
                 emailAddress : this.email,
                 phoneNumber : this.phonenumber,
                 authority : this.visibility

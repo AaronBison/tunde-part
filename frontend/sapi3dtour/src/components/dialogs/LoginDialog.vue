@@ -101,7 +101,8 @@
             1000
           );
           localStorage.setItem("userid", res.data.id);
-          localStorage.setItem("token", res.data.token);
+          localStorage.setItem("token", res.data.accessToken);
+          localStorage.setItem("role", res.data.roles == "ROLE_ADMIN" ? "Admin" : "Felhasználó");
           this.toAdmin();
         }).catch((err)=>{
           this.loginFailedMsg = "Sikertelen bejelentkezés!";

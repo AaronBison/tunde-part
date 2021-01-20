@@ -7,15 +7,15 @@ export default{
         return Api().put(page, admin, { headers: authHeader() });
     },
     getUsersEmail: async() => {
-        let page = '/user/returnUserList';
+        let page = 'api/user/getUsersByEmailAddress';
         return Api().get(page, { headers: authHeader() });
     },
     getUserEmail: async(emailAddress) => {
-        let page = '/user/returnUserEmail?emailAddress=' + emailAddress;
-        return Api().get(page, { headers: authHeader() });
+        let page = 'api/user/getUserByEmailAddress';
+        return Api().post(page, emailAddress,{ headers: authHeader() });
     },
     deleteUserEmail: async(emailAddress) => {
-        let page = '/user/deleteUser?emailAddress=' + emailAddress;
+        let page = 'api/user/deleteUserByEmailAddress';
         return Api().put(page, emailAddress , { headers: authHeader() });
     }
 }

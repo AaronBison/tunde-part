@@ -45,11 +45,11 @@ export default {
     methods: {
         getUserData() {
             const userid = localStorage.getItem("userid");
-            AuthRequest.getUser(userid).then((res)=>{
-                this.created_at = res.data.createdAt;
-                this.email = res.data.emailAddress;
-                this.full_name = res.data.fullName;
-                this.phone_number = res.data.phoneNumber;
+            AuthRequest.getUser({id: userid}).then((res)=>{
+            this.created_at = res.data.createdAt;
+            this.email = res.data.emailAddress;
+            this.full_name = res.data.username;
+            this.phone_number = res.data.phoneNumber;
             })
         },
         validateData(){

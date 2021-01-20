@@ -71,18 +71,18 @@ export default {
   methods: {
     getUserData() {
       const userid = localStorage.getItem("userid");
-      AuthRequest.getUser(userid).then((res)=>{
+      AuthRequest.getUser({id: userid}).then((res)=>{
         this.created_at = res.data.createdAt;
         this.email = res.data.emailAddress;
-        this.full_name = res.data.fullName;
-        this.status = res.data.roles[0].authority;
+        this.full_name = res.data.username;
+        this.status = localStorage.getItem("role");
         this.phone_number = res.data.phoneNumber;
       })
     }
   },
   mounted() {
     this.getUserData();
-  }
+  },
 }
 </script>
 

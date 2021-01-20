@@ -23,6 +23,7 @@ export default {
     logOut(){
       localStorage.removeItem('userid');
       localStorage.removeItem('token');
+      localStorage.removeItem('role');
       this.$router.push('/model3d')
     }
   }
