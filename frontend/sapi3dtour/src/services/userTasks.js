@@ -2,9 +2,9 @@ import Api from './Api'
 import authHeader from './AuthHeader';
 
 export default{
-    updateAdmin: async(admin) => {
-        let page = 'user/updateAdminData';
-        return Api().put(page, admin, { headers: authHeader() });
+    updateUser: async(user) => {
+        let page = 'api/user/updateUserById';
+        return Api().put(page, user, { headers: authHeader() });
     },
     getUsersEmail: async() => {
         let page = 'api/user/getUsersByEmailAddress';
@@ -17,5 +17,9 @@ export default{
     deleteUserEmail: async(emailAddress) => {
         let page = 'api/user/deleteUserByEmailAddress';
         return Api().put(page, emailAddress , { headers: authHeader() });
+    },
+    addDepartment: async(department) => {
+        let page = 'api/department/addDepartment';
+        return Api().post(page, department , { headers: authHeader() });
     }
 }

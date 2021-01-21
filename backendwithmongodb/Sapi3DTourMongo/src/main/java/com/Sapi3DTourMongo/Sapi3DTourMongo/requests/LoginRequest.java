@@ -1,12 +1,20 @@
 package com.Sapi3DTourMongo.Sapi3DTourMongo.requests;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 public class LoginRequest {
 	
-	@NotBlank
+	@NotNull
+    @NotEmpty
+	@Pattern(regexp="^(.+)@(.+)$")
 	private String emailAddress;
 
+	@NotNull
+    @NotEmpty
+    @Pattern(regexp="^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{5,20}$")
 	@NotBlank
 	private String password;
 

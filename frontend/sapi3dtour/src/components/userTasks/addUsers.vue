@@ -4,11 +4,11 @@
         <v-divider class="mx-5 my-3"></v-divider>
         <v-form ref="form" class="mx-5 " lazy-validation>
             <v-flex>
-                <v-text-field class="ml-5 my-5" type="name" name="name" v-model="name" label="Új felhasználó neve" color="grey" dense
+                <v-text-field class="ml-5 my-5" type="name" name="name" v-model="name" label="Új felhasználó neve" dense
                     :rules="[ value =>!! value || 'A felhasználó név megadása kötelező!']"/>
             </v-flex>
             <v-flex>
-                <v-text-field class="ml-5" type="e-mail" name="e-mail" v-model="email" label="E-mail" color="grey" dense
+                <v-text-field class="ml-5" type="e-mail" name="e-mail" v-model="email" label="E-mail" dense
                     :rules="[ value =>!! value || 'E-mail cím megadása kötelező!', value => /.+@.+\..+/.test(value) || 'E-mail cím helytelen']"/>
             </v-flex>
             <v-flex>
@@ -18,7 +18,7 @@
             </v-flex>
             <v-flex>
                 <v-select type="visibility" name="visibility" v-model="visibility" class="ml-5" :items="visibilityList"
-                    label="Láhatósági jog" color="grey" item-color="grey"
+                    label="Láhatósági jog"
                     :rules="[ value =>!! value || 'Láthatósági jog megadása kötelező!']"/>
             </v-flex>
             <v-card-actions class="justify-center"> 

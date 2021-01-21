@@ -57,13 +57,17 @@ export default {
                 this.updateUser();
             }
         },
-        async updateUser(){
+        updateUser(){
             const userid = localStorage.getItem("userid");
-            const response = await UserTasks.updateAdmin({
-                id: userid,
-                fullName: this.full_name,
+            UserTasks.updateUser({
+                _id: userid,
+                username: this.full_name,
                 emailAddress: this.email,
                 phoneNumber: this.phone_number,
+            }).then((res)=>{
+                console.log(res)
+            }).catch((err)=>{
+                console.log(err)
             });
         }
     },

@@ -3,6 +3,8 @@ package com.Sapi3DTourMongo.Sapi3DTourMongo.controllers;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Sapi3DTourMongo.Sapi3DTourMongo.models.User;
+import com.Sapi3DTourMongo.Sapi3DTourMongo.requests.UserDataUpdateRequest;
 import com.Sapi3DTourMongo.Sapi3DTourMongo.requests.UserDataWithEmailAddressRequest;
 import com.Sapi3DTourMongo.Sapi3DTourMongo.requests.UserDataWithIdRequest;
 import com.Sapi3DTourMongo.Sapi3DTourMongo.respons.UserDataWithEmailAddressResponse;
@@ -25,7 +28,7 @@ public class UserController {
 	UserService userService;
 
 	@RequestMapping(method = RequestMethod.POST, path = "/getUserById")
-	public ResponseEntity<?> getUserById(@RequestBody UserDataWithIdRequest id){
+	public ResponseEntity<?> getUserById(@Valid @RequestBody UserDataWithIdRequest id){
 		try {
 			Optional<User> us = userService.getUserById(id.getId());
 			return ResponseEntity.ok(
@@ -39,7 +42,6 @@ public class UserController {
 		}catch (Exception e) {
 			return ResponseEntity.ok("Wrong id!!");
 		}
-		
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, path = "/getUsersByEmailAddress")
@@ -54,7 +56,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, path = "/getUserByEmailAddress")
-	public ResponseEntity<?> getUserByEmailAddress(@RequestBody UserDataWithEmailAddressRequest emailAddressRequest)
+	public ResponseEntity<?> getUserByEmailAddress(@Valid @RequestBody UserDataWithEmailAddressRequest emailAddressRequest)
 	{
 		Optional<User> user = userService.getUserByEmailAddress(emailAddressRequest.getEmailAddress());
 		if(user == null)
@@ -71,9 +73,19 @@ public class UserController {
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT, path = "/deleteUserByEmailAddress")
-	public ResponseEntity<?> deleteUserByEmailAddress(@RequestBody UserDataWithEmailAddressRequest emailAddressRequest)
+	public ResponseEntity<?> deleteUserByEmailAddress(@Valid @RequestBody UserDataWithEmailAddressRequest emailAddressRequest)
 	{
 		if(userService.deleteUserByEmailAddress(emailAddressRequest.getEmailAddress()))
+		{
+			return ResponseEntity.ok(true);
+		}
+		return ResponseEntity.ok(false);
+	}
+	
+	@RequestMapping(method = RequestMethod.PUT, path = "/updateUserById")
+	public ResponseEntity<?> updateUserById(@RequestBody UserDataUpdateRequest user)
+	{
+		if(userService.updateUserById(user))
 		{
 			return ResponseEntity.ok(true);
 		}

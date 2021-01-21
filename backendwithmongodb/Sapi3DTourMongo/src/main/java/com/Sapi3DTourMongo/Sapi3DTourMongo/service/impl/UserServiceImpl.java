@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.Sapi3DTourMongo.Sapi3DTourMongo.models.User;
 import com.Sapi3DTourMongo.Sapi3DTourMongo.repositories.UserRepository;
+import com.Sapi3DTourMongo.Sapi3DTourMongo.requests.UserDataUpdateRequest;
 import com.Sapi3DTourMongo.Sapi3DTourMongo.service.UserService;
 
 @Service
@@ -51,6 +52,21 @@ public class UserServiceImpl implements UserService {
 		try
 		{
 			userRepository.deleteByEmailAddress(emailAddress);
+			return true;
+		}catch (Exception e) {
+			System.out.println(e);
+			return false;
+		}
+	}
+
+	@Override
+	public Boolean updateUserById(UserDataUpdateRequest user) {
+		try {
+			Optional<User> oldUser = userRepository.findBy_id(user.get_id());
+			oldUser.get().setUsername(user.getUsername());
+			oldUser.get().setEmailAddress(user.getEmailAddress());
+			oldUser.get().setPhoneNumber(user.getPhoneNumber());
+			userRepository.save(oldUser.get());
 			return true;
 		}catch (Exception e) {
 			System.out.println(e);

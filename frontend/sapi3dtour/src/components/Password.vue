@@ -12,15 +12,14 @@
                     </v-card-text>
                     <v-form>
                         <v-flex>
-                            <v-text-field class="mx-5" type="tokenCode" name="tokenCode" v-model="tokenCode" label="Azonosító kód" 
-                                color="grey" dense
+                            <v-text-field class="mx-5" type="tokenCode" name="tokenCode" v-model="tokenCode" label="Azonosító kód" dense
                                 prepend-icon="fas fa-keyboard"
                                 :rules="[ value =>!! value || 'Az azonosító kód megadása kötelező!', 
                                         value => /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{32}$/.test(value) || 'A kód helytelen! Figyeljen a kis, nagy és szám karakterre!']"
                                 counter="32"/>
                         </v-flex>
                         <v-flex xs12>
-                            <v-text-field class="mx-5" name="password" v-model="password" label="Jelszó" color="grey"
+                            <v-text-field class="mx-5" name="password" v-model="password" label="Jelszó"
                                 prepend-icon="fas fa-lock"
                                 :append-icon="show ? 'fas fa-eye' : 'fas fa-eye-slash'" 
                                 @keyup.enter="passwordAdd" 
@@ -31,7 +30,7 @@
                                         value => value.length >= 5 || 'Legalább 5 karakter hosszúságú kell legyen']"/>
                         </v-flex>
                         <v-flex xs12>
-                            <v-text-field class="mx-5" name="passwordAgain" v-model="passwordAgain" label="Jelszó újra" color="grey"
+                            <v-text-field class="mx-5" name="passwordAgain" v-model="passwordAgain" label="Jelszó újra"
                                 prepend-icon="fas fa-lock"
                                 :append-icon="showAgain ? 'fas fa-eye' : 'fas fa-eye-slash'" 
                                 @keyup.enter="passwordAdd" 

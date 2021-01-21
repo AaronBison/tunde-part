@@ -1,7 +1,7 @@
 <template>
     <transition >
         <v-form ref="form" class="mx-5 my-3" lazy-validation>
-            <v-combobox v-model="selectedItem" class="ml-5" color="grey" dense :items="departments" 
+            <v-combobox v-model="selectedItem" class="ml-5" dense :items="departments" 
                         label="Válaszd ki a törlendő részleget!" hide-selected persistent-hint small-chips></v-combobox>
             <v-card-actions class="justify-center">
                 <v-btn color="#2B405D" outlined text class="mr-4" @click="researchDepartment">Részleg keresése</v-btn>
@@ -9,20 +9,20 @@
         </v-form>
         <v-form v-if="updateDep" ref="form" class="mx-5 " lazy-validation>
             <v-flex>
-                <v-text-field class="ml-5" type="name" name="name" v-model="name" label="Részleg neve" color="grey" dense
+                <v-text-field class="ml-5" type="name" name="name" v-model="name" label="Részleg neve" dense
                     :rules="[ value =>!! value || 'A részleg név megadása kötelező!']"/>
             </v-flex>
             <v-flex>
                 <v-text-field class="ml-5" type="phonenumber" name="phonenumber" v-model="phonenumber" label="Telefonszám"
-                    color="grey" :rules="[ value =>!! value || 'Telefonszám megadása kötelező!',
+                    :rules="[ value =>!! value || 'Telefonszám megadása kötelező!',
                                         value => /^\d{10}$/.test(value) || 'A telefonszám megadása csak számokkal történhet!']"/>
             </v-flex>
             <v-flex>
-                <v-text-field class="ml-5" type="e-mail" name="e-mail" v-model="email" label="E-mail" color="grey" dense
+                <v-text-field class="ml-5" type="e-mail" name="e-mail" v-model="email" label="E-mail" dense
                     :rules="[ value =>!! value || 'E-mail cím megadása kötelező!', value => /.+@.+\..+/.test(value) || 'E-mail cím helytelen']"/>
             </v-flex>
             <v-flex>
-                <v-text-field class="ml-5" type="text" name="description" v-model="description" label="Leírás" color="grey" dense
+                <v-text-field class="ml-5" type="text" name="description" v-model="description" label="Leírás" dense
                     :rules="[ value =>!! value || 'A leírás megadása kötelező!']"/>
             </v-flex>
             <v-card-actions class="justify-center"> 
