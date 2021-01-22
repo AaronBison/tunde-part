@@ -10,13 +10,13 @@ import com.Sapi3DTourMongo.Sapi3DTourMongo.requests.UserDataUpdateRequest;
 
 public interface UserService {
 	
-	public Optional<User> getUserById(ObjectId id);
+	public Optional<User> getUserById(ObjectId id) throws Exception;
 	
-	public List<String> getUsersByEmailAddress();
+	public List<String> getUsersByEmailAddress() throws Exception;
 
-	public Optional<User> getUserByEmailAddress(String emailAddress);
+	public Optional<User> getUserByEmailAddress(String emailAddress) throws Exception;
 	
-	public Boolean deleteUserByEmailAddress(String emailAddress);
+	public void deleteUserByEmailAddress(String emailAddress) throws Exception;
 	
-	public Boolean updateUserById(UserDataUpdateRequest user);
+	public void updateUserById(UserDataUpdateRequest user) throws Exception;
 }

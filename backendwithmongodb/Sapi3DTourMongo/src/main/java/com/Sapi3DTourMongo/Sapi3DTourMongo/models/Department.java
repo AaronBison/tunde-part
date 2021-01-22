@@ -16,12 +16,15 @@ public class Department {
 	
 	private String description;
 	
-	public Department(String departmentName, String emailAddress, String phoneNumber, String description)
+	private String roomNumber;
+	
+	public Department(String departmentName, String emailAddress, String phoneNumber, String description, String roomNumber)
 	{
 		this.departmentName = departmentName;
 		this.emailAddress = emailAddress;
 		this.phoneNumber = phoneNumber;
 		this.description = description;
+		this.roomNumber = roomNumber;
 	}
 
 	public ObjectId get_id() {
@@ -64,4 +67,12 @@ public class Department {
 		this.description = description;
 	}
 
+	public String getRoomNumber() {
+		return roomNumber;
+	}
+
+	public void setRoomNumber(String roomNumber) {
+		this.roomNumber = roomNumber;
+	}
+	
 }

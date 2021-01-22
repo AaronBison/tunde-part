@@ -17,7 +17,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.Sapi3DTourMongo.Sapi3DTourMongo.exceptions.WrongPasswordException;
 import com.Sapi3DTourMongo.Sapi3DTourMongo.models.ERole;
 import com.Sapi3DTourMongo.Sapi3DTourMongo.models.Registration;
 import com.Sapi3DTourMongo.Sapi3DTourMongo.models.Role;
@@ -51,9 +50,10 @@ public class LoginUserServiceImpl implements LoginUserService {
 	private static final Base64.Encoder base64Encoder = Base64.getUrlEncoder(); 
 
 	@Override
-	public boolean registerNewUser(RegistrationRequest registrationRequest) {
+	public void registerNewUser(RegistrationRequest registrationRequest) throws Exception
+	{
 		if (userRepository.existsByEmailAddress(registrationRequest.getEmailAddress())) {
-			return false;
+			throw new Exception("Email already exist!");
 		}
 		try {
 			
@@ -109,10 +109,9 @@ public class LoginUserServiceImpl implements LoginUserService {
     		helper.setTo(newUser.getEmailAddress());
     		helper.setSubject("A sapi 3d alkalmazás jelentkeztetése");
     		emailSender.send(mimeMessage);
-			return true;
 		} catch (Exception e) {
 			System.out.println(e);
-			return false;
+			throw new Exception("Email already exist!");
 		}
 	}
 	
@@ -123,24 +122,25 @@ public class LoginUserServiceImpl implements LoginUserService {
 	}
 
 	@Override
-	public boolean passwordSave(PasswordRequest passwordRequest) throws WrongPasswordException {
+	public void passwordSave(PasswordRequest passwordRequest) throws Exception
+	{
 		try {
 			if(!registartionRepository.existsByToken(passwordRequest.getCodeToken()))
 			{
-				throw new WrongPasswordException("Wrong token!");
+				throw new Exception("Wrong token!");
 			}
 			Registration registartion = registartionRepository.findByToken(passwordRequest.getCodeToken()).orElseThrow(() -> new RuntimeException("Error: Registartion is not found."));
 			if (registartion.isEnable())
 			{
-				throw new WrongPasswordException("Already exist!");
+				throw new Exception("Already exist!");
 			}
 			Calendar cal = Calendar.getInstance();
 			if (registartion.getValidDate().before(cal.getTime())) {
-				throw new WrongPasswordException("Time done!");
+				throw new Exception("Time done!");
 			}
 			if (!passwordRequest.getPassword().equals(passwordRequest.getPasswordAgain()))
 			{
-				throw new WrongPasswordException("Wrong password!");
+				throw new Exception("The passwords not equals!");
 			}
 			Iterator<User> itr = registartion.getUser().iterator();
 			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -150,11 +150,10 @@ public class LoginUserServiceImpl implements LoginUserService {
 			userRepository.save(user);
 			registartion.setEnable(true);
 			registartionRepository.save(registartion);
-			return true;
 		} 
 		catch (Exception e) {
 			System.out.println(e);
-			return false;
+			throw new Exception("Wrong password!");
 		}
 	}
 

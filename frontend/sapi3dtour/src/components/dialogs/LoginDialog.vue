@@ -17,14 +17,14 @@
         <v-form ref="form" lazy-validation>
           <v-layout row wrap>
             <v-flex xs12>
-              <v-text-field class="mx-5" name="email" v-model="email" label="E-mail cím" color="grey"
+              <v-text-field class="mx-5" name="email" v-model="email" label="E-mail cím"
                 prepend-icon="fas fa-user" 
                 @keyup.enter="validateUser" 
                 :rules="[ value =>!! value || 'E-mail cím megadása kötelező!', value => /.+@.+\..+/.test(value) || 'E-mail cím helytelen',]"
               />
             </v-flex>
             <v-flex xs12>
-              <v-text-field class="mx-5" name="password" v-model="password" label="Jelszó" color="grey"
+              <v-text-field class="mx-5" name="password" v-model="password" label="Jelszó"
                  prepend-icon="fas fa-lock"
                 :append-icon="show ? 'fas fa-eye' : 'fas fa-eye-slash'" 
                 @keyup.enter="validateUser" 

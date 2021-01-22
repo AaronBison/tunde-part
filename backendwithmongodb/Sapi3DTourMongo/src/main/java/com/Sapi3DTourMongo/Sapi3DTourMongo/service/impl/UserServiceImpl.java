@@ -19,13 +19,20 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	UserRepository userRepository;
 
-	public Optional<User> getUserById(ObjectId id) {
-		Optional<User> us = userRepository.findBy_id(id);
-		return us;
+	public Optional<User> getUserById(ObjectId id) throws Exception
+	{
+		try {
+			Optional<User> us = userRepository.findBy_id(id);
+			return us;
+		} catch (Exception e) {
+			throw new Exception("Wrong user id!");
+		}
+		
 	}
 
 	@Override
-	public List<String> getUsersByEmailAddress() {
+	public List<String> getUsersByEmailAddress() throws Exception
+	{
 		try {
 			List<User> usList = userRepository.findAll();
 			List<String> emailStringList = new ArrayList<>(); ;
@@ -33,44 +40,45 @@ public class UserServiceImpl implements UserService {
 			return emailStringList;
 		} catch (Exception e) {
 			System.out.println(e);
-			return null;
+			throw new Exception("Not users!");
 		}
 	}
 
 	@Override
-	public Optional<User> getUserByEmailAddress(String emailAddress) {
+	public Optional<User> getUserByEmailAddress(String emailAddress) throws Exception
+	{
 		try {
 			return userRepository.findByEmailAddress(emailAddress);
 		} catch (Exception e) {
 			System.out.println(e);
-			return null;
+			throw new Exception("Wrong user email get!");
 		}
 	}
 
 	@Override
-	public Boolean deleteUserByEmailAddress(String emailAddress) {
+	public void deleteUserByEmailAddress(String emailAddress) throws Exception
+	{
 		try
 		{
 			userRepository.deleteByEmailAddress(emailAddress);
-			return true;
 		}catch (Exception e) {
 			System.out.println(e);
-			return false;
+			throw new Exception("Wrong user email delete!");
 		}
 	}
 
 	@Override
-	public Boolean updateUserById(UserDataUpdateRequest user) {
+	public void updateUserById(UserDataUpdateRequest user) throws Exception
+	{
 		try {
 			Optional<User> oldUser = userRepository.findBy_id(user.get_id());
 			oldUser.get().setUsername(user.getUsername());
 			oldUser.get().setEmailAddress(user.getEmailAddress());
 			oldUser.get().setPhoneNumber(user.getPhoneNumber());
 			userRepository.save(oldUser.get());
-			return true;
 		}catch (Exception e) {
 			System.out.println(e);
-			return false;
+			throw new Exception("Faild user update!");
 		}
 	}
 	

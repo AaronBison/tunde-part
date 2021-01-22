@@ -23,6 +23,10 @@ public class DepartmentAddRequest {
 	@NotNull
     @NotEmpty
 	private String description;
+	
+	@NotNull
+    @NotEmpty
+	private String roomNumber;
 
 	public String getDepartmentName() {
 		return departmentName;
@@ -54,6 +58,14 @@ public class DepartmentAddRequest {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getRoomNumber() {
+		return roomNumber;
+	}
+
+	public void setRoomNumber(String roomNumber) {
+		this.roomNumber = roomNumber;
 	}
 
 }

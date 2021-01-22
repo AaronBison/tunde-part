@@ -1,5 +1,7 @@
 package com.Sapi3DTourMongo.Sapi3DTourMongo.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,19 +17,29 @@ public class DepartmentServiceImpl implements DepartmentService {
 	DepartmentRepository departmentRepository;
 
 	@Override
-	public boolean addDepartment(DepartmentAddRequest depReq) {
+	public void addDepartment(DepartmentAddRequest depReq) throws Exception {
 		if(departmentRepository.existsByDepartmentName(depReq.getDepartmentName()))
 		{
-			return false;
+			throw new Exception("Department already exist!");
 		}
 		try {
-			Department dep = new Department(depReq.getDepartmentName(), depReq.getEmailAddress(), depReq.getPhoneNumber(), depReq.getDescription());
+			Department dep = new Department(depReq.getDepartmentName(), depReq.getEmailAddress(), depReq.getPhoneNumber(), depReq.getDescription(), depReq.getRoomNumber());
 			departmentRepository.save(dep);
-			return true;
 			
 		} catch (Exception e) {
 			System.out.println(e);
-			return false;
+			throw new Exception("Wrong add department!");
+		}
+	}
+
+	@Override
+	public List<Department> getDepartments() throws Exception{
+		try {
+			List<Department> dep = departmentRepository.findAll();
+			return dep;
+		} catch (Exception e) {
+			System.out.println(e);
+			throw new Exception("No departments!");
 		}
 	}
 

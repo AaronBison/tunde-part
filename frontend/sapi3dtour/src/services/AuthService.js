@@ -16,7 +16,7 @@ export default{
         return Api().post(page, user, { headers: authHeader() });
     },
     addPassword: async(password) => {
-        let page = 'user/password';
+        let page = 'api/auth/password';
         return Api().post(page, password);
     }
     

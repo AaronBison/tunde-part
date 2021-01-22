@@ -84,6 +84,7 @@ export default {
                 phoneNumber : this.phonenumber,
                 authority : this.visibility
             }).then((res)=>{
+                console.log(res)
                 this.registartionMsg = "Az új felhasználó sikeresen hozzáadodott!";
                 this.loadingButtonTick = true;
                 this.regIcon = "fas fa-check";

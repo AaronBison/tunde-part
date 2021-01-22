@@ -28,41 +28,30 @@ public class UserController {
 	UserService userService;
 
 	@RequestMapping(method = RequestMethod.POST, path = "/getUserById")
-	public ResponseEntity<?> getUserById(@Valid @RequestBody UserDataWithIdRequest id){
-		try {
-			Optional<User> us = userService.getUserById(id.getId());
-			return ResponseEntity.ok(
-					new UserDataWithIdResponse(
+	public ResponseEntity<?> getUserById(@Valid @RequestBody UserDataWithIdRequest id) throws Exception
+	{
+		Optional<User> us = userService.getUserById(id.getId());
+		return ResponseEntity.ok(
+				new UserDataWithIdResponse(
 						us.get().getUsername(),
 						us.get().getCreatedAt(),
 						us.get().getEmailAddress(),
 						us.get().getPassword(),
 						us.get().getPhoneNumber()
 					));
-		}catch (Exception e) {
-			return ResponseEntity.ok("Wrong id!!");
-		}
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, path = "/getUsersByEmailAddress")
-	public ResponseEntity<?> getUsersByEmailAddress()
+	public ResponseEntity<?> getUsersByEmailAddress() throws Exception
 	{
 		List<String> listEmail = userService.getUsersByEmailAddress();
-		if(listEmail == null)
-		{
-			return ResponseEntity.ok("Not emails!");
-		}
 		return ResponseEntity.ok(listEmail);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, path = "/getUserByEmailAddress")
-	public ResponseEntity<?> getUserByEmailAddress(@Valid @RequestBody UserDataWithEmailAddressRequest emailAddressRequest)
+	public ResponseEntity<?> getUserByEmailAddress(@Valid @RequestBody UserDataWithEmailAddressRequest emailAddressRequest) throws Exception
 	{
 		Optional<User> user = userService.getUserByEmailAddress(emailAddressRequest.getEmailAddress());
-		if(user == null)
-		{
-			return ResponseEntity.ok("Not emails!");
-		}
 		return ResponseEntity.ok(
 				new UserDataWithEmailAddressResponse(
 						user.get().getId().toHexString(),
@@ -73,23 +62,17 @@ public class UserController {
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT, path = "/deleteUserByEmailAddress")
-	public ResponseEntity<?> deleteUserByEmailAddress(@Valid @RequestBody UserDataWithEmailAddressRequest emailAddressRequest)
+	public ResponseEntity<?> deleteUserByEmailAddress(@Valid @RequestBody UserDataWithEmailAddressRequest emailAddressRequest) throws Exception
 	{
-		if(userService.deleteUserByEmailAddress(emailAddressRequest.getEmailAddress()))
-		{
-			return ResponseEntity.ok(true);
-		}
-		return ResponseEntity.ok(false);
+		userService.deleteUserByEmailAddress(emailAddressRequest.getEmailAddress());
+		return ResponseEntity.ok(true);
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT, path = "/updateUserById")
-	public ResponseEntity<?> updateUserById(@RequestBody UserDataUpdateRequest user)
+	public ResponseEntity<?> updateUserById(@RequestBody UserDataUpdateRequest user) throws Exception
 	{
-		if(userService.updateUserById(user))
-		{
-			return ResponseEntity.ok(true);
-		}
-		return ResponseEntity.ok(false);
+		userService.updateUserById(user);
+		return ResponseEntity.ok(true);
 	}
 	
 }

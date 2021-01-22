@@ -1,19 +1,33 @@
 <template>
-    <v-container class="justify-center" >
-       <p>Tanszékek oldala</p>
-    </v-container>
+    <v-layout wrap class="justify-center" >
+      <DepartmentCard v-for="card in departments" :key="card.departmentName" :card="card"/>
+    </v-layout>
 </template>
 
 <script>
-import AuthRequest from "@/services/AuthService";
-import axios from "axios";
-
+import GeneralTasks from "@/services/generalTasks"
+import DepartmentCard from "./cards/DepartmentCard"
 export default {
     name: 'Department',
+    components: {DepartmentCard},
     data () {
         return {
-            
+            departments: null,
         };
+    },
+    methods: {
+        getDepartment()
+        {
+            GeneralTasks.getDepartments().then((res)=>{
+                this.departments = res.data;
+            }).catch((err)=>{
+                this.departments = null;
+            })
+        }
+    },
+    mounted()
+    {
+        this.getDepartment();
     }
 }
 </script>

@@ -6,11 +6,11 @@
         <v-card class="mt-5" id="card">
             <v-card-title> Személyes adatok változtatása </v-card-title>
             <v-form ref="form" class="mx-5" lazy-validation>
-                <v-text-field color="grey" label="Név" required v-model="full_name" 
+                <v-text-field label="Név" required v-model="full_name" 
                     :rules="[ value =>!! value || 'A felhasználó név megadása kötelező!']"> </v-text-field>
-                <v-text-field color="grey" label="E-mail" required v-model="email" 
+                <v-text-field label="E-mail" required v-model="email" 
                     :rules="[ value =>!! value || 'E-mail cím megadása kötelező!', value => /.+@.+\..+/.test(value) || 'E-mail cím helytelen',]"> </v-text-field>
-                <v-text-field color="grey" label="Telefonszám" required v-model="phone_number"
+                <v-text-field label="Telefonszám" required v-model="phone_number"
                     :rules="[ value =>!! value || 'Telefonszám megadása kötelező!']" > </v-text-field>
                 <v-card-actions> 
                     <v-spacer></v-spacer>

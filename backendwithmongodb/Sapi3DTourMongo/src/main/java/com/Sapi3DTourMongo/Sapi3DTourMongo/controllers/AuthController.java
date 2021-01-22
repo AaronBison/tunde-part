@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Sapi3DTourMongo.Sapi3DTourMongo.config.JwtUtils;
-import com.Sapi3DTourMongo.Sapi3DTourMongo.exceptions.WrongPasswordException;
 import com.Sapi3DTourMongo.Sapi3DTourMongo.requests.LoginRequest;
 import com.Sapi3DTourMongo.Sapi3DTourMongo.requests.PasswordRequest;
 import com.Sapi3DTourMongo.Sapi3DTourMongo.requests.RegistrationRequest;
@@ -63,26 +62,17 @@ public class AuthController {
 	}
 
 	@PostMapping("/registration")
-	public ResponseEntity<?> registerUser(@Valid @RequestBody RegistrationRequest registrationRequest) {
+	public ResponseEntity<?> registerUser(@Valid @RequestBody RegistrationRequest registrationRequest) throws Exception
+	{
+		loginUserService.registerNewUser(registrationRequest);
+		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
 		
-		if(loginUserService.registerNewUser(registrationRequest))
-		{
-			return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
-		}
-		else {
-			return ResponseEntity.ok(new MessageResponse("User registered faild!"));
-		}
 	}
 	
 	@PostMapping("/password")
-	public ResponseEntity<?> passwordAdd(@Valid @RequestBody PasswordRequest passwordRequest) throws WrongPasswordException {
-		if(loginUserService.passwordSave(passwordRequest))
-		{
-			return ResponseEntity.ok(new MessageResponse("Password add successfully!"));
-		}
-		else {
-			return ResponseEntity.ok(new MessageResponse("Password add faild!"));
-		}
+	public ResponseEntity<?> passwordAdd(@Valid @RequestBody PasswordRequest passwordRequest) throws Exception {
+		loginUserService.passwordSave(passwordRequest);
+		return ResponseEntity.ok(new MessageResponse("Password add successfully!"));
 	}
 
 }

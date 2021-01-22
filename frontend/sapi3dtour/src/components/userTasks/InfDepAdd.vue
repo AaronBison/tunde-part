@@ -16,6 +16,10 @@
         <v-flex>
             <v-textarea class="ml-5" name="description" v-model="description" label="Leírás" :rules="[ value =>!! value || 'A leírás megadása kötelező!']"/>
         </v-flex>
+        <v-flex>
+            <v-text-field class="ml-5" type="number" name="roomNumber" v-model="roomNumber" label="Terem szám"
+                :rules="[ value =>!! value || 'Teremszám megadása kötelező!']"/>
+        </v-flex>
         <v-card-actions class="justify-center"> 
             <v-btn color="#2B405D" outlined text class="mr-4" @click="newDepartment" >Hozzáadás</v-btn>
         </v-card-actions>
@@ -55,6 +59,7 @@ export default {
             phonenumber: "",
             email: "",
             description: "",
+            roomNumber: "",
             loadingButtonX: false,
             loadingButtonTick:false,
             icon: "",
@@ -68,9 +73,9 @@ export default {
                 departmentName : this.name,
                 emailAddress : this.email,
                 phoneNumber : this.phonenumber,
-                description : this.description
+                description : this.description,
+                roomNumber : this.roomNumber
             }).then((res) =>{
-                console.log(res)
                 this.departmentAddMsg = "Az új részleg sikeresen hozzáadodott!";
                 this.loadingButtonTick = true;
                 this.icon = "fas fa-check";
