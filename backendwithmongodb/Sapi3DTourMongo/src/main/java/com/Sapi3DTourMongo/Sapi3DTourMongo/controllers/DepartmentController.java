@@ -37,5 +37,12 @@ public class DepartmentController {
 		return ResponseEntity.ok(dep);
 		
 	}
+	
+	@RequestMapping(method = RequestMethod.GET, path = "/getDepartmentsByDepartmentName")
+	public ResponseEntity<?> getDepartmentsByEmailAddress() throws Exception
+	{
+		List<String> listDepName = departmentService.getDepartmentsByDepartmentName();
+		return ResponseEntity.ok(listDepName);
+	}
 
 }

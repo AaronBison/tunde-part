@@ -10,21 +10,12 @@ public class Department {
 
 	private String departmentName;
 
-	private String emailAddress;
+	private String link;
 	
-	private String phoneNumber;
-	
-	private String description;
-	
-	private String roomNumber;
-	
-	public Department(String departmentName, String emailAddress, String phoneNumber, String description, String roomNumber)
+	public Department(String departmentName, String link)
 	{
 		this.departmentName = departmentName;
-		this.emailAddress = emailAddress;
-		this.phoneNumber = phoneNumber;
-		this.description = description;
-		this.roomNumber = roomNumber;
+		this.link = link;
 	}
 
 	public ObjectId get_id() {
@@ -43,36 +34,12 @@ public class Department {
 		this.departmentName = departmentName;
 	}
 
-	public String getEmailAddress() {
-		return emailAddress;
+	public String getLink() {
+		return link;
 	}
 
-	public void setEmailAddress(String emailAddress) {
-		this.emailAddress = emailAddress;
-	}
-
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getRoomNumber() {
-		return roomNumber;
-	}
-
-	public void setRoomNumber(String roomNumber) {
-		this.roomNumber = roomNumber;
+	public void setLink(String link) {
+		this.link = link;
 	}
 	
 }

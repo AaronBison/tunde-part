@@ -54,9 +54,7 @@
 </template>
 
 <script>
-import AuthRequest from "@/services/AuthService";
 import UserTasks from "@/services/userTasks";
-import axios from "axios";
 
 export default {
     name: 'DeleteUser',

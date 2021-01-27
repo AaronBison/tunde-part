@@ -5,20 +5,8 @@
                 :rules="[ value =>!! value || 'A részleg név megadása kötelező!']"/>
         </v-flex>
         <v-flex>
-            <v-text-field class="ml-5" type="phonenumber" name="phonenumber" v-model="phonenumber" label="Telefonszám"
-                :rules="[ value =>!! value || 'Telefonszám megadása kötelező!',
-                                    value => /^\d{10}$/.test(value) || 'A telefonszám megadása csak számokkal történhet!']"/>
-        </v-flex>
-        <v-flex>
-                <v-text-field class="ml-5" type="e-mail" name="e-mail" v-model="email" label="E-mail" color="grey" dense
-                    :rules="[ value =>!! value || 'E-mail cím megadása kötelező!', value => /.+@.+\..+/.test(value) || 'E-mail cím helytelen']"/>
-        </v-flex>
-        <v-flex>
-            <v-textarea class="ml-5" name="description" v-model="description" label="Leírás" :rules="[ value =>!! value || 'A leírás megadása kötelező!']"/>
-        </v-flex>
-        <v-flex>
-            <v-text-field class="ml-5" type="number" name="roomNumber" v-model="roomNumber" label="Terem szám"
-                :rules="[ value =>!! value || 'Teremszám megadása kötelező!']"/>
+            <v-text-field class="ml-5" type="text" name="link" v-model="link" label="A részleg részletes leírásához a link"
+                :rules="[ value =>!! value || 'A link megadása kötelező!']"/>
         </v-flex>
         <v-card-actions class="justify-center"> 
             <v-btn color="#2B405D" outlined text class="mr-4" @click="newDepartment" >Hozzáadás</v-btn>
@@ -47,19 +35,14 @@
 </template>
 
 <script>
-import AuthRequest from "@/services/AuthService";
 import UserTasks from "@/services/userTasks";
-import axios from "axios";
 
 export default {
     name: 'InformationDepartmentAdd',
     data () {
         return {
             name: "",
-            phonenumber: "",
-            email: "",
-            description: "",
-            roomNumber: "",
+            link: "",
             loadingButtonX: false,
             loadingButtonTick:false,
             icon: "",
@@ -71,10 +54,7 @@ export default {
         {
             UserTasks.addDepartment({
                 departmentName : this.name,
-                emailAddress : this.email,
-                phoneNumber : this.phonenumber,
-                description : this.description,
-                roomNumber : this.roomNumber
+                link: this.link
             }).then((res) =>{
                 this.departmentAddMsg = "Az új részleg sikeresen hozzáadodott!";
                 this.loadingButtonTick = true;

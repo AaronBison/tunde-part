@@ -6,20 +6,19 @@
         </v-row>
         <v-row>
             <InformationDepartmentAddUpdate/>
+            <InformationBranchAddUpdate/>
         </v-row>
     </v-container>
 </template>
 
 <script>
-import AuthRequest from "@/services/AuthService";
-import axios from "axios";
 import AddUsers from "./userTasks/addUsers.vue";
 import DeleteUsers from "./userTasks/deleteUser.vue"
 import InformationDepartmentAddUpdate from "./userTasks/InfDepAddUpd.vue"
-
+import InformationBranchAddUpdate from "./userTasks/infBranchAddUpd.vue"
 export default {
     name: 'Admin',
-    components:{AddUsers, DeleteUsers,InformationDepartmentAddUpdate},
+    components:{AddUsers, DeleteUsers,InformationDepartmentAddUpdate,InformationBranchAddUpdate},
     data () {
         return {
             

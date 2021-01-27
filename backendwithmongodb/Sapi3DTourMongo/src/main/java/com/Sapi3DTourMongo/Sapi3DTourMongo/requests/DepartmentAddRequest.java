@@ -2,7 +2,6 @@ package com.Sapi3DTourMongo.Sapi3DTourMongo.requests;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 
 public class DepartmentAddRequest {
 	
@@ -12,21 +11,7 @@ public class DepartmentAddRequest {
 
 	@NotNull
     @NotEmpty
-	@Pattern(regexp="^(.+)@(.+)$")
-	private String emailAddress;
-	
-	@NotNull
-    @NotEmpty
-	@Pattern(regexp="^\\d{10}$")
-	private String phoneNumber;
-	
-	@NotNull
-    @NotEmpty
-	private String description;
-	
-	@NotNull
-    @NotEmpty
-	private String roomNumber;
+	private String link;
 
 	public String getDepartmentName() {
 		return departmentName;
@@ -36,36 +21,12 @@ public class DepartmentAddRequest {
 		this.departmentName = departmentName;
 	}
 
-	public String getEmailAddress() {
-		return emailAddress;
+	public String getLink() {
+		return link;
 	}
 
-	public void setEmailAddress(String emailAddress) {
-		this.emailAddress = emailAddress;
-	}
-
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getRoomNumber() {
-		return roomNumber;
-	}
-
-	public void setRoomNumber(String roomNumber) {
-		this.roomNumber = roomNumber;
+	public void setLink(String link) {
+		this.link = link;
 	}
 
 }

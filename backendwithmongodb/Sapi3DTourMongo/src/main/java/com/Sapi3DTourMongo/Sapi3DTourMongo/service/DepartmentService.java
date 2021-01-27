@@ -10,4 +10,6 @@ public interface DepartmentService {
 	public void addDepartment(DepartmentAddRequest depReq) throws Exception;
 	
 	public List<Department> getDepartments() throws Exception;
+
+	List<String> getDepartmentsByDepartmentName() throws Exception;
 }

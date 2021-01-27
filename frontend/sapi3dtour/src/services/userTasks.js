@@ -21,5 +21,13 @@ export default{
     addDepartment: async(department) => {
         let page = 'api/department/addDepartment';
         return Api().post(page, department , { headers: authHeader() });
+    },
+    getDepartmentsDepartmentName: async() => {
+        let page = 'api/department/getDepartmentsByDepartmentName';
+        return Api().get(page, { headers: authHeader() });
+    },
+    addBranch: async(branch) => {
+        let page = '/api/branch/addBranch';
+        return Api().post(page, branch , { headers: authHeader() });
     }
 }
