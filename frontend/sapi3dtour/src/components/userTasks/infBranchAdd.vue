@@ -85,7 +85,7 @@ export default {
                 coordinatorEmail : this.coordinatorEmail,
                 roomNumber : this.roomNumber,
                 link : this.link,
-                departmentName: this.departmentName
+                departmentName: this.selectedItem
             }).then((res) =>{
                 this.branchAddMsg = "Az új szak sikeresen hozzáadodott!";
                 this.loadingButtonTick = true;

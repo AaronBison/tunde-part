@@ -1,5 +1,7 @@
 package com.Sapi3DTourMongo.Sapi3DTourMongo.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +36,22 @@ public class BranchServiceImpl implements BranchService {
 		} catch (Exception e) {
 			System.out.println(e);
 			throw new Exception("Wrong add branch!");
+		}
+	}
+
+	@Override
+	public List<Branch> getBranchByDepartment(String department) throws Exception {
+		if(!departmentRepository.existsByDepartmentName(department))
+		{
+			throw new Exception("Branch not exist!");
+		}
+		try {
+			Department dep = departmentRepository.findByDepartmentName(department);
+			return branchRepository.findByDepartmentOrderByBranchNameAsc(dep);
+			
+		} catch (Exception e) {
+			System.out.println(e);
+			throw new Exception("Wrong get branch by department!");
 		}
 	}
 }

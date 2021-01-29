@@ -6,4 +6,8 @@ export default{
         let page = 'api/department/getDepartments';
         return Api().get(page);
     },
-}
+    getBranches: async(department) => {
+        let page = '/api/branch/getBranchByDepartment';
+        return Api().post(page, department);
+    }
+} 

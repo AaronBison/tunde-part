@@ -64,7 +64,7 @@ export default {
       tabs: [
         {title: 'Beállítások', route: '/user/admin', icon:"fas fa-hammer"},
         {title: 'Model3D', route: '/user/model3d', icon:"fas fa-university"},
-        {title: 'Tanszékek', route: '/user/department', icon:"fas fa-book-reader"},
+        {title: 'Fontos egyetemi helyek', route: '/user/department', icon:"fas fa-book-reader"},
       ]
     }
   },

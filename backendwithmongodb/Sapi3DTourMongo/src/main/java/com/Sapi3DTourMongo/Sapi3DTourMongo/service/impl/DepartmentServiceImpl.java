@@ -36,7 +36,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 	@Override
 	public List<Department> getDepartments() throws Exception{
 		try {
-			List<Department> dep = departmentRepository.findAll();
+			List<Department> dep = departmentRepository.findByOrderByDepartmentNameAsc();
 			return dep;
 		} catch (Exception e) {
 			System.out.println(e);

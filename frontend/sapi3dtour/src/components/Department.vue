@@ -6,7 +6,7 @@
 
 <script>
 import GeneralTasks from "@/services/generalTasks"
-import DepartmentCard from "./cards/DepartmentCard"
+import DepartmentCard from "./fittings/DepartmentCard"
 export default {
     name: 'Department',
     components: {DepartmentCard},

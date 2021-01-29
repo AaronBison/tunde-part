@@ -6,19 +6,17 @@
             <v-radio label="Hozzáadás" value="add"></v-radio>
             <v-radio label="Szerkesztés" value="update"></v-radio>
         </v-radio-group>
-        <InfDepAdd v-if="this.selectResult == 'add' "/>
-        <InfDepUpd v-if="this.selectResult == 'update' "/>
+        <InfOthersAdd v-if="this.selectResult == 'add' "/>
     </v-card>
 </template>
 
 <script>
 
-import InfDepAdd from "./InfDepAdd.vue";
-import InfDepUpd from "./InfDepUpd.vue";
+import InfOthersAdd from "./infOthersAdd";
 
 export default {
-    name: 'InformationDepartmentAddUpdate',
-    components:{InfDepAdd,InfDepUpd},
+    name: 'InformationOthersAddUpdate',
+    components:{InfOthersAdd},
     data () {
         return {
             selectResult: "add",

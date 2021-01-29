@@ -10,7 +10,7 @@ public interface DepartmentRepository extends MongoRepository<Department,String>
 	
 	Boolean existsByDepartmentName(String departmentName);
 	
-	List<Department> findAll();
+	List<Department> findByOrderByDepartmentNameAsc();
 	
 	Department findByDepartmentName(String departmentName);
 	

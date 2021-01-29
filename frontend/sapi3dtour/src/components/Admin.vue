@@ -8,6 +8,9 @@
             <InformationDepartmentAddUpdate/>
             <InformationBranchAddUpdate/>
         </v-row>
+        <v-row>
+            <InformationOthersAddUpdate/>
+        </v-row>
     </v-container>
 </template>
 
@@ -16,9 +19,10 @@ import AddUsers from "./userTasks/addUsers.vue";
 import DeleteUsers from "./userTasks/deleteUser.vue"
 import InformationDepartmentAddUpdate from "./userTasks/InfDepAddUpd.vue"
 import InformationBranchAddUpdate from "./userTasks/infBranchAddUpd.vue"
+import InformationOthersAddUpdate from "./userTasks/infOthersAddUpd.vue"
 export default {
     name: 'Admin',
-    components:{AddUsers, DeleteUsers,InformationDepartmentAddUpdate,InformationBranchAddUpdate},
+    components:{AddUsers, DeleteUsers,InformationDepartmentAddUpdate,InformationBranchAddUpdate,InformationOthersAddUpdate},
     data () {
         return {
             

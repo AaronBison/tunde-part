@@ -42,7 +42,7 @@ export default {
       mini: true,
       tabs: [
         {title: 'Model3D', route: '/model3d', icon:"fas fa-university"},
-        {title: 'Tanszékek', route: '/department', icon:"fas fa-book-reader"},
+        {title: 'Fontos egyetemi helyek', route: '/department', icon:"fas fa-book-reader"},
       ]
     }
   }
