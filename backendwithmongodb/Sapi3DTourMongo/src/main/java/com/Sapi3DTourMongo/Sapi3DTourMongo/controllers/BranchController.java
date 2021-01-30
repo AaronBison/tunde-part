@@ -21,7 +21,7 @@ public class BranchController {
 	BranchService branchService;
 	
 	@RequestMapping(method = RequestMethod.POST, path = "/addBranch")
-	public ResponseEntity<?> addDepartment(@Valid @RequestBody BranchAddRequest branReq) throws Exception
+	public ResponseEntity<?> addBranch(@Valid @RequestBody BranchAddRequest branReq) throws Exception
 	{
 		branchService.addBranch(branReq);
 		return ResponseEntity.ok("Branch add successfully");

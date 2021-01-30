@@ -48,7 +48,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 	public List<String> getDepartmentsByDepartmentName() throws Exception
 	{
 		try {
-			List<Department> depList = departmentRepository.findAll();
+			List<Department> depList = departmentRepository.findByOrderByDepartmentNameAsc();
 			List<String> nameStringList = new ArrayList<>(); ;
 			depList.stream().forEach((c) -> nameStringList.add(c.getDepartmentName()));
 			return nameStringList;

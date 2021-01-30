@@ -29,5 +29,9 @@ export default{
     addBranch: async(branch) => {
         let page = '/api/branch/addBranch';
         return Api().post(page, branch , { headers: authHeader() });
+    },
+    addOtherBranch: async(otherBranch) => {
+        let page = '/api/othersBranch/addOthersBranch';
+        return Api().post(page, otherBranch , { headers: authHeader() });
     }
 }

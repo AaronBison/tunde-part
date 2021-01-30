@@ -24,7 +24,7 @@
                         label="Válaszd ki a tanszéket!" hide-selected persistent-hint small-chips
                         :rules="[ value =>!! value || 'Nincs kiválasztva elem!']"/>
         <v-card-actions class="justify-center"> 
-            <v-btn color="#2B405D" outlined text class="mr-4" @click="newBranch" >Hozzáadás</v-btn>
+            <v-btn color="#2B405D" outlined text class="mr-4" @click="validateData" >Hozzáadás</v-btn>
         </v-card-actions>
         <transition >
             <v-list-item v-if="loadingButtonX" >
@@ -76,6 +76,11 @@ export default {
             }).catch((err) => {
                 console.log(err)
             });
+        },
+        validateData(){
+            if (this.$refs.form.validate()) {
+                this.newBranch();
+            }
         },
         newBranch()
         {

@@ -9,7 +9,7 @@
                 :rules="[ value =>!! value || 'A link megadása kötelező!']"/>
         </v-flex>
         <v-card-actions class="justify-center"> 
-            <v-btn color="#2B405D" outlined text class="mr-4" @click="newDepartment" >Hozzáadás</v-btn>
+            <v-btn color="#2B405D" outlined text class="mr-4" @click="validateData" >Hozzáadás</v-btn>
         </v-card-actions>
         <transition >
             <v-list-item v-if="loadingButtonX" >
@@ -50,6 +50,11 @@ export default {
         };
     },
     methods:{
+        validateData(){
+            if (this.$refs.form.validate()) {
+                this.newDepartment();
+            }
+        },
         newDepartment()
         {
             UserTasks.addDepartment({
