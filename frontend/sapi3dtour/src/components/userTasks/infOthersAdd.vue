@@ -156,13 +156,11 @@ export default {
                     value5:value[4],
                     departmentName: this.selectedItem
                     }).then((res) =>{
-                        console.log(res)
                         this.othersBranchAddMsg = "Hozzáadás sikeres volt!";
                         this.loadingButtonTick = true;
                         this.icon = "fas fa-check";
                         setTimeout(() => (this.loadingButtonTick = false),3000);
                     }).catch((err)=>{
-                        console.log(err)
                         this.othersBranchAddMsg = "Hozzáadás sikertelen volt!";
                         this.icon = "fas fa-times";
                         this.loadingButtonX = true;

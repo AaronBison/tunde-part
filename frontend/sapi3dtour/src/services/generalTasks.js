@@ -9,5 +9,9 @@ export default{
     getBranches: async(department) => {
         let page = '/api/branch/getBranchByDepartment';
         return Api().post(page, department);
+    },
+    getOtherBranches: async(department) => {
+        let page = '/api/othersBranch/getOthersBranchByDepartment';
+        return Api().post(page, department);
     }
 } 

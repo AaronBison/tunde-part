@@ -8,27 +8,30 @@
 
         <v-card-subtitle> Szakok </v-card-subtitle>
 
-        <BranchList v-for="branch in branches" :key="branch.departmentName" :branch="branch"  />
+        <BranchList v-for="branch in branches" :key="branch.departmentName" :branch="branch"/>
 
         <v-divider class="mx-12"></v-divider>
 
         <v-card-subtitle > Egyebek </v-card-subtitle>
 
+        <OtherBranchList v-for="otherBranch in othersBranch" :key="otherBranch._id.timestamp" :otherBranch="otherBranch"/>
         
     </v-card>
 </template>
 
 <script>
 import BranchList from "./BranchesList"
+import OtherBranchList from "./OthersBranchList"
 import GeneralTasks from "@/services/generalTasks"
 
 export default {
     name: 'DepartmentCard',
-    components: {BranchList},
+    components: {BranchList, OtherBranchList},
     props: ["card"],
     data () {
         return {
-            branches:null
+            branches:null,
+            othersBranch:null
         };
     },
     methods: {
@@ -42,12 +45,25 @@ export default {
                 this.branches = res.data;
             }).catch((err)=>{
                 this.branches = null;
-            })
+            });
+        },
+        getOtherBranches()
+        {
+            GeneralTasks.getOtherBranches(
+                {
+                    departmentName : this.card.departmentName
+                }
+            ).then((res)=>{
+                this.othersBranch = res.data;
+            }).catch((err)=>{
+                this.othersBranch = null;
+            });
         }
     },
     mounted()
     {
         this.getBranches();
+        this.getOtherBranches();
     }
 }
 </script>
