@@ -1,0 +1,62 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+Reallocating 'name_of_file' (item size: 1) to 7 items.
+The style file: ieeetr.bst
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Database file #1: References.bib
+Warning--entry type for "dbms" isn't style-file defined
+--line 19 of file References.bib
+Warning--entry type for "frameworks" isn't style-file defined
+--line 48 of file References.bib
+Warning--entry type for "vuevsang" isn't style-file defined
+--line 58 of file References.bib
+Warning--entry type for "vueanginterest" isn't style-file defined
+--line 62 of file References.bib
+Warning--entry type for "nodejsspring" isn't style-file defined
+--line 79 of file References.bib
+Warning--entry type for "nodejsspring1" isn't style-file defined
+--line 83 of file References.bib
+Warning--I didn't find a database entry for "szanto2015investigation"
+You've used 14 entries,
+            1876 wiz_defined-function locations,
+            543 strings with 5694 characters,
+and the built_in function-call counts, 3177 in all, are:
+= -- 313
+> -- 99
+< -- 0
++ -- 40
+- -- 26
+* -- 193
+:= -- 406
+add.period$ -- 15
+call.type$ -- 14
+change.case$ -- 13
+chr.to.int$ -- 0
+cite$ -- 14
+duplicate$ -- 162
+empty$ -- 351
+format.name$ -- 26
+if$ -- 800
+int.to.chr$ -- 0
+int.to.str$ -- 14
+missing$ -- 7
+newline$ -- 46
+num.names$ -- 8
+pop$ -- 70
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 133
+stack$ -- 0
+substring$ -- 208
+swap$ -- 60
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 26
+width$ -- 16
+write$ -- 116
+(There were 7 warnings)
