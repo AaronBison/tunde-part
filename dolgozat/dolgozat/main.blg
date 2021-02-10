@@ -17,45 +17,45 @@ Warning--entry type for "nodejsspring" isn't style-file defined
 --line 79 of file References.bib
 Warning--entry type for "nodejsspring1" isn't style-file defined
 --line 83 of file References.bib
-You've used 16 entries,
+You've used 18 entries,
             1876 wiz_defined-function locations,
-            553 strings with 6147 characters,
-and the built_in function-call counts, 3796 in all, are:
-= -- 378
-> -- 118
+            565 strings with 6634 characters,
+and the built_in function-call counts, 4276 in all, are:
+= -- 422
+> -- 143
 < -- 0
-+ -- 47
-- -- 31
-* -- 236
-:= -- 488
-add.period$ -- 17
-call.type$ -- 16
-change.case$ -- 15
++ -- 56
+- -- 38
+* -- 272
+:= -- 561
+add.period$ -- 19
+call.type$ -- 18
+change.case$ -- 17
 chr.to.int$ -- 0
-cite$ -- 16
-duplicate$ -- 196
-empty$ -- 412
-format.name$ -- 31
-if$ -- 954
+cite$ -- 18
+duplicate$ -- 224
+empty$ -- 453
+format.name$ -- 38
+if$ -- 1073
 int.to.chr$ -- 0
-int.to.str$ -- 16
-missing$ -- 9
-newline$ -- 52
-num.names$ -- 10
-pop$ -- 77
+int.to.str$ -- 18
+missing$ -- 11
+newline$ -- 58
+num.names$ -- 12
+pop$ -- 82
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 157
+skip$ -- 174
 stack$ -- 0
-substring$ -- 256
-swap$ -- 74
+substring$ -- 266
+swap$ -- 86
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 34
-width$ -- 18
-write$ -- 137
+while$ -- 38
+width$ -- 20
+write$ -- 158
 (There were 6 warnings)
