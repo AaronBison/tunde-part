@@ -1,0 +1,81 @@
+\begin{thebibliography}{10}
+
+\bibitem{martins2019study}
+P.~Martins, M.~Abbasi, and F.~S{\'a}, ``A study over nosql performance,'' in
+  {\em World Conference on Information Systems and Technologies}, pp.~603--611,
+  Springer, 2019.
+
+\bibitem{vueanginterest}
+``Vue and angular interest.'' \url
+  {https://2019.stateofjs.com/front-end-frameworks/}.
+
+\bibitem{dedov2017design}
+D.~Dedov, M.~Krasnyanskiy, A.~Obukhov, and A.~Arkhipov, ``Design and
+  development of adaptive simulators using 3d modeling,'' {\em International
+  Journal of Applied Engineering Research}, vol.~12, no.~20, pp.~10415--10422,
+  2017.
+
+\bibitem{moloo20163d}
+R.~K. Moloo, S.~Pudaruth, M.~Ramodhin, and R.~B. Rozbully, ``A 3d virtual tour
+  of the university of mauritius using webgl,'' in {\em 2016 International
+  Conference on Electrical, Electronics, and Optimization Techniques (ICEEOT)},
+  pp.~2891--2894, IEEE, 2016.
+
+\bibitem{perdana2019implementation}
+D.~Perdana, A.~I. Irawan, and R.~Munadi, ``Implementation of a web based campus
+  virtual tour for introducing telkom university building,'' {\em International
+  Journal if Simulation—Systems, Science \& Technology}, vol.~20, no.~1,
+  pp.~1--6, 2019.
+
+\bibitem{maines2015application}
+C.~Maines and S.~Tang, ``An application of game technology to virtual
+  university campus tour and interior navigation,'' in {\em 2015 international
+  conference on developments of E-systems engineering (DeSE)}, pp.~341--346,
+  IEEE, 2015.
+
+\bibitem{dbms}
+``Dbms.'' \url {https://www.tutorialspoint.com/dbms/index.htm}.
+
+\bibitem{venkatraman2016sql}
+S.~Venkatraman, K.~Fahd, S.~Kaspi, and R.~Venkatraman, ``Sql versus nosql
+  movement with big data analytics,'' {\em Int. J. Inform. Technol. Comput.
+  Sci}, vol.~8, pp.~59--66, 2016.
+
+\bibitem{gupta2017nosql}
+A.~Gupta, S.~Tyagi, N.~Panwar, S.~Sachdeva, and U.~Saxena, ``Nosql databases:
+  Critical analysis and comparison,'' in {\em 2017 International Conference on
+  Computing and Communication Technologies for Smart Nation (IC3TSN)},
+  pp.~293--299, IEEE, 2017.
+
+\bibitem{frameworks}
+``Frameworks.'' \url{https://hackr.io/blog/what-is-frameworks}.
+
+\bibitem{wohlgethan2018supportingweb}
+E.~Wohlgethan, {\em SupportingWeb Development Decisions by Comparing Three
+  Major JavaScript Frameworks: Angular, React and Vue. js}.
+\newblock PhD thesis, Hochschule f{\"u}r Angewandte Wissenschaften Hamburg,
+  2018.
+
+\bibitem{vuevsang}
+``Vue and angular comparison.'' \url
+  {https://www.educative.io/blog/react-angular-vue-comparison}.
+
+\bibitem{js2016node}
+N.~Js and N.~JS, ``Node. js,'' {\em Tradu{\c{c}}{\~a}o de: SILVA, AG
+  Dispon{\'\i}vel em}, 2016.
+
+\bibitem{jovanovic2017java}
+{\v{Z}}.~Jovanovi{\'c}, D.~Jagodi{\'c}, and Vuji{\v{c}}i{\'c}, ``Java spring
+  boot rest web service integration with java artificial intelligence weka
+  framework,'' in {\em International Scientific Conference “UNITECH 2017},
+  pp.~323--327, 2017.
+
+\bibitem{nodejsspring}
+``Nodejs vs spring boot.''
+  \url{https://www.chapter247.com/blog/node-js-vs-springboot-java-which-one-to-choose-and-when/}.
+
+\bibitem{nodejsspring1}
+``Nodejs and spring boot.''
+  \url{https://stackshare.io/stackups/nodejs-vs-spring-boot}.
+
+\end{thebibliography}

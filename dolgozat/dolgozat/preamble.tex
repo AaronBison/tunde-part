@@ -2,6 +2,7 @@
 \graphicspath{ {figures/} }
 \usepackage[left=2.5cm,right=2cm,top=2.5cm]{geometry}
 
+
 \usepackage[utf8]{inputenc}
 \usepackage{t1enc}
 \usepackage[magyar]{babel}
@@ -25,7 +26,6 @@
 	unicode=true
 }
 % 
-\usepackage{url}
 \urlstyle{same}
 
 \usepackage{listings}
@@ -57,8 +57,8 @@
 	%stepnumber=1,  % the step between two line-numbers. If it's 1, each line will be numbered
 	stringstyle=\color{mauve}, % string literal style
 	tabsize=2,
-	%columns=fullflexible  % Using fixed column width (for e.g. nice alignment)
-	%sensitive = true,
+	columns=fullflexible  % Using fixed column width (for e.g. nice alignment)
+	sensitive = true,
 	morekeywords={name, runs-on, on, jobs, build, run, steps, uses}
 }
-\lstset{style=yaml}
+\lstset{}
