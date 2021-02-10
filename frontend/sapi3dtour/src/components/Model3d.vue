@@ -43,8 +43,7 @@
     <v-select v-model="selectElement" :items="items" backgroundColor="#E1E1DE" item-text="place" item-value="id"
                 label="Válaszd ki hová szeretnél menni!" @input="walkingSetUp" dense solo></v-select>
 
-    <model-gltf :lights="vilagitas" @on-click="examp" :backgroundColor="backgroundcolor" :position="cameraPosition" 
-        src="static/models/sapi3Dreg.gltf?">
+    <model-gltf :lights="vilagitas" @on-click="examp" :backgroundColor="backgroundcolor" :position="cameraPosition" :cameraPosition="angle" src="static/models/sapi3Dreg.gltf?">
     </model-gltf>
     <v-btn class="mx-2" fab dark small color="grey" @click="stepedLeft">
         <v-icon dark>
@@ -92,11 +91,11 @@ import { ModelGltf } from "vue-3d-model";
 export default {
 	name: "Model3D",
 	components: {
-		ModelObj,
-		ModelCollada,
-		ModelFbx,
-		ModelStl,
-		ModelPly,
+		// ModelObj,
+		// ModelCollada,
+		// ModelFbx,
+		// ModelStl,
+		// ModelPly,
 		ModelGltf,
 		// OrbitControls
 		// MglMap, 
@@ -107,6 +106,7 @@ export default {
 	},
 	data() {
 		return {
+			enableZoom: false,
 			fab: false,
 			firstRoadInd: 0,
 			walkingBottunDis:true,
@@ -134,61 +134,62 @@ export default {
 					position: { x: 0, y: 1, z: 0 },
 					skyColor: 0xffd7b8,
 					groundColor: 0x000000,
-					intensity: 2,
+					intensity: 0,
 				},
 				{
 					// Direkcionális fény, különböző irányokból
 					type: "DirectionalLight",
 					position: { x: -1, y: 2, z: -1 },
 					color: 0xffd7b8,
-					intensity: 3,
+					intensity: 2,
 				},
 				{
 					// Direkcionális fény, különböző irányokból
 					type: "DirectionalLight",
 					position: { x: 1, y: 2, z: -1 },
 					color: 0xffd7b8,
-					intensity: 3,
+					intensity: 2,
 				},
 				{
 					// Direkcionális fény, különböző irányokból
 					type: "DirectionalLight",
 					position: { x: 0, y: 1, z: 1 },
 					color: 0xfffcf2,
-					intensity: 3,
+					intensity: 2,
 				},
 			],
-			cameraPosition: { x:0, y: 0, z: 0 },
+			cameraPosition: { x:0, y:0, z:-50},
+			angle: { x:0, y:0, z:0.1 },
 			road: [],
 			roadInd: 0,
 			markers:[
 				{
 					name:"start",
-					coordinates: { x:0, y: 0, z: 0 }
+					coordinates: { x:0, y: 8.5, z: -15 }
 				},
 				{
 					name:"startDoor",
-					coordinates:{ x:0.45, y: 8.5, z: 99 }
+					coordinates:{ x:0, y: 8.5, z: -15 }
 				},
 				{
 					name:"aula",
-					coordinates:{ x:0.45, y: 8.503465, z: 111.14366 }
+					coordinates:{ x:0, y: 8.5, z: 8 }
 				},
 				{
 					name:"geptan",
-					coordinates:{ x:9.1286, y: 8.503458, z: 124.451 }
+					coordinates:{  x:9, y:8.5, z: 22 }
 				},
 				{
 					name:"geplab",
-					coordinates:{ x:9.1991, y: 8.503465, z: 76.805 }
+					coordinates:{  x:9, y:8.5, z: -26 }
 				},
 				{
 					name:"dekhiv",
-					coordinates:{  x:-8.7151, y: 4.947, z: 126.409 }
+					coordinates:{  x:-8, y:4.8, z: 22 }
 				},
 				{
 					name:"mattan",
-					coordinates:{  x:6.3104, y: 1.397, z: 121.895 }
+					coordinates:{  x:7, y: 1, z: 19 }
 				}
 			],
 			aula:[{el:"startDoor"},{el:"aula"}],
@@ -335,10 +336,11 @@ export default {
 
 			if (this.roadInd >= this.road.length)
 			{
-				this.cameraPosition.x = 0;
-				this.cameraPosition.y = 0;
-				this.cameraPosition.z = 0;
 				this.roadInd = 0;
+				this.cameraPosition.x = this.road[this.roadInd].x;
+				this.cameraPosition.y = this.road[this.roadInd].y;
+				this.cameraPosition.z = this.road[this.roadInd].z;
+				this.roadInd++;
 			}
 			else
 			{

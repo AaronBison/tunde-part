@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@mdi/font": "^3.6.95",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "orbit-controls-es6": "^2.0.1",
     "password-hash": "^1.2.2",
     "roboto-fontface": "*",
