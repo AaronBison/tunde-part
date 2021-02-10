@@ -1,5 +1,5 @@
 <template>
-    <v-container>
+    <layout>
         <v-row class="justify-center">
             <v-col cols="auto" class="justify-center">
                 <v-list-item center>
@@ -18,19 +18,19 @@
         </v-row>
         <v-row class="justify-center">
                 <v-col cols="auto" class="justify-center">
-                    <v-list-item center class="mx-2">
+                    <v-list-item center dense class="mx-2">
                         <v-list-item-icon>
                             <v-icon> fas fa-universal-access </v-icon>
                         </v-list-item-icon>
                         <v-list-item-content>
                             <v-list-item-title>
-                                {{ branch.coordinatorName }}
+                                {{ branch.coordinatorName }} szakkoordinátor
                             </v-list-item-title>
                         </v-list-item-content>
                     </v-list-item>
                 </v-col>
                 <v-col cols="auto" class="justify-center">
-                    <v-list-item center class="mx-2">
+                    <v-list-item center dense class="mx-2">
                         <v-list-item-icon>
                             <v-icon> fas fa-mail-bulk </v-icon>
                         </v-list-item-icon>
@@ -42,7 +42,7 @@
                     </v-list-item>
                 </v-col>
                 <v-col cols="auto" class="justify-center">
-                    <v-list-item center class="mx-2">
+                    <v-list-item center dense class="mx-2">
                         <v-list-item-icon>
                             <v-btn icon href="https://www.google.com/maps/?hl=HU">
                                 <v-icon>fas fa-map-marked-alt</v-icon>
@@ -54,7 +54,7 @@
                     </v-list-item>
                 </v-col>
         </v-row>
-    </v-container>
+    </layout>
 </template>
 
 <script>

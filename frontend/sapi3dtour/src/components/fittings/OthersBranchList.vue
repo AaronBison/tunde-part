@@ -1,5 +1,5 @@
 <template>
-    <v-container >
+    <layout >
         <v-row class="justify-center">
             <v-col cols="auto" class="justify-center">
                 <v-list-item center >
@@ -51,7 +51,7 @@
                 </div>
             </v-col>
         </v-row>
-    </v-container>
+    </layout>
 </template>
 
 <script>

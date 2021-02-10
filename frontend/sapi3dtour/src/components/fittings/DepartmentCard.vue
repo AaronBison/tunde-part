@@ -3,19 +3,12 @@
         <v-card-title class="justify-center">
             <a v-bind:href="card.link" target="_blank">{{ card.departmentName }}</a>
          </v-card-title>
-
         <v-divider class="mx-12"></v-divider>
-
         <v-card-subtitle> Szakok </v-card-subtitle>
-
         <BranchList v-for="branch in branches" :key="branch.departmentName" :branch="branch"/>
-
         <v-divider class="mx-12"></v-divider>
-
         <v-card-subtitle > Egyebek </v-card-subtitle>
-
         <OtherBranchList v-for="otherBranch in othersBranch" :key="otherBranch._id.timestamp" :otherBranch="otherBranch"/>
-        
     </v-card>
 </template>
 
