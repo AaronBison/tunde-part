@@ -43,7 +43,7 @@
     <v-select v-model="selectElement" :items="items" backgroundColor="#E1E1DE" item-text="place" item-value="id"
                 label="Válaszd ki hová szeretnél menni!" @input="walkingSetUp" dense solo></v-select>
 
-    <model-gltf :lights="vilagitas" @on-click="examp" :backgroundColor="backgroundcolor" :position="cameraPosition" :cameraPosition="angle" src="static/models/sapi3Dreg.gltf?">
+    <model-gltf :lights="vilagitas" @on-click="examp" :backgroundColor="backgroundcolor" :position="cameraPosition" :cameraPosition="angle" src="static/models/sapi3D.gltf?">
     </model-gltf>
     <v-btn class="mx-2" fab dark small color="grey" @click="stepedLeft">
         <v-icon dark>
@@ -158,38 +158,38 @@ export default {
 					intensity: 2,
 				},
 			],
-			cameraPosition: { x:0, y:0, z:-50},
+			cameraPosition: { x:0, y:0, z:-60},
 			angle: { x:0, y:0, z:0.1 },
 			road: [],
 			roadInd: 0,
 			markers:[
 				{
 					name:"start",
-					coordinates: { x:0, y: 8.5, z: -15 }
+					coordinates: { x:0, y: 15, z: -15 }
 				},
 				{
 					name:"startDoor",
-					coordinates:{ x:0, y: 8.5, z: -15 }
+					coordinates:{ x:0, y: 15, z: -15 }
 				},
 				{
 					name:"aula",
-					coordinates:{ x:0, y: 8.5, z: 8 }
+					coordinates:{ x:0, y: 15, z: 8 }
 				},
 				{
 					name:"geptan",
-					coordinates:{  x:9, y:8.5, z: 22 }
+					coordinates:{  x:9, y:15, z: 22 }
 				},
 				{
 					name:"geplab",
-					coordinates:{  x:9, y:8.5, z: -26 }
+					coordinates:{  x:9, y:15, z: -26 }
 				},
 				{
 					name:"dekhiv",
-					coordinates:{  x:-8, y:4.8, z: 22 }
+					coordinates:{  x:-8, y:11, z: 22 }
 				},
 				{
 					name:"mattan",
-					coordinates:{  x:7, y: 1, z: 19 }
+					coordinates:{  x:7, y: 7.3, z: 19 }
 				}
 			],
 			aula:[{el:"startDoor"},{el:"aula"}],
