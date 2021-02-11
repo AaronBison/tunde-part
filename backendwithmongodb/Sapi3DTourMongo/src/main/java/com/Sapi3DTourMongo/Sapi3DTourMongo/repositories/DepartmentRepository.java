@@ -14,4 +14,6 @@ public interface DepartmentRepository extends MongoRepository<Department,String>
 	
 	Department findByDepartmentName(String departmentName);
 	
+	Department findBy_id(String _id);
+	
 }

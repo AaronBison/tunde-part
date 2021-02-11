@@ -21,15 +21,16 @@ public class OthersBranch {
 	
 	private String value5;
 	
-	private Set<Department> department = new HashSet<>();
+	private String departmentName;
 	
-	public OthersBranch(String value1, String value2, String value3, String value4, String value5)
+	public OthersBranch(String value1, String value2, String value3, String value4, String value5, String departmentName)
 	{
 		this.value1 = value1;
 		this.value2 = value2;
 		this.value3 = value3;
 		this.value4 = value4;
 		this.value5 = value5;
+		this.departmentName = departmentName;
 	}
 
 	public ObjectId get_id() {
@@ -80,12 +81,12 @@ public class OthersBranch {
 		this.value5 = value5;
 	}
 
-	public Set<Department> getDepartment() {
-		return department;
+	public String getDepartmentName() {
+		return departmentName;
 	}
 
-	public void setDepartment(Department department) {
-		this.department.add(department);
+	public void setDepartmentName(String departmentName) {
+		this.departmentName = departmentName;
 	}
 	
 }

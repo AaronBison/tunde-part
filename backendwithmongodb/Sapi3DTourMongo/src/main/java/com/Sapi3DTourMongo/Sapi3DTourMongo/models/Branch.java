@@ -21,15 +21,16 @@ public class Branch {
 	
 	private String link;
 	
-	private Set<Department> department = new HashSet<>();
+	private String departmentName;
 	
-	public Branch (String branchName, String coordinatorName, String coordinatorEmail, String roomNumber, String link)
+	public Branch (String branchName, String coordinatorName, String coordinatorEmail, String roomNumber, String link, String departmentName)
 	{
 		this.branchName = branchName;
 		this.coordinatorEmail = coordinatorEmail;
 		this.coordinatorName = coordinatorName;
 		this.roomNumber= roomNumber;
 		this.link = link;
+		this.departmentName = departmentName;
 	}
 
 	public ObjectId get_id() {
@@ -80,12 +81,12 @@ public class Branch {
 		this.link = link;
 	}
 
-	public Set<Department> getDepartment() {
-		return department;
+	public String getDepartmentName() {
+		return departmentName;
 	}
 
-	public void setDepartment(Department department) {
-		this.department.add(department);
+	public void setDepartmentName(String departmentName) {
+		this.departmentName = departmentName;
 	}
 	
 }

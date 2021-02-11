@@ -12,6 +12,26 @@
                     :rules="[ value =>!! value || 'E-mail cím megadása kötelező!', value => /.+@.+\..+/.test(value) || 'E-mail cím helytelen',]"> </v-text-field>
                 <v-text-field label="Telefonszám" required v-model="phone_number"
                     :rules="[ value =>!! value || 'Telefonszám megadása kötelező!']" > </v-text-field>
+                <transition >
+                    <v-list-item v-if="updFaild" >
+                        <v-list-item-icon>
+                            <v-icon class="red--text"> fas fa-times </v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-content >
+                            <v-list-item-title class="red--text" >{{ msg }}</v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+                </transition>
+                <transition >
+                    <v-list-item v-if="updSuc" >
+                        <v-list-item-icon>
+                            <v-icon class="green--text"> fas fa-check </v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-content >
+                            <v-list-item-title class="green--text" >{{ msg }}</v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+                </transition>
                 <v-card-actions> 
                     <v-spacer></v-spacer>
                     <v-btn color="#2B405D" outlined text class="mr-4" @click="validateData"> Szerkesztés </v-btn>
@@ -26,12 +46,10 @@
 
 import AuthRequest from "@/services/AuthService";
 import UserTasks from "@/services/userTasks";
-import axios from "axios";
 
 export default {
     name: "ChangeUserData",
     data() {
-        this.getUserData();
         return {
             dialog: false,
             show: false,
@@ -40,9 +58,25 @@ export default {
             full_name: "",
             phone_number: "",
             status: "",
+            updSuc:false,
+            updFaild:false,
+            msg:"",
         };
     },
     methods: {
+        settingData()
+        {
+            this.dialog = false;
+            this.show = false;
+            this.created_at = "";
+            this.email = "";
+            this.full_name = "";
+            this.phone_number = "";
+            this.status = "";
+            this.updSuc = false;
+            this.updFaild = false;
+            this.msg = "";
+        },
         getUserData() {
             const userid = localStorage.getItem("userid");
             AuthRequest.getUser({id: userid}).then((res)=>{
@@ -65,12 +99,19 @@ export default {
                 emailAddress: this.email,
                 phoneNumber: this.phone_number,
             }).then((res)=>{
-                console.log(res)
+                this.updSuc=true;
+                this.msg = "Sikeres szerkesztés!"
+                setTimeout(() => (this.dialog = false),500);
             }).catch((err)=>{
-                console.log(err)
+                this.updFaild = false;
+                this.msg = "Sikertelen szerkesztés!"
             });
         }
     },
+    mounted() {
+        this.settingData();
+        this.getUserData();
+    }
 };
 </script>
 <style>

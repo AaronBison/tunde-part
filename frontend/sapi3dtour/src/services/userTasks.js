@@ -22,9 +22,17 @@ export default{
         let page = 'api/department/addDepartment';
         return Api().post(page, department , { headers: authHeader() });
     },
+    getDepartment: async(department) => {
+        let page = 'api/department/getDepartment';
+        return Api().post(page, department , { headers: authHeader() });
+    },
     getDepartmentsDepartmentName: async() => {
         let page = 'api/department/getDepartmentsByDepartmentName';
         return Api().get(page, { headers: authHeader() });
+    },
+    updateDepartment: async(department) => {
+        let page = 'api/department/updateDepartment';
+        return Api().post(page, department , { headers: authHeader() });
     },
     addBranch: async(branch) => {
         let page = '/api/branch/addBranch';

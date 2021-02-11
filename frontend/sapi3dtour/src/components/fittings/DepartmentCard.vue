@@ -4,11 +4,11 @@
             <a v-bind:href="card.link" target="_blank">{{ card.departmentName }}</a>
          </v-card-title>
         <v-divider class="mx-12"></v-divider>
-        <v-card-subtitle> Szakok </v-card-subtitle>
-        <BranchList v-for="branch in branches" :key="branch.departmentName" :branch="branch"/>
-        <v-divider class="mx-12"></v-divider>
-        <v-card-subtitle > Egyebek </v-card-subtitle>
-        <OtherBranchList v-for="otherBranch in othersBranch" :key="otherBranch._id.timestamp" :otherBranch="otherBranch"/>
+        <v-card-subtitle v-if="branches != null"> Alrészlegek </v-card-subtitle>
+        <BranchList v-for="branch in branches" :key="branch.branchName" :branch="branch"/>
+        <v-divider v-if="branches != null" class="mx-12"></v-divider>
+        <v-card-subtitle v-if="branches != null" > Egyebek </v-card-subtitle>
+        <OtherBranchList v-for="otherBranch in othersBranch" :key="otherBranch.value1" :otherBranch="otherBranch"/>
     </v-card>
 </template>
 
@@ -35,7 +35,14 @@ export default {
                     departmentName : this.card.departmentName
                 }
             ).then((res)=>{
-                this.branches = res.data;
+                if(res.data.length != 0)
+                {
+                    this.branches = res.data;
+                }
+                else
+                {
+                    this.othersBranch = [];
+                }
             }).catch((err)=>{
                 this.branches = null;
             });
@@ -47,7 +54,13 @@ export default {
                     departmentName : this.card.departmentName
                 }
             ).then((res)=>{
-                this.othersBranch = res.data;
+                if(res.data.length != 0)
+                {
+                    this.othersBranch = res.data;
+                }
+                else{
+                    this.othersBranch = [];
+                }
             }).catch((err)=>{
                 this.othersBranch = null;
             });

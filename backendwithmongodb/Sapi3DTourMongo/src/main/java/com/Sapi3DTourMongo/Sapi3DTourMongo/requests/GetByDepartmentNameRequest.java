@@ -3,7 +3,7 @@ package com.Sapi3DTourMongo.Sapi3DTourMongo.requests;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-public class BranchGetByDepartmentRequest {
+public class GetByDepartmentNameRequest {
 	
 	@NotNull
     @NotEmpty

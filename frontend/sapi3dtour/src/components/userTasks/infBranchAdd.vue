@@ -35,8 +35,8 @@
                     <v-list-item-title class="red--text" >{{ branchAddMsg }}</v-list-item-title>
                 </v-list-item-content>
             </v-list-item>
-            </transition>
-            <transition >
+        </transition>
+        <transition >
                 <v-list-item v-if="loadingButtonTick" >
                 <v-list-item-icon>
                     <v-icon color="green" >{{ icon }}</v-icon>

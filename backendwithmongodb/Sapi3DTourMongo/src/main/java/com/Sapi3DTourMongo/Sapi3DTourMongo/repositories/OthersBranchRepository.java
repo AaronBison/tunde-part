@@ -9,7 +9,5 @@ import com.Sapi3DTourMongo.Sapi3DTourMongo.models.Department;
 import com.Sapi3DTourMongo.Sapi3DTourMongo.models.OthersBranch;
 
 public interface OthersBranchRepository extends MongoRepository<OthersBranch, ObjectId> {
-	
-	List<OthersBranch> findByDepartment(Department department);
 
 }
