@@ -3,8 +3,6 @@ package com.Sapi3DTourMongo.Sapi3DTourMongo.requests;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-import org.bson.types.ObjectId;
-
 public class DepartmentUpdateRequest {
 	
 	@NotNull

@@ -8,7 +8,7 @@
         <BranchList v-for="branch in branches" :key="branch.branchName" :branch="branch"/>
         <v-divider v-if="branches != null" class="mx-12"></v-divider>
         <v-card-subtitle v-if="branches != null" > Egyebek </v-card-subtitle>
-        <OtherBranchList v-for="otherBranch in othersBranch" :key="otherBranch.value1" :otherBranch="otherBranch"/>
+        <OtherBranchList v-for="otherBranch in othersBranch" :key="otherBranch.departmentName" :otherBranch="otherBranch"/>
     </v-card>
 </template>
 
@@ -59,7 +59,7 @@ export default {
                     this.othersBranch = res.data;
                 }
                 else{
-                    this.othersBranch = [];
+                    this.othersBranch = null;
                 }
             }).catch((err)=>{
                 this.othersBranch = null;

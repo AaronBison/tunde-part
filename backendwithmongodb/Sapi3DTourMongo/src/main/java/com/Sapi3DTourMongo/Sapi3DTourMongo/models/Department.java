@@ -15,9 +15,9 @@ public class Department {
 
 	private String link;
 	
-	private Set<Branch> branches = new HashSet<>();
+	private Set<String> branchesId = new HashSet<>();
 	
-	private Set<OthersBranch> otherBranches = new HashSet<>();
+	private Set<String> otherBranchesId = new HashSet<>();
 	
 	public Department(String departmentName, String link)
 	{
@@ -49,20 +49,20 @@ public class Department {
 		this.link = link;
 	}
 
-	public Set<Branch> getBranches() {
-		return branches;
+	public Set<String> getBranchesId() {
+		return branchesId;
 	}
 
-	public void setBranches(Branch branch) {
-		this.branches.add(branch);
+	public void setBranchesId(String branchId) {
+		this.branchesId.add(branchId);
 	}
 
-	public Set<OthersBranch> getOtherBranches() {
-		return otherBranches;
+	public Set<String> getOtherBranchesId() {
+		return otherBranchesId;
 	}
 
-	public void setOtherBranches(OthersBranch otherBranch) {
-		this.otherBranches.add(otherBranch);
+	public void setOtherBranchesId(String otherBranchId) {
+		this.otherBranchesId.add(otherBranchId);
 	}
 	
 }

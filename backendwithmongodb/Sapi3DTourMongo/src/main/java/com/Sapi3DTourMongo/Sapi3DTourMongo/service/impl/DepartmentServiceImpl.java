@@ -1,6 +1,7 @@
 package com.Sapi3DTourMongo.Sapi3DTourMongo.service.impl;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -10,7 +11,9 @@ import org.springframework.stereotype.Service;
 import com.Sapi3DTourMongo.Sapi3DTourMongo.models.Branch;
 import com.Sapi3DTourMongo.Sapi3DTourMongo.models.Department;
 import com.Sapi3DTourMongo.Sapi3DTourMongo.models.OthersBranch;
+import com.Sapi3DTourMongo.Sapi3DTourMongo.repositories.BranchRepository;
 import com.Sapi3DTourMongo.Sapi3DTourMongo.repositories.DepartmentRepository;
+import com.Sapi3DTourMongo.Sapi3DTourMongo.repositories.OthersBranchRepository;
 import com.Sapi3DTourMongo.Sapi3DTourMongo.requests.DepartmentAddRequest;
 import com.Sapi3DTourMongo.Sapi3DTourMongo.requests.DepartmentUpdateRequest;
 import com.Sapi3DTourMongo.Sapi3DTourMongo.respons.GetDepartmentResponse;
@@ -21,7 +24,13 @@ public class DepartmentServiceImpl implements DepartmentService {
 	
 	@Autowired
 	DepartmentRepository departmentRepository;
+	
+	@Autowired
+	BranchRepository branchRepository;
 
+	@Autowired
+	OthersBranchRepository othersBranchRepository;
+	
 	@Override
 	public void addDepartment(DepartmentAddRequest depReq) throws Exception {
 		if(departmentRepository.existsByDepartmentName(depReq.getDepartmentName()))
@@ -85,7 +94,11 @@ public class DepartmentServiceImpl implements DepartmentService {
 			throw new Exception("Department not exist!");
 		}
 		try {
-			Set<Branch> resp = departmentRepository.findByDepartmentName(departmentName).getBranches();
+			Set<String> branchesID = departmentRepository.findByDepartmentName(departmentName).getBranchesId();
+			Set<Branch> resp = new HashSet<>();
+			for (String branchId : branchesID) {
+				resp.add(branchRepository.findBy_id(branchId));
+			}
 			return resp;
 		} catch (Exception e) {
 			System.out.println(e);
@@ -100,7 +113,11 @@ public class DepartmentServiceImpl implements DepartmentService {
 			throw new Exception("Department not exist!");
 		}
 		try {
-			Set<OthersBranch> resp = departmentRepository.findByDepartmentName(departmentName).getOtherBranches();
+			Set<String> OthersBranchesID = departmentRepository.findByDepartmentName(departmentName).getOtherBranchesId();
+			Set<OthersBranch> resp = new HashSet<>();
+			for (String othersBranchId : OthersBranchesID) {
+				resp.add(othersBranchRepository.findBy_id(othersBranchId));
+			}
 			return resp;
 		} catch (Exception e) {
 			System.out.println(e);

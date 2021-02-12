@@ -35,11 +35,23 @@ export default{
         return Api().post(page, department , { headers: authHeader() });
     },
     addBranch: async(branch) => {
-        let page = '/api/branch/addBranch';
+        let page = 'api/branch/addBranch';
+        return Api().post(page, branch , { headers: authHeader() });
+    },
+    getBranchesName:async() => {
+        let page = 'api/branch/getBranchesName';
+        return Api().get(page,{headers: authHeader()});
+    },
+    getBranchByName:async(branchName) => {
+        let page = 'api/branch/getBaranchByName';
+        return Api().post(page, branchName , { headers: authHeader() });
+    },
+    updateBranch:async(branch) => {
+        let page = 'api/branch/updateBranch';
         return Api().post(page, branch , { headers: authHeader() });
     },
     addOtherBranch: async(otherBranch) => {
-        let page = '/api/othersBranch/addOthersBranch';
+        let page = 'api/othersBranch/addOthersBranch';
         return Api().post(page, otherBranch , { headers: authHeader() });
     }
 }

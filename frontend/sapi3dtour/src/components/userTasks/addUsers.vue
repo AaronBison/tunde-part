@@ -50,7 +50,6 @@
 
 <script>
 import AuthRequest from "@/services/AuthService";
-import axios from "axios";
 import DeleteUsers from "./deleteUser.vue"
 
 export default {

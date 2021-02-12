@@ -1,8 +1,5 @@
 package com.Sapi3DTourMongo.Sapi3DTourMongo.models;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 

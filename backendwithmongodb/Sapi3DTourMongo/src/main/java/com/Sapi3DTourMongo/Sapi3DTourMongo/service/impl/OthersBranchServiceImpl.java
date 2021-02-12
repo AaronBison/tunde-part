@@ -22,11 +22,15 @@ public class OthersBranchServiceImpl implements OthersBranchService {
 	@Override
 	public void addOthersBranch(OthersBranchAddRequest othBranreq) throws Exception {
 		try {
-			OthersBranch othBranch = new OthersBranch(othBranreq.getValue1(),othBranreq.getValue2(), othBranreq.getValue3(), othBranreq.getValue4(), othBranreq.getValue5(),othBranreq.getDepartmentName());
-			Department dep = departmentRepository.findByDepartmentName(othBranreq.getDepartmentName());
-			dep.setOtherBranches(othBranch);
-			departmentRepository.save(dep);
+			OthersBranch othBranch = new OthersBranch(othBranreq.getValue1(),othBranreq.getValue2(), othBranreq.getValue3(), 
+													othBranreq.getValue4(), othBranreq.getValue5(),othBranreq.getDepartmentName());
 			othersBranchRepository.save(othBranch);
+			othBranch = othersBranchRepository.findByValue1AndValue2AndValue3AndValue4AndValue5(othBranreq.getValue1(),
+																								othBranreq.getValue2(), othBranreq.getValue3(), 
+					othBranreq.getValue4(), othBranreq.getValue5());
+			Department dep = departmentRepository.findByDepartmentName(othBranreq.getDepartmentName());
+			dep.setOtherBranchesId(othBranch.get_id().toString());
+			departmentRepository.save(dep);
 		} catch (Exception e) {
 			System.out.println(e);
 			throw new Exception("Wrong add others branch!");
