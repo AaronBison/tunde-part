@@ -2,7 +2,16 @@
     <v-card id="card" width="1000" class="mx-3 my-3" elevation="10" >
         <v-card-title class="justify-center">
             <a v-bind:href="card.link" target="_blank">{{ card.departmentName }}</a>
-         </v-card-title>
+            &nbsp;&nbsp;&nbsp;
+            <v-tooltip bottom>
+                <template v-slot:activator="{ on, attrs }">
+                    <v-btn v-bind="attrs" v-on="on" icon @click="takeToThere">
+                        <v-icon>fas fa-map-marked-alt</v-icon>
+                    </v-btn>     
+                </template>
+                <span>Vigyél el!</span>
+            </v-tooltip>
+        </v-card-title>
         <v-divider class="mx-12"></v-divider>
         <v-card-subtitle v-if="branches != null"> Alrészlegek </v-card-subtitle>
         <BranchList v-for="branch in branches" :key="branch.branchName" :branch="branch"/>
@@ -64,6 +73,19 @@ export default {
             }).catch((err)=>{
                 this.othersBranch = null;
             });
+        },
+        takeToThere()
+        {
+            switch (this.card.departmentName){
+				case "Matematika-Informatika Tanszék":
+                    this.$router.push({ path: '/model3d', query: { road: 'mt' } })
+                    break;
+                case "Dékáni hivatal":
+                    this.$router.push({ path: '/model3d', query: { road: 'dh' } })
+                    break;
+                default:
+					break;
+            }
         }
     },
     mounted()

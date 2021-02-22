@@ -90,6 +90,7 @@ import { ModelGltf } from "vue-3d-model";
 
 export default {
 	name: "Model3D",
+	props: ["roadParam"],
 	components: {
 		// ModelObj,
 		// ModelCollada,
@@ -357,5 +358,14 @@ export default {
 			console.log(cord.point)
 		},
 	},
+	mounted()
+    {
+		var tmp = this.$route.query.road;
+		if(tmp != undefined)
+		{
+			this.selectElement = tmp;
+			this.walkingSetUp();
+		}
+    }
 };
 </script>
