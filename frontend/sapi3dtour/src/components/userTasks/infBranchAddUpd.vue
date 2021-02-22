@@ -6,19 +6,19 @@
             <v-radio label="Hozzáadás" value="add"></v-radio>
             <v-radio label="Szerkesztés" value="update"></v-radio>
         </v-radio-group>
-        <InfBarnchAdd v-if="this.selectResult == 'add' "/>
-        <!-- <InfDepUpd v-if="this.selectResult == 'update' "/> -->
+        <InfBranchAdd v-if="this.selectResult == 'add' "/>
+        <InfBranchUpd v-if="this.selectResult == 'update' "/>
     </v-card>
 </template>
 
 <script>
 
-import InfBarnchAdd from "./infBranchAdd.vue";
-// import InfDepUpd from "./InfDepUpd.vue";
+import InfBranchAdd from "./infBranchAdd.vue";
+import InfBranchUpd from "./infBranchUpd.vue";
 
 export default {
     name: 'InformationBranchAddUpdate',
-    components:{InfBarnchAdd},
+    components:{InfBranchAdd, InfBranchUpd},
     data () {
         return {
             selectResult: "add",

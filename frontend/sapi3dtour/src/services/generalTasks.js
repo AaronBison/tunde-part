@@ -1,5 +1,4 @@
 import Api from './Api'
-import authHeader from './AuthHeader';
 
 export default{
     getDepartments: async() => {
@@ -7,11 +6,11 @@ export default{
         return Api().get(page);
     },
     getBranches: async(department) => {
-        let page = '/api/branch/getBranchByDepartment';
+        let page = '/api/department/getDepartmentBranchesByDepartmentName';
         return Api().post(page, department);
     },
     getOtherBranches: async(department) => {
-        let page = '/api/othersBranch/getOthersBranchByDepartment';
+        let page = '/api/department/getDepartmentOtherBranchesByDepartmentName';
         return Api().post(page, department);
     }
 } 

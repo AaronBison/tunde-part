@@ -1,6 +1,7 @@
 package com.Sapi3DTourMongo.Sapi3DTourMongo.controllers;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.validation.Valid;
 
@@ -11,8 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.Sapi3DTourMongo.Sapi3DTourMongo.models.Branch;
 import com.Sapi3DTourMongo.Sapi3DTourMongo.models.Department;
+import com.Sapi3DTourMongo.Sapi3DTourMongo.models.OthersBranch;
 import com.Sapi3DTourMongo.Sapi3DTourMongo.requests.DepartmentAddRequest;
+import com.Sapi3DTourMongo.Sapi3DTourMongo.requests.DepartmentUpdateRequest;
+import com.Sapi3DTourMongo.Sapi3DTourMongo.requests.GetByDepartmentNameRequest;
+import com.Sapi3DTourMongo.Sapi3DTourMongo.respons.GetDepartmentResponse;
 import com.Sapi3DTourMongo.Sapi3DTourMongo.service.DepartmentService;
 
 @RestController
@@ -39,10 +45,38 @@ public class DepartmentController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, path = "/getDepartmentsByDepartmentName")
-	public ResponseEntity<?> getDepartmentsByEmailAddress() throws Exception
+	public ResponseEntity<?> getDepartmentsByDepartmentName() throws Exception
 	{
 		List<String> listDepName = departmentService.getDepartmentsByDepartmentName();
 		return ResponseEntity.ok(listDepName);
 	}
+	
+	@RequestMapping(method = RequestMethod.POST, path = "/getDepartment") 
+	public ResponseEntity<?> getDepartment(@Valid @RequestBody GetByDepartmentNameRequest depReq) throws Exception
+	{
+		GetDepartmentResponse dep = departmentService.getDepartment(depReq.getDepartmentName());
+		return ResponseEntity.ok(dep);
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, path = "/getDepartmentBranchesByDepartmentName") 
+	public ResponseEntity<?> getDepartmentBranchesByDepartmentName(@Valid @RequestBody GetByDepartmentNameRequest depReq) throws Exception
+	{
+		Set<Branch> dep = departmentService.getDepartmentBranchesByDepartmentName(depReq.getDepartmentName());
+		return ResponseEntity.ok(dep);
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, path = "/getDepartmentOtherBranchesByDepartmentName") 
+	public ResponseEntity<?> getDepartmentOtherBranchesByDepartmentName(@Valid @RequestBody GetByDepartmentNameRequest depReq) throws Exception
+	{
+		Set<OthersBranch> dep = departmentService.getDepartmentOtherBranchesByDepartmentName(depReq.getDepartmentName());
+		return ResponseEntity.ok(dep);
+	}
 
+	@RequestMapping(method = RequestMethod.POST, path = "/updateDepartment") 
+	public ResponseEntity<?> updateDepartment(@Valid @RequestBody DepartmentUpdateRequest depReq) throws Exception
+	{
+		departmentService.updateDepartment(depReq);
+		return ResponseEntity.ok("Department update is succesfully!");
+	}
+	
 }

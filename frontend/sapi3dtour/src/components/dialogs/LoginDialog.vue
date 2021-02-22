@@ -82,7 +82,7 @@
           () => ((this.loadingCard = false), this.$router.push({ path: "/user/admin" })),
           1000
         );
-    },
+      },
       validateUser() {
         if (this.$refs.form.validate()) {
           this.loginUser();

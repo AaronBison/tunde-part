@@ -1,5 +1,8 @@
 package com.Sapi3DTourMongo.Sapi3DTourMongo.models;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
@@ -11,6 +14,10 @@ public class Department {
 	private String departmentName;
 
 	private String link;
+	
+	private Set<String> branchesId = new HashSet<>();
+	
+	private Set<String> otherBranchesId = new HashSet<>();
 	
 	public Department(String departmentName, String link)
 	{
@@ -40,6 +47,22 @@ public class Department {
 
 	public void setLink(String link) {
 		this.link = link;
+	}
+
+	public Set<String> getBranchesId() {
+		return branchesId;
+	}
+
+	public void setBranchesId(String branchId) {
+		this.branchesId.add(branchId);
+	}
+
+	public Set<String> getOtherBranchesId() {
+		return otherBranchesId;
+	}
+
+	public void setOtherBranchesId(String otherBranchId) {
+		this.otherBranchesId.add(otherBranchId);
 	}
 	
 }

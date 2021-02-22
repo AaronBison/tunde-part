@@ -366,5 +366,14 @@ export default {
       console.log(cord.point);
     },
   },
+  mounted()
+    {
+		var tmp = this.$route.query.road;
+		if(tmp != undefined)
+		{
+			this.selectElement = tmp;
+			this.walkingSetUp();
+		}
+    }
 };
 </script>

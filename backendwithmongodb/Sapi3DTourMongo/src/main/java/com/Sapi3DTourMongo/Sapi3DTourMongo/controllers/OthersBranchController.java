@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.Sapi3DTourMongo.Sapi3DTourMongo.requests.BranchGetByDepartmentRequest;
 import com.Sapi3DTourMongo.Sapi3DTourMongo.requests.OthersBranchAddRequest;
 import com.Sapi3DTourMongo.Sapi3DTourMongo.service.OthersBranchService;
 
@@ -26,10 +25,5 @@ public class OthersBranchController {
 		otherBranchservice.addOthersBranch(othBranreq);
 		return ResponseEntity.ok("Others branch add successfully");
 	}
-	
-	@RequestMapping(method = RequestMethod.POST, path = "/getOthersBranchByDepartment")
-	public ResponseEntity<?> getOtherBranchByDepartment(@Valid @RequestBody BranchGetByDepartmentRequest branReq) throws Exception
-	{
-		return ResponseEntity.ok(otherBranchservice.getOthersBranchByDepartment(branReq.getDepartmentName()));
-	}
+
 }

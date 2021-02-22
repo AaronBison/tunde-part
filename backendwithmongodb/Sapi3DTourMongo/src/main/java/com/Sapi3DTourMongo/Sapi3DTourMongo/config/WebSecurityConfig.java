@@ -73,8 +73,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/api/auth/password" ).permitAll()
 			.antMatchers("/api/auth/signin").permitAll()
 			.antMatchers("/api/department/getDepartments").permitAll()
-			.antMatchers("/api/branch/getBranchByDepartment").permitAll()
-			.antMatchers("/api/othersBranch/getOthersBranchByDepartment").permitAll()
+			.antMatchers("/api/department/getDepartmentOtherBranchesByDepartmentName").permitAll()
+			.antMatchers("/api/department/getDepartmentBranchesByDepartmentName").permitAll()
 			.anyRequest()
 			.authenticated();
 

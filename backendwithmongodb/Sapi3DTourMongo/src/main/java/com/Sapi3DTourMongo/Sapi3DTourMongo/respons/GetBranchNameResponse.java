@@ -1,12 +1,8 @@
-package com.Sapi3DTourMongo.Sapi3DTourMongo.models;
+package com.Sapi3DTourMongo.Sapi3DTourMongo.respons;
 
-import org.bson.types.ObjectId;
-import org.springframework.data.annotation.Id;
-
-public class Branch {
-
-	@Id
-	private ObjectId _id;
+public class GetBranchNameResponse {
+	
+	private String id;
 	
 	private String branchName;
 	
@@ -18,24 +14,22 @@ public class Branch {
 	
 	private String link;
 	
-	private String departmentName;
-	
-	public Branch (String branchName, String coordinatorName, String coordinatorEmail, String roomNumber, String link, String departmentName)
+	public GetBranchNameResponse (String id, String branchName, String coordinatorName, String coordinatorEmail, String roomNumber, String link)
 	{
+		this.id = id;
 		this.branchName = branchName;
 		this.coordinatorEmail = coordinatorEmail;
 		this.coordinatorName = coordinatorName;
-		this.roomNumber= roomNumber;
+		this.roomNumber = roomNumber;
 		this.link = link;
-		this.departmentName = departmentName;
 	}
 
-	public ObjectId get_id() {
-		return _id;
+	public String getId() {
+		return id;
 	}
 
-	public void set_id(ObjectId _id) {
-		this._id = _id;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getBranchName() {
@@ -69,7 +63,7 @@ public class Branch {
 	public void setRoomNumber(String roomNumber) {
 		this.roomNumber = roomNumber;
 	}
-	
+
 	public String getLink() {
 		return link;
 	}
@@ -78,12 +72,4 @@ public class Branch {
 		this.link = link;
 	}
 
-	public String getDepartmentName() {
-		return departmentName;
-	}
-
-	public void setDepartmentName(String departmentName) {
-		this.departmentName = departmentName;
-	}
-	
 }
