@@ -53,6 +53,8 @@
     ></v-select>
 
     <model-gltf
+      height=600
+      width=1138
       :lights="vilagitas"
       @on-click="examp"
       :backgroundColor="backgroundcolor"
