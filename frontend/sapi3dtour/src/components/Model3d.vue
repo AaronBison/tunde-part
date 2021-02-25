@@ -53,6 +53,8 @@
     ></v-select>
 
     <model-gltf
+      height=600
+      width=1138
       :lights="vilagitas"
       @on-click="examp"
       :backgroundColor="backgroundcolor"
@@ -207,7 +209,7 @@ export default {
         },
         {
           name: "mattan",
-          coordinates: { x: 7, y: 7.3, z: 19 },
+          coordinates: { x: 7, y: 7.5, z: 19 },
         },
       ],
       aula: [{ el: "startDoor" }, { el: "aula" }],
