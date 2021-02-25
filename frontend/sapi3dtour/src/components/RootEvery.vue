@@ -1,31 +1,21 @@
 <template>
     <div id="app">
-      <v-app-bar prominent src="https://cloudflare1.360gigapixels.com/pano/alienrc/00550669_vegsopano.jpg/equirect_crop_3_1/6.jpg"/>
-      <v-app id="inspire" style="background-color: #F7F7F7">
-        <v-layout>
-          <v-navigation-drawer style="background-color: #F7F7F7" :temporary="!mini" :mini-variant.sync="mini" app permanent>
-            <v-list>
-              <v-btn @click.stop="mini = !mini" icon>
-                <v-icon>mdi-chevron-left</v-icon>
-              </v-btn>
-            </v-list>
-            <v-divider/>
-            <v-list dense>
-              <LoginDialog />
-              <v-list-item v-for="item in tabs" :key="item.title" router :to="item.route" link>
-                <v-list-item-icon>
-                  <v-icon>{{ item.icon }}</v-icon>
-                </v-list-item-icon>
-                <v-list-item-content>
-                  <v-list-item-title>{{ item.title }}</v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-            </v-list>
-          </v-navigation-drawer>
-          <v-container class="justify-center">
-            <router-view  />
-          </v-container>
-        </v-layout>
+      <v-app id="inspire">
+      <v-app-bar color="#2B405D" dark prominent class="justify-center">
+        <v-app-bar-title>3D virtuális túra a Sapientia Erdélyi Magyar Tudományegyetem Marosvásárhely-i karán</v-app-bar-title>
+        <v-spacer></v-spacer>
+        <LoginDialog />
+        <template v-slot:extension>
+          <v-tabs align-with-title dark >
+            <v-tab v-for="item in tabs" :key="item.title" router :to="item.route" link>{{ item.title }}</v-tab>
+          </v-tabs>
+        </template>
+      </v-app-bar>
+      <v-sheet id="scrolling-techniques-3" class="overflow-y-auto">
+        <v-container>
+          <router-view/>
+        </v-container>
+      </v-sheet>
       </v-app>
     </div>
 </template>
@@ -39,7 +29,6 @@ export default {
   components: {LoginDialog},
   data () {
     return {
-      mini: true,
       tabs: [
         {title: 'Model3D', route: '/model3d', icon:"fas fa-university"},
         {title: 'Fontos egyetemi helyek', route: '/department', icon:"fas fa-book-reader"},

@@ -1,42 +1,22 @@
 <template>
     <div id="app">
-      <v-app-bar prominent src="https://cloudflare1.360gigapixels.com/pano/alienrc/00550669_vegsopano.jpg/equirect_crop_3_1/6.jpg"/>
-      <v-app id="inspire" style="background-color: #F7F7F7">
-        <v-layout>
-          <v-navigation-drawer style="background-color: #F7F7F7" :temporary="!mini" :mini-variant.sync="mini" app permanent>
-            <v-list-item>
-              <v-list-item-icon >
-                <v-icon> {{ this.user_icon }} </v-icon>
-              </v-list-item-icon>
-              <v-layout column align-center>
-                <v-list-item-title  class="subtitle-1 mt-5">{{ this.full_name }}</v-list-item-title>
-                <v-list-item-subtitle class="mt-5">{{ this.status }}</v-list-item-subtitle>
-                <v-list-item-subtitle>{{ this.email }}</v-list-item-subtitle>
-                <v-list-item-subtitle>{{ this.phone_number }}</v-list-item-subtitle>
-                <ChangeUserDataDialog />
-              </v-layout>
-              <v-btn @click.stop="mini = !mini" icon>
-                <v-icon>mdi-chevron-left</v-icon>
-              </v-btn>
-            </v-list-item>
-            <v-divider class="mt-5"/>
-            <v-list dense>
-              <v-list-item v-for="item in tabs" :key="item.title" router :to="item.route" link>
-                <v-list-item-icon>
-                  <v-icon>{{ item.icon }}</v-icon>
-                </v-list-item-icon>
-                <v-list-item-content>
-                  <v-list-item-title>{{ item.title }}</v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-            </v-list>
-            <v-divider/>
-            <LogOut/>
-          </v-navigation-drawer>
-          <v-container class="justify-center">
-            <router-view  />
-          </v-container>
-        </v-layout>
+      <v-app id="inspire">
+      <v-app-bar color="#2B405D" dark prominent class="justify-center">
+        <v-app-bar-title>3D virtuális túra a Sapientia Erdélyi Magyar Tudományegyetem Marosvásárhely-i karán</v-app-bar-title>
+        <v-spacer></v-spacer>
+        <UserDataDialog/>
+        <LogOut/>
+        <template v-slot:extension>
+          <v-tabs align-with-title dark >
+            <v-tab v-for="item in tabs" :key="item.title" router :to="item.route" link>{{ item.title }}</v-tab>
+          </v-tabs>
+        </template>
+      </v-app-bar>
+      <v-sheet id="scrolling-techniques-3" class="overflow-y-auto">
+        <v-container>
+          <router-view/>
+        </v-container>
+      </v-sheet>
       </v-app>
     </div>
 </template>
@@ -44,17 +24,16 @@
 <script>
 
 import AuthRequest from "@/services/AuthService";
-import axios from "axios";
 
 import ChangeUserDataDialog from "./dialogs/ChangeUserDataDialog"
+import UserDataDialog from "./dialogs/UserDataDialog"
 import LogOut from "./LogOut"
 
 export default {
   name: 'RootAdmin',
-  components:{ ChangeUserDataDialog, LogOut},
+  components:{ ChangeUserDataDialog, UserDataDialog,LogOut},
   data () {
     return {
-      mini: true,
       created_at: "",
       email: "",
       full_name: "",

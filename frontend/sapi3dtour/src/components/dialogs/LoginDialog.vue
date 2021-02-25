@@ -1,14 +1,9 @@
 <template>
   <v-dialog v-model="dialog" width="700">
     <template v-slot:activator="{ on }">
-      <v-list-item v-on="on" v-for="item in tabs" :key="item.title" router :to="item.route" link>
-        <v-list-item-icon>
-          <v-icon>{{ item.icon }}</v-icon>
-        </v-list-item-icon>
-        <v-list-item-content>
-          <v-list-item-title>{{ item.title }}</v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
+      <v-btn icon v-on="on">
+        <v-icon>fas fa-sign-in-alt</v-icon>
+      </v-btn>
     </template>
     <v-card id="card" :loading="loadingCard">
       <v-card-title>Bejelentkezés</v-card-title>
@@ -55,7 +50,7 @@
 
 <script>
   import AuthRequest from "@/services/AuthService";
-  import axios from "axios";
+  
   export default {
     name: 'LoginDialog',
     data() {
@@ -69,10 +64,7 @@
         loginFailedMsg: "",
         loginSuccesMsg: "",
         loginFailedSnackbar: false,
-        loginSuccesSnackbar: false,
-        tabs: [
-          {title: 'Bejelentkezés', icon:"fas fa-sign-in-alt"},
-        ]
+        loginSuccesSnackbar: false
       };
     },
     methods: {

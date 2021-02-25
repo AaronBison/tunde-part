@@ -1,5 +1,5 @@
 <template>
-  <v-container class="justify-center">
+  <v-layout wrap class="justify-center" >
     <!-- OBJ -->
     <!-- <model-obj
         :rotation="rotation"
@@ -41,6 +41,7 @@
         mtl="static/models/lowpoly_well.mtl"
       ></model-ply>-->
     <v-select
+      class="my-2"
       v-model="selectElement"
       :items="items"
       backgroundColor="#E1E1DE"
@@ -51,18 +52,20 @@
       dense
       solo
     ></v-select>
-
-    <model-gltf
-      height=600
-      width=1138
-      :lights="vilagitas"
-      @on-click="examp"
-      :backgroundColor="backgroundcolor"
-      :position="cameraPosition"
-      :cameraPosition="angle"
-      src="static/models/sapi3D.gltf?"
-    >
-    </model-gltf>
+    <v-card id="card" >
+      <model-gltf
+        :height="600"
+        :width="1138"
+        :lights="vilagitas"
+        @on-click="examp"
+        :backgroundColor="backgroundcolor"
+        :position="cameraPosition"
+        :cameraPosition="angle"
+        src="static/models/sapi3D.gltf?"
+      >
+      </model-gltf>
+    </v-card>
+    <div class="my-2">
     <v-btn class="mx-2" fab dark small color="grey" @click="stepedLeft">
       <v-icon dark> far fa-arrow-alt-circle-left </v-icon>
     </v-btn>
@@ -97,7 +100,8 @@
     >
       <v-icon dark> fas fa-walking </v-icon>
     </v-btn>
-  </v-container>
+    </div>
+  </v-layout>
 </template>
 
 <script>
@@ -370,12 +374,12 @@ export default {
   },
   mounted()
     {
-		var tmp = this.$route.query.road;
-		if(tmp != undefined)
-		{
-			this.selectElement = tmp;
-			this.walkingSetUp();
-		}
+      var tmp = this.$route.query.road;
+      if(tmp != undefined)
+      {
+        this.selectElement = tmp;
+        this.walkingSetUp();
+      }
     }
 };
 </script>

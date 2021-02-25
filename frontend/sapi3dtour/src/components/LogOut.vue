@@ -1,12 +1,7 @@
 <template>
-    <v-list-item dense router link>
-        <v-list-item-icon>
-            <v-icon @click="logOut">{{ logout.icon }}</v-icon>
-        </v-list-item-icon>
-        <v-list-item-content>
-            <v-list-item-title @click="logOut" >{{ logout.title }}</v-list-item-title>
-        </v-list-item-content>
-    </v-list-item> 
+    <v-btn icon v-on="on" @click="logOut">
+      <v-icon>fas fa-power-off</v-icon>
+    </v-btn>
 </template>
 
 <script>
