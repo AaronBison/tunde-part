@@ -1,11 +1,11 @@
 \section{Adatbázisok}
 \paragraph{}
-Adatbázisnak nevezzük azokat a nagy mennyiségű adatokat amelyek közös jellemzőkkel és struktúrákkal rendelkeznek. Az adatbázisokon belül több fajta műveletet tudunk elvégezni: karbantartás, tárolás, lekérdezés, szerkesztés, módosítás és nem utolsó sorban az adatok törlése is egy lehetőség. Ezen funkciókat egy adatbázis kezelő rendszer segítségével tudjuk elvégezni.\cite{dbms} Azonban különbséget kell tennünk az SQL (Structured Query Language) és a NoSQL(Not only Structured Query Language) között.
-\subsection{SQL(Structured Query Language)}
+Adatbázisnak nevezzük azokat a nagy mennyiségű adatokat amelyek közös jellemzőkkel és struktúrákkal rendelkeznek. Az adatbázisokon belül több fajta műveletet tudunk elvégezni: karbantartás, tárolás, lekérdezés, szerkesztés, módosítás és nem utolsó sorban az adatok törlése is egy lehetőség. Ezen funkciókat egy adatbázis kezelő rendszer segítségével tudjuk elvégezni.\cite{dbms} Azonban különbséget kell tennünk az SQL (Structured Query Language) és a NoSQL (Not only Structured Query Language) között.
+\subsection{SQL}
 \paragraph{}
 Az elmúlt harminc évben a relációs adatbázis volt az alapértelmezett strukturált adatlekérdezési nyelv. Világunk fejlődése miatt egyre több és nagyobb információ adatok robbantak ki így az SQL alapú adatlekérdezés elveszítette hatékonyságát ezzel maga elé állítva azt a kihívást, hogy a nagyobb adatbázisok kezelése jóval megnehezedett. Ebből kifolyólag lehet arra következtetni hogy az SQL alapú szerverek hajlamosak nagy mennyiségű memóriát foglalni, biztonsági kockázatokat és teljesítményproblémákat elkövetni.\cite{venkatraman2016sql} 
 	
-\subsection{NoSQL(Not only Structured Query Language)}
+\subsection{NoSQL}
 \paragraph{}
 A NoSQL adatbázisokat azért alkották meg, hogy az SQL adatbázisok által felfedezett hibákat orvosolják. Ezek az adatbázisok sokkal rugalmasabbak lettek, fő céljuk az adatok könnyű tárolása és visszakeresése függetlenül a szerkezetektől és tartalomtól. Automatikusan kezelik az adatkezelést, hibajavítást amelyek költségmegtakarítás szempontjából is fontosak.\cite{venkatraman2016sql} 
 	
@@ -17,8 +17,8 @@ Több tanulmány is szól az adatbázisok teljesítményéről. A következőkbe
 	
 \begin{figure}
 	\centering
-	\includegraphics[scale=0.6]{figures/images/performance_a.png}
-	\caption{Az adatbázis teljesítmény kísérlet első eredménye \cite{martins2019study}}
+	\includegraphics[scale=0.9]{figures/images/performance_a.png}
+	\caption{Az adatbázisok teljesítménye 6.000.000 rekord, 50\% olvasás, 50\% írás esetén \cite{martins2019study}}
 	\label{fig:performance_a}
 \end{figure}
 
@@ -26,8 +26,8 @@ A második teszt szintén 6.000.000 rekordot tartalmazott. A munkaterhelés 5.00
 	
 	\begin{figure}
 		\centering
-		\includegraphics[scale=0.6]{figures/images/performance_b.png}
-		\caption{Az adatbázis teljesítmény kísérlet második eredménye \cite{martins2019study}}
+		\includegraphics[scale=0.9]{figures/images/performance_b.png}
+		\caption{Az adatbázisok teljesítménye 6.000.000 rekord és 5.000 véletlenszerű olvasás esetén \cite{martins2019study}}
 		\label{fig:performance_b}
 	\end{figure}
 	
@@ -35,7 +35,7 @@ A harmadik teszt szintén 6.000.000 rekordot tartalmazott. A munkaterhelés 5.00
 	
 	\begin{figure}
 		\centering
-		\includegraphics[scale=0.6]{figures/images/performance_c.png}
-		\caption{Az adatbázis teljesítmény kísérlet harmadik eredménye \cite{martins2019study}}
+		\includegraphics[scale=0.9]{figures/images/performance_c.png}
+		\caption{Az adatbázisok teljesítménye 6.000.000 rekord 5.000 véletlenszerű frissítés esetén \cite{martins2019study}}
 		\label{fig:performance_c}
 	\end{figure}
