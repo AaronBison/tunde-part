@@ -1,5 +1,5 @@
 <template>
-  <v-layout wrap class="justify-center" >
+  <v-layout wrap class="justify-center">
     <!-- OBJ -->
     <!-- <model-obj
         :rotation="rotation"
@@ -52,7 +52,7 @@
       dense
       solo
     ></v-select>
-    <v-card id="card" >
+    <v-card id="card">
       <model-gltf
         :height="600"
         :width="1138"
@@ -66,40 +66,40 @@
       </model-gltf>
     </v-card>
     <div class="my-2">
-    <v-btn class="mx-2" fab dark small color="grey" @click="stepedLeft">
-      <v-icon dark> far fa-arrow-alt-circle-left </v-icon>
-    </v-btn>
-    <v-btn class="mx-2" fab dark small color="grey" @click="stepedUp">
-      <v-icon dark> far fa-arrow-alt-circle-up </v-icon>
-    </v-btn>
-    <v-btn class="mx-2" fab dark small color="grey" @click="stepedRight">
-      <v-icon dark> far fa-arrow-alt-circle-right </v-icon>
-    </v-btn>
-    <v-btn class="mx-2" fab dark small color="grey" @click="stepedDown">
-      <v-icon dark> far fa-arrow-alt-circle-down </v-icon>
-    </v-btn>
-    <v-btn
-      v-if="walkingBottunDis == false"
-      class="mx-2"
-      fab
-      dark
-      small
-      color="grey"
-      @click="walkingWithAnimation"
-    >
-      <v-icon dark> fas fa-walking </v-icon>
-    </v-btn>
-    <v-btn
-      v-if="walkingBottunDis"
-      class="mx-2"
-      disabled
-      fab
-      dark
-      small
-      color="grey"
-    >
-      <v-icon dark> fas fa-walking </v-icon>
-    </v-btn>
+      <v-btn class="mx-2" fab dark small color="grey" @click="stepedLeft">
+        <v-icon dark> far fa-arrow-alt-circle-left </v-icon>
+      </v-btn>
+      <v-btn class="mx-2" fab dark small color="grey" @click="stepedUp">
+        <v-icon dark> far fa-arrow-alt-circle-up </v-icon>
+      </v-btn>
+      <v-btn class="mx-2" fab dark small color="grey" @click="stepedRight">
+        <v-icon dark> far fa-arrow-alt-circle-right </v-icon>
+      </v-btn>
+      <v-btn class="mx-2" fab dark small color="grey" @click="stepedDown">
+        <v-icon dark> far fa-arrow-alt-circle-down </v-icon>
+      </v-btn>
+      <v-btn
+        v-if="walkingBottunDis == false"
+        class="mx-2"
+        fab
+        dark
+        small
+        color="grey"
+        @click="walkingWithAnimation"
+      >
+        <v-icon dark> fas fa-walking </v-icon>
+      </v-btn>
+      <v-btn
+        v-if="walkingBottunDis"
+        class="mx-2"
+        disabled
+        fab
+        dark
+        small
+        color="grey"
+      >
+        <v-icon dark> fas fa-walking </v-icon>
+      </v-btn>
     </div>
   </v-layout>
 </template>
@@ -186,43 +186,72 @@ export default {
       ],
       cameraPosition: { x: 0, y: 0, z: -60 },
       angle: { x: 0, y: 0, z: 0.1 },
-	  speed: 10,
-	  stepScale: 0.5, 
+      speed: 10,
+      stepScale: 0.25,
       road: [],
       roadInd: 0,
       markers: [
         {
           name: "startDoor",
           coordinates: { x: 0, y: 15, z: -15 },
+          isCheckpoint: true,
         },
         {
           name: "aula",
           coordinates: { x: 0, y: 15, z: 8 },
+          isCheckpoint: true,
+        },
+        {
+          name: "aula-geptan-1",
+          coordinates: { x: 0, y: 15, z: 13 },
+          isCheckpoint: false,
         },
         {
           name: "geptan",
           coordinates: { x: 9, y: 15, z: 22 },
+          isCheckpoint: true,
+        },
+        {
+          name: "aula-geplab-1",
+          coordinates: { x: 9, y: 15, z: 4},
+          isCheckpoint: false,
         },
         {
           name: "geplab",
           coordinates: { x: 9, y: 15, z: -26 },
+          isCheckpoint: true,
+        },
+        {
+          name: "geptan-dekhiv-1",
+          coordinates: { x: 6, y: 15, z: 22 },
+          isCheckpoint: false,
+        },
+        {
+          name: "geptan-dekhiv-2",
+          coordinates: { x: 0, y: 13, z: 22 },
+          isCheckpoint: false,
         },
         {
           name: "dekhiv",
           coordinates: { x: -8, y: 11, z: 22 },
+          isCheckpoint: true,
         },
         {
           name: "mattan",
           coordinates: { x: 7, y: 7.5, z: 19 },
+          isCheckpoint: true,
         },
       ],
       aula: [{ el: "startDoor" }, { el: "aula" }],
-      geptan: [{ el: "startDoor" }, { el: "aula" }, { el: "geptan" }],
-      geplab: [{ el: "startDoor" }, { el: "aula" }, { el: "geplab" }],
+      geptan: [{ el: "startDoor" }, { el: "aula" },{ el: "aula-geptan-1" }, { el: "geptan" }],
+      geplab: [{ el: "startDoor" }, { el: "aula" },{ el: "aula-geplab-1" } , { el: "geplab" }],
       dekhiv: [
         { el: "startDoor" },
         { el: "aula" },
+        { el: "aula-geptan-1" },
         { el: "geptan" },
+        { el: "geptan-dekhiv-1" },
+        { el: "geptan-dekhiv-2" },
         { el: "dekhiv" },
       ],
       mattan: [
@@ -255,7 +284,7 @@ export default {
       this.markers.forEach((element) => {
         array.forEach((element1) => {
           if (element.name == element1.el) {
-            this.road.push(element.coordinates);
+            this.road.push(element);
           }
         });
       });
@@ -295,9 +324,9 @@ export default {
           break;
       }
 
-      this.cameraPosition.x = this.road[this.roadInd].x;
-      this.cameraPosition.y = this.road[this.roadInd].y;
-      this.cameraPosition.z = this.road[this.roadInd].z;
+      this.cameraPosition.x = this.road[this.roadInd].coordinates.x;
+      this.cameraPosition.y = this.road[this.roadInd].coordinates.y;
+      this.cameraPosition.z = this.road[this.roadInd].coordinates.z;
     },
 
     sleep(milliseconds) {
@@ -309,62 +338,75 @@ export default {
     },
 
     // Megnezi, hogy novelnie vagy csokkentenie kell a koordinatat, hogy kozeledjen a celhoz
-    stepCloser(start,destination){
-      if(start == destination){
-        return start
-      }else{
-        if(start < destination){
-          return start += this.stepScale 
-        }else{
-          return start -= this.stepScale
+    stepCloser(start, destination) {
+      if (start == destination) {
+        return start;
+      } else {
+        if (start < destination) {
+          return (start += this.stepScale);
+        } else {
+          return (start -= this.stepScale);
         }
       }
     },
 
     async animation(destination) {
       // Disable-eli a gombot mig az animacio folyik, bugmegelozes celjabol
-      this.walkingBottunDis = true
+      this.walkingBottunDis = true;
       // Addig kozeledik a koordinatakhoz, amig a kezdopont es a cel meg nem egyezik
-    	while (Object.entries(this.cameraPosition).toString() !== Object.entries(destination).toString()) {
-        this.cameraPosition.x = this.stepCloser(this.cameraPosition.x,destination.x)
-        this.cameraPosition.y = this.stepCloser(this.cameraPosition.y,destination.y)
-        this.cameraPosition.z = this.stepCloser(this.cameraPosition.z,destination.z)
-			  await new Promise(r => setTimeout(r, this.speed));
+      while (
+        Object.entries(this.cameraPosition).toString() !==
+        Object.entries(destination).toString()
+      ) {
+        this.cameraPosition.x = this.stepCloser(
+          this.cameraPosition.x,
+          destination.x
+        );
+        this.cameraPosition.y = this.stepCloser(
+          this.cameraPosition.y,
+          destination.y
+        );
+        this.cameraPosition.z = this.stepCloser(
+          this.cameraPosition.z,
+          destination.z
+        );
+        await new Promise((r) => setTimeout(r, this.speed));
       }
-      this.walkingBottunDis = false
+      this.walkingBottunDis = false;
     },
 
-    walkingWithAnimation() {
+    async walkingWithAnimation() {
       if (this.roadInd < this.road.length - 1) {
-        
-		    // Atvezeto animacio a ket egymasutani pont kozott
-        this.animation(this.road[this.roadInd + 1]);
-        this.roadInd++;
+        // Atvezeto animacio a ket egymasutani pont kozott
+        await this.animation(this.road[this.roadInd + 1].coordinates)
+        this.roadInd++
 
+        // Ha nem koztes pont, akkor menjen mig checkpointot kap
+        while(this.road[this.roadInd].isCheckpoint == false){
+          await this.animation(this.road[this.roadInd + 1].coordinates)
+          this.roadInd++;
+        }
       } else {
         this.roadInd = 0;
-        this.cameraPosition.x = this.road[this.roadInd].x;
-        this.cameraPosition.y = this.road[this.roadInd].y;
-        this.cameraPosition.z = this.road[this.roadInd].z;
+        this.cameraPosition.x = this.road[this.roadInd].coordinates.x;
+        this.cameraPosition.y = this.road[this.roadInd].coordinates.y;
+        this.cameraPosition.z = this.road[this.roadInd].coordinates.z;
       }
-
     },
 
     walkingWithWarping() {
       if (this.roadInd < this.road.length) {
-
         // Lepteti a road tombon, amig el nem er a vegere.
-        this.cameraPosition.x = this.road[this.roadInd].x;
-        this.cameraPosition.y = this.road[this.roadInd].y;
-        this.cameraPosition.z = this.road[this.roadInd].z;
+        this.cameraPosition.x = this.road[this.roadInd].coordinates.x;
+        this.cameraPosition.y = this.road[this.roadInd].coordinates.y;
+        this.cameraPosition.z = this.road[this.roadInd].coordinates.z;
         this.roadInd++;
       } else {
-
         // Visszateszi az elso pozicioba s kezdodik elolrol
         this.roadInd = 0;
-        this.cameraPosition.x = this.road[this.roadInd].x;
-        this.cameraPosition.y = this.road[this.roadInd].y;
-        this.cameraPosition.z = this.road[this.roadInd].z;
+        this.cameraPosition.x = this.road[this.roadInd].coordinates.x;
+        this.cameraPosition.y = this.road[this.roadInd].coordinates.y;
+        this.cameraPosition.z = this.road[this.roadInd].coordinates.z;
         this.roadInd++;
       }
     },
@@ -372,14 +414,12 @@ export default {
       console.log(cord.point);
     },
   },
-  mounted()
-    {
-      var tmp = this.$route.query.road;
-      if(tmp != undefined)
-      {
-        this.selectElement = tmp;
-        this.walkingSetUp();
-      }
+  mounted() {
+    var tmp = this.$route.query.road;
+    if (tmp != undefined) {
+      this.selectElement = tmp;
+      this.walkingSetUp();
     }
+  },
 };
 </script>
