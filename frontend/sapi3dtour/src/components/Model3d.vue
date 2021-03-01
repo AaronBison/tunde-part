@@ -141,6 +141,7 @@ export default {
         { place: "Gépész tanszék", id: "gt" },
         { place: "Gépész labor", id: "gl" },
         { place: "Dékáni hivatal", id: "dh" },
+        { place: "Villamos mérnöki tanszék", id: "vt" },
         { place: "Matematika-informatika tanszék", id: "mt" },
       ],
       selectElement: { place: "", id: "" },
@@ -237,8 +238,38 @@ export default {
           isCheckpoint: true,
         },
         {
-          name: "mattan",
+          name: "dekhiv-viltan-1",
+          coordinates: { x: 7, y: 11, z: 19 },
+          isCheckpoint: false,
+        },
+        {
+          name: "viltan",
+          coordinates: { x: 9, y: 11, z: 22 },
+          isCheckpoint: true,
+        },
+        {
+          name: "viltan-mattan-1",
+          coordinates: { x: 6, y: 11, z: 22 },
+          isCheckpoint: false,
+        },
+        {
+          name: "viltan-mattan-2",
+          coordinates: { x: 0, y: 9, z: 22 },
+          isCheckpoint: false,
+        },
+        {
+          name: "viltan-mattan-3",
+          coordinates: { x: -8, y: 7.5, z: 22 },
+          isCheckpoint: false,
+        },
+        {
+          name: "viltan-mattan-4",
           coordinates: { x: 7, y: 7.5, z: 19 },
+          isCheckpoint: false,
+        },
+        {
+          name: "mattan",
+          coordinates: { x: 9, y: 7.5, z: 22 },
           isCheckpoint: true,
         },
       ],
@@ -254,11 +285,31 @@ export default {
         { el: "geptan-dekhiv-2" },
         { el: "dekhiv" },
       ],
+      viltan: [
+        { el: "startDoor" },
+        { el: "aula" },
+        { el: "aula-geptan-1" },
+        { el: "geptan" },
+        { el: "geptan-dekhiv-1" },
+        { el: "geptan-dekhiv-2" },
+        { el: "dekhiv" },
+        { el: "dekhiv-viltan-1" },
+        { el: "viltan" },
+      ],
       mattan: [
         { el: "startDoor" },
         { el: "aula" },
+        { el: "aula-geptan-1" },
         { el: "geptan" },
+        { el: "geptan-dekhiv-1" },
+        { el: "geptan-dekhiv-2" },
         { el: "dekhiv" },
+        { el: "dekhiv-viltan-1" },
+        { el: "viltan" },
+        { el: "viltan-mattan-1" },
+        { el: "viltan-mattan-2" },
+        { el: "viltan-mattan-3" },
+        { el: "viltan-mattan-4" },
         { el: "mattan" },
       ],
     };
@@ -312,6 +363,11 @@ export default {
           this.walkingBottunDis = false;
           this.road = [];
           this.roadUpload(this.dekhiv);
+          break;
+        case "vt":
+          this.walkingBottunDis = false;
+          this.road = [];
+          this.roadUpload(this.viltan);
           break;
         case "mt":
           this.walkingBottunDis = false;
