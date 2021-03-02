@@ -110,6 +110,7 @@
 // import { ModelFbx } from "vue-3d-model";
 // import { ModelStl } from "vue-3d-model";
 // import { ModelPly } from "vue-3d-model";
+import mapping from '../../static/maps/mapping.json'
 import { ModelGltf } from "vue-3d-model";
 // import { OrbitControls } from "three-orbitcontrols"
 // import { MglMap, MglGeolocateControl, MglNavigationControl, MglPopup, MglMarker  } from "vue-mapbox/dist/vue-mapbox.umd.js";
@@ -191,127 +192,7 @@ export default {
       stepScale: 0.25,
       road: [],
       roadInd: 0,
-      markers: [
-        {
-          name: "startDoor",
-          coordinates: { x: 0, y: 15, z: -15 },
-          isCheckpoint: true,
-        },
-        {
-          name: "aula",
-          coordinates: { x: 0, y: 15, z: 8 },
-          isCheckpoint: true,
-        },
-        {
-          name: "aula-geptan-1",
-          coordinates: { x: 0, y: 15, z: 13 },
-          isCheckpoint: false,
-        },
-        {
-          name: "geptan",
-          coordinates: { x: 9, y: 15, z: 22 },
-          isCheckpoint: true,
-        },
-        {
-          name: "aula-geplab-1",
-          coordinates: { x: 9, y: 15, z: 4},
-          isCheckpoint: false,
-        },
-        {
-          name: "geplab",
-          coordinates: { x: 9, y: 15, z: -26 },
-          isCheckpoint: true,
-        },
-        {
-          name: "geptan-dekhiv-1",
-          coordinates: { x: 6, y: 15, z: 22 },
-          isCheckpoint: false,
-        },
-        {
-          name: "geptan-dekhiv-2",
-          coordinates: { x: 0, y: 13, z: 22 },
-          isCheckpoint: false,
-        },
-        {
-          name: "dekhiv",
-          coordinates: { x: -8, y: 11, z: 22 },
-          isCheckpoint: true,
-        },
-        {
-          name: "dekhiv-viltan-1",
-          coordinates: { x: 7, y: 11, z: 19 },
-          isCheckpoint: false,
-        },
-        {
-          name: "viltan",
-          coordinates: { x: 9, y: 11, z: 22 },
-          isCheckpoint: true,
-        },
-        {
-          name: "viltan-mattan-1",
-          coordinates: { x: 6, y: 11, z: 22 },
-          isCheckpoint: false,
-        },
-        {
-          name: "viltan-mattan-2",
-          coordinates: { x: 0, y: 9, z: 22 },
-          isCheckpoint: false,
-        },
-        {
-          name: "viltan-mattan-3",
-          coordinates: { x: -8, y: 7.5, z: 22 },
-          isCheckpoint: false,
-        },
-        {
-          name: "viltan-mattan-4",
-          coordinates: { x: 7, y: 7.5, z: 19 },
-          isCheckpoint: false,
-        },
-        {
-          name: "mattan",
-          coordinates: { x: 9, y: 7.5, z: 22 },
-          isCheckpoint: true,
-        },
-      ],
-      aula: [{ el: "startDoor" }, { el: "aula" }],
-      geptan: [{ el: "startDoor" }, { el: "aula" },{ el: "aula-geptan-1" }, { el: "geptan" }],
-      geplab: [{ el: "startDoor" }, { el: "aula" },{ el: "aula-geplab-1" } , { el: "geplab" }],
-      dekhiv: [
-        { el: "startDoor" },
-        { el: "aula" },
-        { el: "aula-geptan-1" },
-        { el: "geptan" },
-        { el: "geptan-dekhiv-1" },
-        { el: "geptan-dekhiv-2" },
-        { el: "dekhiv" },
-      ],
-      viltan: [
-        { el: "startDoor" },
-        { el: "aula" },
-        { el: "aula-geptan-1" },
-        { el: "geptan" },
-        { el: "geptan-dekhiv-1" },
-        { el: "geptan-dekhiv-2" },
-        { el: "dekhiv" },
-        { el: "dekhiv-viltan-1" },
-        { el: "viltan" },
-      ],
-      mattan: [
-        { el: "startDoor" },
-        { el: "aula" },
-        { el: "aula-geptan-1" },
-        { el: "geptan" },
-        { el: "geptan-dekhiv-1" },
-        { el: "geptan-dekhiv-2" },
-        { el: "dekhiv" },
-        { el: "dekhiv-viltan-1" },
-        { el: "viltan" },
-        { el: "viltan-mattan-1" },
-        { el: "viltan-mattan-2" },
-        { el: "viltan-mattan-3" },
-        { el: "viltan-mattan-4" },
-        { el: "mattan" },
-      ],
+      markers: mapping.markers,
     };
   },
   methods: {
@@ -340,6 +221,7 @@ export default {
         });
       });
     },
+    // Az uticel kivalasztasakor inicializalja az utvonalat
     walkingSetUp() {
       this.roadInd = 0;
 
@@ -347,32 +229,32 @@ export default {
         case "al":
           this.walkingBottunDis = false;
           this.road = [];
-          this.roadUpload(this.aula);
+          this.roadUpload(mapping.aula);
           break;
         case "gt":
           this.walkingBottunDis = false;
           this.road = [];
-          this.roadUpload(this.geptan);
+          this.roadUpload(mapping.geptan);
           break;
         case "gl":
           this.walkingBottunDis = false;
           this.road = [];
-          this.roadUpload(this.geplab);
+          this.roadUpload(mapping.geplab);
           break;
         case "dh":
           this.walkingBottunDis = false;
           this.road = [];
-          this.roadUpload(this.dekhiv);
+          this.roadUpload(mapping.dekhiv);
           break;
         case "vt":
           this.walkingBottunDis = false;
           this.road = [];
-          this.roadUpload(this.viltan);
+          this.roadUpload(mapping.viltan);
           break;
         case "mt":
           this.walkingBottunDis = false;
           this.road = [];
-          this.roadUpload(this.mattan);
+          this.roadUpload(mapping.mattan);
           break;
         default:
           this.walkingBottunDis = true;
@@ -383,14 +265,6 @@ export default {
       this.cameraPosition.x = this.road[this.roadInd].coordinates.x;
       this.cameraPosition.y = this.road[this.roadInd].coordinates.y;
       this.cameraPosition.z = this.road[this.roadInd].coordinates.z;
-    },
-
-    sleep(milliseconds) {
-      const date = Date.now();
-      let currentDate = null;
-      do {
-        currentDate = Date.now();
-      } while (currentDate - date < milliseconds);
     },
 
     // Megnezi, hogy novelnie vagy csokkentenie kell a koordinatat, hogy kozeledjen a celhoz
@@ -406,6 +280,8 @@ export default {
       }
     },
 
+
+    // Atvezeto animacio a megadott ponthoz
     async animation(destination) {
       // Disable-eli a gombot mig az animacio folyik, bugmegelozes celjabol
       this.walkingBottunDis = true;
@@ -433,12 +309,11 @@ export default {
 
     async walkingWithAnimation() {
       if (this.roadInd < this.road.length - 1) {
-        // Atvezeto animacio a ket egymasutani pont kozott
         await this.animation(this.road[this.roadInd + 1].coordinates)
         this.roadInd++
 
-        // Ha nem koztes pont, akkor menjen mig checkpointot kap
-        while(this.road[this.roadInd].isCheckpoint == false){
+        // Ha koztes pont, akkor menjen mig checkpointot kap
+        while(!this.road[this.roadInd].isCheckpoint){
           await this.animation(this.road[this.roadInd + 1].coordinates)
           this.roadInd++;
         }
