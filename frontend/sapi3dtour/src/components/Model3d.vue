@@ -116,6 +116,7 @@
 // import { ModelFbx } from "vue-3d-model";
 // import { ModelStl } from "vue-3d-model";
 // import { ModelPly } from "vue-3d-model";
+import mapping from '../../static/maps/mapping.json'
 import { ModelGltf } from "vue-3d-model";
 // import { OrbitControls } from "three-orbitcontrols"
 // import { MglMap, MglGeolocateControl, MglNavigationControl, MglPopup, MglMarker  } from "vue-mapbox/dist/vue-mapbox.umd.js";
@@ -147,6 +148,7 @@ export default {
         { place: "Gépész tanszék", id: "gt" },
         { place: "Gépész labor", id: "gl" },
         { place: "Dékáni hivatal", id: "dh" },
+        { place: "Villamos mérnöki tanszék", id: "vt" },
         { place: "Matematika-informatika tanszék", id: "mt" },
       ],
       selectElement: { place: "", id: "" },
@@ -192,52 +194,11 @@ export default {
       ],
       cameraPosition: { x: 0, y: 0, z: -60 },
       angle: { x: 0, y: 0, z: 0.1 },
-	  speed: 10,
-	  stepScale: 0.5, 
+      speed: 10,
+      stepScale: 0.25,
       road: [],
       roadInd: 0,
-      markers: [
-        {
-          name: "startDoor",
-          coordinates: { x: 0, y: 15, z: -15 },
-        },
-        {
-          name: "aula",
-          coordinates: { x: 0, y: 15, z: 8 },
-        },
-        {
-          name: "geptan",
-          coordinates: { x: 9, y: 15, z: 22 },
-        },
-        {
-          name: "geplab",
-          coordinates: { x: 9, y: 15, z: -26 },
-        },
-        {
-          name: "dekhiv",
-          coordinates: { x: -8, y: 11, z: 22 },
-        },
-        {
-          name: "mattan",
-          coordinates: { x: 7, y: 7.5, z: 19 },
-        },
-      ],
-      aula: [{ el: "startDoor" }, { el: "aula" }],
-      geptan: [{ el: "startDoor" }, { el: "aula" }, { el: "geptan" }],
-      geplab: [{ el: "startDoor" }, { el: "aula" }, { el: "geplab" }],
-      dekhiv: [
-        { el: "startDoor" },
-        { el: "aula" },
-        { el: "geptan" },
-        { el: "dekhiv" },
-      ],
-      mattan: [
-        { el: "startDoor" },
-        { el: "aula" },
-        { el: "geptan" },
-        { el: "dekhiv" },
-        { el: "mattan" },
-      ],
+      markers: mapping.markers,
     };
   },
   methods: {
@@ -261,11 +222,12 @@ export default {
       this.markers.forEach((element) => {
         array.forEach((element1) => {
           if (element.name == element1.el) {
-            this.road.push(element.coordinates);
+            this.road.push(element);
           }
         });
       });
     },
+    // Az uticel kivalasztasakor inicializalja az utvonalat
     walkingSetUp() {
       this.roadInd = 0;
 
@@ -273,27 +235,32 @@ export default {
         case "al":
           this.walkingBottunDis = false;
           this.road = [];
-          this.roadUpload(this.aula);
+          this.roadUpload(mapping.aula);
           break;
         case "gt":
           this.walkingBottunDis = false;
           this.road = [];
-          this.roadUpload(this.geptan);
+          this.roadUpload(mapping.geptan);
           break;
         case "gl":
           this.walkingBottunDis = false;
           this.road = [];
-          this.roadUpload(this.geplab);
+          this.roadUpload(mapping.geplab);
           break;
         case "dh":
           this.walkingBottunDis = false;
           this.road = [];
-          this.roadUpload(this.dekhiv);
+          this.roadUpload(mapping.dekhiv);
+          break;
+        case "vt":
+          this.walkingBottunDis = false;
+          this.road = [];
+          this.roadUpload(mapping.viltan);
           break;
         case "mt":
           this.walkingBottunDis = false;
           this.road = [];
-          this.roadUpload(this.mattan);
+          this.roadUpload(mapping.mattan);
           break;
         default:
           this.walkingBottunDis = true;
@@ -301,76 +268,82 @@ export default {
           break;
       }
 
-      this.cameraPosition.x = this.road[this.roadInd].x;
-      this.cameraPosition.y = this.road[this.roadInd].y;
-      this.cameraPosition.z = this.road[this.roadInd].z;
-    },
-
-    sleep(milliseconds) {
-      const date = Date.now();
-      let currentDate = null;
-      do {
-        currentDate = Date.now();
-      } while (currentDate - date < milliseconds);
+      this.cameraPosition.x = this.road[this.roadInd].coordinates.x;
+      this.cameraPosition.y = this.road[this.roadInd].coordinates.y;
+      this.cameraPosition.z = this.road[this.roadInd].coordinates.z;
     },
 
     // Megnezi, hogy novelnie vagy csokkentenie kell a koordinatat, hogy kozeledjen a celhoz
-    stepCloser(start,destination){
-      if(start == destination){
-        return start
-      }else{
-        if(start < destination){
-          return start += this.stepScale 
-        }else{
-          return start -= this.stepScale
+    stepCloser(start, destination) {
+      if (start == destination) {
+        return start;
+      } else {
+        if (start < destination) {
+          return (start += this.stepScale);
+        } else {
+          return (start -= this.stepScale);
         }
       }
     },
 
+
+    // Atvezeto animacio a megadott ponthoz
     async animation(destination) {
       // Disable-eli a gombot mig az animacio folyik, bugmegelozes celjabol
-      this.walkingBottunDis = true
+      this.walkingBottunDis = true;
       // Addig kozeledik a koordinatakhoz, amig a kezdopont es a cel meg nem egyezik
-    	while (Object.entries(this.cameraPosition).toString() !== Object.entries(destination).toString()) {
-        this.cameraPosition.x = this.stepCloser(this.cameraPosition.x,destination.x)
-        this.cameraPosition.y = this.stepCloser(this.cameraPosition.y,destination.y)
-        this.cameraPosition.z = this.stepCloser(this.cameraPosition.z,destination.z)
-			  await new Promise(r => setTimeout(r, this.speed));
+      while (
+        Object.entries(this.cameraPosition).toString() !==
+        Object.entries(destination).toString()
+      ) {
+        this.cameraPosition.x = this.stepCloser(
+          this.cameraPosition.x,
+          destination.x
+        );
+        this.cameraPosition.y = this.stepCloser(
+          this.cameraPosition.y,
+          destination.y
+        );
+        this.cameraPosition.z = this.stepCloser(
+          this.cameraPosition.z,
+          destination.z
+        );
+        await new Promise((r) => setTimeout(r, this.speed));
       }
-      this.walkingBottunDis = false
+      this.walkingBottunDis = false;
     },
 
-    walkingWithAnimation() {
+    async walkingWithAnimation() {
       if (this.roadInd < this.road.length - 1) {
-        
-		    // Atvezeto animacio a ket egymasutani pont kozott
-        this.animation(this.road[this.roadInd + 1]);
-        this.roadInd++;
+        await this.animation(this.road[this.roadInd + 1].coordinates)
+        this.roadInd++
 
+        // Ha koztes pont, akkor menjen mig checkpointot kap
+        while(!this.road[this.roadInd].isCheckpoint){
+          await this.animation(this.road[this.roadInd + 1].coordinates)
+          this.roadInd++;
+        }
       } else {
         this.roadInd = 0;
-        this.cameraPosition.x = this.road[this.roadInd].x;
-        this.cameraPosition.y = this.road[this.roadInd].y;
-        this.cameraPosition.z = this.road[this.roadInd].z;
+        this.cameraPosition.x = this.road[this.roadInd].coordinates.x;
+        this.cameraPosition.y = this.road[this.roadInd].coordinates.y;
+        this.cameraPosition.z = this.road[this.roadInd].coordinates.z;
       }
-
     },
 
     walkingWithWarping() {
       if (this.roadInd < this.road.length) {
-
         // Lepteti a road tombon, amig el nem er a vegere.
-        this.cameraPosition.x = this.road[this.roadInd].x;
-        this.cameraPosition.y = this.road[this.roadInd].y;
-        this.cameraPosition.z = this.road[this.roadInd].z;
+        this.cameraPosition.x = this.road[this.roadInd].coordinates.x;
+        this.cameraPosition.y = this.road[this.roadInd].coordinates.y;
+        this.cameraPosition.z = this.road[this.roadInd].coordinates.z;
         this.roadInd++;
       } else {
-
         // Visszateszi az elso pozicioba s kezdodik elolrol
         this.roadInd = 0;
-        this.cameraPosition.x = this.road[this.roadInd].x;
-        this.cameraPosition.y = this.road[this.roadInd].y;
-        this.cameraPosition.z = this.road[this.roadInd].z;
+        this.cameraPosition.x = this.road[this.roadInd].coordinates.x;
+        this.cameraPosition.y = this.road[this.roadInd].coordinates.y;
+        this.cameraPosition.z = this.road[this.roadInd].coordinates.z;
         this.roadInd++;
       }
     },
@@ -378,14 +351,12 @@ export default {
       console.log(cord.point);
     },
   },
-  mounted()
-    {
-      var tmp = this.$route.query.road;
-      if(tmp != undefined)
-      {
-        this.selectElement = tmp;
-        this.walkingSetUp();
-      }
+  mounted() {
+    var tmp = this.$route.query.road;
+    if (tmp != undefined) {
+      this.selectElement = tmp;
+      this.walkingSetUp();
     }
+  },
 };
 </script>
