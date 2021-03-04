@@ -93,10 +93,8 @@
         </v-btn>
         </div>
       </v-flex>
-      <v-flex >
+      <v-flex xs18 sm16 md14 lg12 xl12>
           <model-gltf
-            :height="600"
-            :width="1138"
             :lights="vilagitas"
             @on-click="examp"
             :backgroundColor="backgroundcolor"
