@@ -1,107 +1,113 @@
 <template>
-  <v-layout wrap class="justify-center" >
-    <!-- OBJ -->
-    <!-- <model-obj
-        :rotation="rotation"
-        @on-load="onLoad"
-        :lights="vilagitas"
-        src="static/models/lowpoly_well.obj"
-        mtl="static/models/lowpoly_well.mtl"
-      ></model-obj> -->
+  <v-container class="justify-center" grid-list-md>
+    <v-layout row wrap>
+      <!-- OBJ -->
+      <!-- <model-obj
+          :rotation="rotation"
+          @on-load="onLoad"
+          :lights="vilagitas"
+          src="static/models/lowpoly_well.obj"
+          mtl="static/models/lowpoly_well.mtl"
+        ></model-obj> -->
 
-    <!-- DAE -->
-    <!-- <model-collada
-        :rotation="rotation"
-        @on-load="onLoad"
-        :lights="vilagitas"
-        src="static/models/lowpoly_well.dae"
-      ></model-collada>-->
+      <!-- DAE -->
+      <!-- <model-collada
+          :rotation="rotation"
+          @on-load="onLoad"
+          :lights="vilagitas"
+          src="static/models/lowpoly_well.dae"
+        ></model-collada>-->
 
-    <!-- FBX -->
-    <!-- <model-fbx
-        :rotation="rotation"
-        @on-load="onLoad"
-        src="static/models/lowpoly_well.fbx"
-        mtl="static/models/lowpoly_well.mtl"
-      ></model-fbx>-->
+      <!-- FBX -->
+      <!-- <model-fbx
+          :rotation="rotation"
+          @on-load="onLoad"
+          src="static/models/lowpoly_well.fbx"
+          mtl="static/models/lowpoly_well.mtl"
+        ></model-fbx>-->
 
-    <!-- STL -->
-    <!-- <model-stl
-        :rotation="rotation"
-        @on-load="onLoad"
-        src="static/models/lowpoly_well.stl"
-        mtl="static/models/lowpoly_well.mtl"
-      ></model-stl>-->
+      <!-- STL -->
+      <!-- <model-stl
+          :rotation="rotation"
+          @on-load="onLoad"
+          src="static/models/lowpoly_well.stl"
+          mtl="static/models/lowpoly_well.mtl"
+        ></model-stl>-->
 
-    <!-- PLY -->
-    <!-- <model-ply
-        :rotation="rotation"
-        @on-load="onLoad"
-        src="static/models/lowpoly_well.ply"
-        mtl="static/models/lowpoly_well.mtl"
-      ></model-ply>-->
-    <v-select
-      class="my-2"
-      v-model="selectElement"
-      :items="items"
-      backgroundColor="#E1E1DE"
-      item-text="place"
-      item-value="id"
-      label="Válaszd ki hová szeretnél menni!"
-      @input="walkingSetUp"
-      dense
-      solo
-    ></v-select>
-    <v-card id="card" >
-      <model-gltf
-        :height="600"
-        :width="1138"
-        :lights="vilagitas"
-        @on-click="examp"
-        :backgroundColor="backgroundcolor"
-        :position="cameraPosition"
-        :cameraPosition="angle"
-        src="static/models/sapi3D.gltf?"
-      >
-      </model-gltf>
-    </v-card>
-    <div class="my-2">
-    <v-btn class="mx-2" fab dark small color="grey" @click="stepedLeft">
-      <v-icon dark> far fa-arrow-alt-circle-left </v-icon>
-    </v-btn>
-    <v-btn class="mx-2" fab dark small color="grey" @click="stepedUp">
-      <v-icon dark> far fa-arrow-alt-circle-up </v-icon>
-    </v-btn>
-    <v-btn class="mx-2" fab dark small color="grey" @click="stepedRight">
-      <v-icon dark> far fa-arrow-alt-circle-right </v-icon>
-    </v-btn>
-    <v-btn class="mx-2" fab dark small color="grey" @click="stepedDown">
-      <v-icon dark> far fa-arrow-alt-circle-down </v-icon>
-    </v-btn>
-    <v-btn
-      v-if="walkingBottunDis == false"
-      class="mx-2"
-      fab
-      dark
-      small
-      color="grey"
-      @click="walkingWithAnimation"
-    >
-      <v-icon dark> fas fa-walking </v-icon>
-    </v-btn>
-    <v-btn
-      v-if="walkingBottunDis"
-      class="mx-2"
-      disabled
-      fab
-      dark
-      small
-      color="grey"
-    >
-      <v-icon dark> fas fa-walking </v-icon>
-    </v-btn>
-    </div>
-  </v-layout>
+      <!-- PLY -->
+      <!-- <model-ply
+          :rotation="rotation"
+          @on-load="onLoad"
+          src="static/models/lowpoly_well.ply"
+          mtl="static/models/lowpoly_well.mtl"
+        ></model-ply>-->
+      <v-flex>
+        <v-select
+          class="my-2"
+          v-model="selectElement"
+          :items="items"
+          backgroundColor="#E1E1DE"
+          item-text="place"
+          item-value="id"
+          label="Válaszd ki hová szeretnél menni!"
+          @input="walkingSetUp"
+          dense
+          solo
+        ></v-select>
+      </v-flex>
+      <v-flex >
+        <div class="my-2">
+        <v-btn class="mx-2" fab dark small color="grey" @click="stepedLeft">
+          <v-icon dark> far fa-arrow-alt-circle-left </v-icon>
+        </v-btn>
+        <v-btn class="mx-2" fab dark small color="grey" @click="stepedUp">
+          <v-icon dark> far fa-arrow-alt-circle-up </v-icon>
+        </v-btn>
+        <v-btn class="mx-2" fab dark small color="grey" @click="stepedRight">
+          <v-icon dark> far fa-arrow-alt-circle-right </v-icon>
+        </v-btn>
+        <v-btn class="mx-2" fab dark small color="grey" @click="stepedDown">
+          <v-icon dark> far fa-arrow-alt-circle-down </v-icon>
+        </v-btn>
+        <v-btn
+          v-if="walkingBottunDis == false"
+          class="mx-2"
+          fab
+          dark
+          small
+          color="grey"
+          @click="walkingWithAnimation"
+        >
+          <v-icon dark> fas fa-walking </v-icon>
+        </v-btn>
+        <v-btn
+          v-if="walkingBottunDis"
+          class="mx-2"
+          disabled
+          fab
+          dark
+          small
+          color="grey"
+        >
+          <v-icon dark> fas fa-walking </v-icon>
+        </v-btn>
+        </div>
+      </v-flex>
+      <v-flex >
+          <model-gltf
+            :height="600"
+            :width="1138"
+            :lights="vilagitas"
+            @on-click="examp"
+            :backgroundColor="backgroundcolor"
+            :position="cameraPosition"
+            :cameraPosition="angle"
+            src="static/models/sapi3D.gltf?"
+          >
+          </model-gltf>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>

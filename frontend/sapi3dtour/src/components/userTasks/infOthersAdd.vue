@@ -74,7 +74,7 @@ export default {
             textFields: [],
             textLinks: [],
             showPlusBottum: false,
-            departments:null,
+            departments:[],
             selectedItem:null,
             loadingButtonX: false,
             loadingButtonTick:false,

@@ -5,10 +5,13 @@
         <v-app-bar-title>3D virtuális túra a Sapientia Erdélyi Magyar Tudományegyetem Marosvásárhely-i karán</v-app-bar-title>
         <v-spacer></v-spacer>
         <LoginDialog />
-        <template v-slot:extension>
-          <v-tabs align-with-title dark >
+        <template v-slot:extension >
+          <v-tabs align-with-title dark class="hidden-sm-and-down">
             <v-tab v-for="item in tabs" :key="item.title" router :to="item.route" link>{{ item.title }}</v-tab>
           </v-tabs>
+          <v-menu class="hidden-md-and-up">
+            <v-icon>fas fa-sign-in-alt</v-icon>
+          </v-menu>
         </template>
       </v-app-bar>
       <v-sheet id="scrolling-techniques-3" class="overflow-y-auto">

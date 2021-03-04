@@ -1,13 +1,13 @@
 <template>
     <div id="app">
       <v-app id="inspire">
-      <v-app-bar color="#2B405D" dark prominent class="justify-center">
+      <v-app-bar color="#2B405D" prominent dark class="justify-center">
         <v-app-bar-title>3D virtuális túra a Sapientia Erdélyi Magyar Tudományegyetem Marosvásárhely-i karán</v-app-bar-title>
         <v-spacer></v-spacer>
         <UserDataDialog/>
         <LogOut/>
         <template v-slot:extension>
-          <v-tabs align-with-title dark >
+          <v-tabs align-with-title >
             <v-tab v-for="item in tabs" :key="item.title" router :to="item.route" link>{{ item.title }}</v-tab>
           </v-tabs>
         </template>
@@ -34,12 +34,6 @@ export default {
   components:{ ChangeUserDataDialog, UserDataDialog,LogOut},
   data () {
     return {
-      created_at: "",
-      email: "",
-      full_name: "",
-      phone_number: "",
-      status: "",
-      user_icon: "fas fa-user",
       tabs: [
         {title: 'Beállítások', route: '/user/admin', icon:"fas fa-hammer"},
         {title: 'Model3D', route: '/user/model3d', icon:"fas fa-university"},

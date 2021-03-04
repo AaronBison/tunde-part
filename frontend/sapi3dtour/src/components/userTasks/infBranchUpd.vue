@@ -65,7 +65,7 @@ export default {
     name: 'InformationBranchUpdate',
     data () {
         return {
-            branches:null,
+            branches:[],
             selectedItem:null,
             updBran:false,
             updRespFlase:false,
@@ -94,7 +94,7 @@ export default {
             UserTasks.getBranchesName().then((res)=>{
                 this.branches = res.data;
             }).catch((err)=>{
-                this.branches = null;
+                this.branches = [];
             })
         },
         researchBranches(){

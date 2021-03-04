@@ -61,7 +61,7 @@ export default {
             coordinatorEmail:"",
             link: "",
             roomNumber:"",
-            departments:null,
+            departments:[],
             loadingButtonX: false,
             loadingButtonTick:false,
             icon: "",
