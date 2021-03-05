@@ -139,10 +139,10 @@ export default {
       walkingBottunDis: true,
       items: [
         { place: "Aula", id: "al" },
-        { place: "Gépész tanszék", id: "gt" },
-        { place: "Gépész labor", id: "gl" },
+        { place: "Gépészmérnöki tanszék", id: "gt" },
+        { place: "Gépészmérnöki labor", id: "gl" },
         { place: "Dékáni hivatal", id: "dh" },
-        { place: "Villamos mérnöki tanszék", id: "vt" },
+        { place: "Villamosmérnöki tanszék", id: "vt" },
         { place: "Matematika-informatika tanszék", id: "mt" },
       ],
       selectElement: { place: "", id: "" },
