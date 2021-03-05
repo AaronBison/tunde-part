@@ -1,6 +1,6 @@
 \section{Webes keretrendszerek}
 	\paragraph{}
-	A keretrendszerek napjainkban felkapott rendszerek lettek a felhasználók között. Ezek a rendszerek sokoldalúak, robusztusak és hatékonyak. A különböző alkalmazások fejlesztéséhez az ilyen jellegű rendszerek segítségével csak a magasabb szintű funkcionalitások elvégzésére kell koncentrálni. Erre az a magyarázat, hogy a keretrendszer gondoskodik az alacsonyabb funkcionalitásokról, amelyek már rengeteg tesztelt kódot tartalmaznak, így mi ezeket a funkcionalitásokat nem kell külön megírjuk és leteszteljük, hogy helyes-e a megírt kód. Számos előnyt lehet felsorolni, hogy miért jó ha használjuk ezeket a rendszereket.\cite{frameworks}
+	A keretrendszerek \cite{frameworks} napjainkban felkapott rendszerek lettek a felhasználók között. Ezek a rendszerek sokoldalúak, robusztusak és hatékonyak. A különböző alkalmazások fejlesztéséhez az ilyen jellegű rendszerek segítségével csak a magasabb szintű funkcionalitások elvégzésére kell koncentrálni. Erre az a magyarázat, hogy a keretrendszer gondoskodik az alacsonyabb funkcionalitásokról, amelyek már rengeteg tesztelt kódot tartalmaznak, így mi ezeket a funkcionalitásokat nem kell külön megírjuk és leteszteljük, hogy helyes-e a megírt kód. Számos előnyt lehet felsorolni, hogy miért jó ha használjuk ezeket a rendszereket.
 	\begin{itemize}
 		\item Elősegíti a tervezési minták megfelelő kialakítását.
 		\item Biztonságosabb kódolás.
@@ -14,18 +14,18 @@
 	
 	\begin{figure}
 		\centering
-		\includegraphics[scale=0.6]{figures/images/vueang.png}
+		\includegraphics[scale=0.5]{figures/images/vueang.png}
 		\caption{Webes keretrendszerek használatossága érdeklődési és elégedettségi szint alapján \cite{vueanginterest}}
 		\label{fig:vueang}
 	\end{figure}
 
 	\subsection{Angular}
 	\paragraph{}
-	Az Angulart \cite{wohlgethan2018supportingweb} 2008-ban kezdték el fejleszteni a Google munkatársai. A fejlesztés JavaScriptben történt. Abban az időben a webhelyek többsége többoldalas alkalmazás megközelítésén alapult. Ennek viszont a teljesítménye az idő elteltével romlani kezdett mivel befolyásoló tényező lett az internet kapcsolat és a szerver reakció képessége is. Ezért létre hozódott az egy oldalas alkalmazások megközelítése ami abban segít, hogy a több oldalas weboldalak csupán egy oldalon jelennek meg. Az Angular volt az egy oldalas alkalmazások első kerete. Az egyik fő előnye, hogy a felhasználók egyszerű struktúrával kell dolgozzanak. Megtanulják az Angular sajátos felépítését ezáltal gyorsan és optimálisabban tudnak benne fejleszteni. Az sem elhanyagolható, hogy a fejlesztők egy részletes és egyértelmű dokumentációval szolgáltak a felhasználóknak. Egy TypeScript nyelv amely hasznos és könnyen használható. A TypeScript nyelvek nagyon elterjedtek lettek. 
+	A Google munkatársai 2008-ban fejlesztettek a JavaScript alapú Angular keretrendszert \cite{wohlgethan2018supportingweb}.Abban az időben a webhelyek zöme többoldalas alkalmazás megközelítésén alapult. Ennek viszont a teljesítménye az idő elteltével romlani kezdett mivel befolyásoló tényező lett az internet kapcsolat és a szerver reakció képessége is. Ezért létre hozódott az egy oldalas alkalmazások megközelítése ami abban segít, hogy a több oldalas weboldalak csupán egy oldalon jelennek meg. Az Angular volt az egy oldalas alkalmazások első kerete. Az egyik fő előnye, hogy a felhasználók egyszerű struktúrával kell dolgozzanak. Megtanulják az Angular sajátos felépítését ezáltal gyorsan és optimálisabban tudnak benne fejleszteni. Az sem elhanyagolható, hogy a fejlesztők egy részletes és egyértelmű dokumentációval szolgáltak a felhasználóknak.
 	
 	\subsection{Vue.js}
 	\paragraph{}
-	A Vue.js (röviden: Vue) \cite{wohlgethan2018supportingweb} tekinthető a legújabb keretrendszernek. Hasonlít az Angularhoz. Mindkéttő TypeScript típusú. Használható kisebb, egyszerűbb projekteknél és egy komplexebb egy oldalas alkalmazás elkészítésénél is. Fő érdeme a skálázhatóság. Különlegessége, hogy egy nyílt forráskódú közösség fejlesztette ki, nem pedig egy nagyobb vállalat. Komponens alapú keretrendszer amely azt jelenti, hogy komponenseket különböztetünk és jelenítünk meg. Egy komponensen belül tudunk írni HTML, CSS és Script elemeket is. A megjelenítés egy oldalon történik ezért szükséges használni a útválasztást(rout).
+	A Vue.js (röviden: Vue) \cite{wohlgethan2018supportingweb} tekinthető a legújabb keretrendszernek. Hasonlít az Angularhoz. Mindkéttő TypeScript típusú. Használható kisebb, egyszerűbb projekteknél és egy komplexebb egy oldalas alkalmazás elkészítésénél is. Fő érdeme a skálázhatóság. Különlegessége, hogy egy nyílt forráskódú közösség fejlesztette ki, nem pedig egy nagyobb vállalat. Komponens alapú keretrendszer amely azt jelenti, hogy komponenseket különböztetünk és jelenítünk meg. Egy komponensen belül tudunk írni HTML, CSS és Script elemeket is. A megjelenítés egy oldalon történik ezért szükséges használni a útválasztást (rout).
 	
 	\subsection{Angular vs Vue.js}
 	\paragraph{}
@@ -35,8 +35,8 @@
 		\begin{center}
 			\caption{Előnyök Angular és Vue.js között \cite{vuevsang} }
 			\label{tab:table1}
-			\begin{tabular}{p{2cm}|p{6cm}|p{6cm}}
-				\textbf{Sorszám} & \textbf{Angular} & \textbf{Vue.js}\\
+			\begin{tabular}{p{0.5cm}|p{6cm}|p{6cm}}
+				\textbf & \textbf{Angular} & \textbf{Vue.js}\\
 				\hline
 				1 & TypeScript használata & TypeScript használata, részletes dokumentáció\\
 				\hline
@@ -57,8 +57,8 @@
 		\begin{center}
 			\caption{Hátrányok Angular és Vue.js között \cite{vuevsang}}
 			\label{tab:table2}
-			\begin{tabular}{p{2cm}|p{6cm}|p{6cm}} 
-				\textbf{Sorszám} & \textbf{Angular} & \textbf{Vue.js}\\
+			\begin{tabular}{p{0.5cm}|p{6cm}|p{6cm}} 
+				\textbf & \textbf{Angular} & \textbf{Vue.js}\\
 				\hline
 				1 & Számos különféle struktúrát kínál, nehezíti a tanulást & Kevesebb erőforrást kínál\\
 				\hline
@@ -70,7 +70,7 @@
 
 	\subsection{NodeJs}
 	\paragraph{} 
-	A NodeJs \cite{js2016node} egy olyan szoftver platform, amely a Chrome V8 JavaScript futási idején épül fel. Fontos tulajdonsága, hogy skálázható ezért is sokan használják. Eseményvezérelt, nem blokkoló I/O modellt használ, amely könnyűvé és hatékonnyá teszi a valós idejű alkalmazásokhoz, amelyek elosztott rendszeren futnak át. Használatos mivel aszinkron és a tanulási görbéje is helyén van. A fejlesztők hatalmas köre már évek óta ismeri a JavaScriptet és az aszinkron programozást. Legtöbb esetben a NodeJs használatakor adatbázisnak NoSQL adatbázisokat választanak.
+	A NodeJs \cite{js2016node} egy olyan szoftver platform, amely a Chrome V8 JavaScript futási idején épül fel. Fontos tulajdonsága, hogy skálázható ezért is sokan használják. Eseményvezérelt, nem blokkoló I/O modellt használ, amely könnyűvé és hatékonnyá teszi a valós idejű alkalmazásokhoz, amelyek elosztott rendszeren futnak át. Használatos mivel aszinkron és a tanulási görbéje is helyén van. Legtöbb esetben a NodeJs használatakor adatbázisnak NoSQL adatbázisokat választanak.
 	
 	\subsection{Spring Boot}
 	\paragraph{}

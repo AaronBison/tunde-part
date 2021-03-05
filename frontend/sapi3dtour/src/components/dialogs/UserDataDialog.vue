@@ -26,6 +26,7 @@
     components:{ ChangeUserDataDialog},
     data() {
         return {
+            dialog: false,
             created_at: "",
             email: "",
             full_name: "",

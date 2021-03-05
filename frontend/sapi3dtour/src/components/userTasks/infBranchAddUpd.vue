@@ -1,5 +1,5 @@
 <template>
-    <v-card id="card" width="550" class="mx-3 my-3">
+    <v-card id="card">
         <v-card-title> Szak megadása </v-card-title>
         <v-divider class="mx-5 my-3"></v-divider>
         <v-radio-group class="mx-5 " v-model="selectResult" row>

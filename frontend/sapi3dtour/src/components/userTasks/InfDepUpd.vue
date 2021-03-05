@@ -54,7 +54,7 @@ export default {
     data () {
         return {
             selectedItem: null,
-            departments: null,
+            departments: [],
             departmentName:null,
             departmentLink:null,
             id:null,
@@ -67,7 +67,7 @@ export default {
     methods:{
         getDepartments(){
             this.selectedItem = null;
-            this.departments = null;
+            this.departments =  [];
             this.departmentName = null;
             this.departmentLink = null;
             UserTasks.getDepartmentsDepartmentName().then((res) => {

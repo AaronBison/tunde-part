@@ -1,5 +1,5 @@
-<template>
-    <v-btn icon v-on="on" @click="logOut">
+<template >
+    <v-btn icon @click="logOut">
       <v-icon>fas fa-power-off</v-icon>
     </v-btn>
 </template>

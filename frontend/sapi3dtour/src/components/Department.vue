@@ -1,6 +1,6 @@
 <template>
     <v-layout wrap class="justify-center" >
-      <DepartmentCard v-for="card in departments" :key="card.departmentName" :card="card"/>
+        <DepartmentCard v-for="card in departments" :key="card.departmentName" :card="card"/>
     </v-layout>
 </template>
 
