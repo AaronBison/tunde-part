@@ -1,1 +1,47 @@
-\section{Rendszer követelemények}
+\section{Rendszerkövetelemények}
+
+\subsection{Fejlesztési rendszerkövetelmények}
+A rendszer egy webalkalmazásként legyen fejlesztve. Az alkalmazás fejlesztéséhez első sorban szükséges legalább Windows 10 operációs rendszer, vagy bármely operációs rendszer amely támogatja a Vue.js-t, Spring Boot-t, MongoDB-t.
+
+\subsubsection{Frontend}
+A Frontend részt HTML/JavaScript-ben kell  megvalósítani, keretrendszernek pedig a Vue.js-t
+kell használni, mivel egy új, progresszív keretrendszer. A Vue.js használatához a következő utasításokat kell végrehajtani:
+\begin{itemize}
+	\item nodejs és npm letöltése és installálása
+	\item vue init webpack sapi3dtour
+	\item npm install vue-router
+	\item vue add vuetify -  protopype
+	\item npm install @fortawesome/fontawesome-free -D
+	\item npm install --save axios
+	\item npm install vue-3d-model --save
+\end{itemize}
+
+A Frontend a következő parancssor segítségével legyen indítható: npm run dev.
+
+\subsubsection{Backend}
+A Backend rész Java-ba legyen írva, keretrendszernek legyen használva a Spring Boot, mivel a segítségével nem kell külön foglalkozni a Maven és Gradle fájlok, Tomcat szinkronizálásával. Egy Java aplikáció a Spring Booton belüli létrehozásához a következő parancsokat kell teljesíteni:
+\begin{itemize}
+	\item A legújabb Java (15.0.1) instalálása az operációs rendszerre 
+	\item Spring Boot keretrendszer telepítése az operációs rendszerre
+	\item{\textit{ Spring Initializr}\footnotemark} segítségével létre hozni a projektet különböző dependenciák megadásával.
+	\footnotetext{https://start.spring.io/}
+	\item A következő dependenciák legyenek benne kezdetlegesen: MongoDB, Spring Security, Spring Web, Validation, Java Mail Sender
+	\item Fejlesztés során ezeket a dependenciákat lehet bővíteni
+\end{itemize}
+
+\subsubsection{Adatbázis}
+Az adatbázis legyen MongoDB NoSql adatbázis, amelyet az operációs rendszernek megfelelő Workbench-ben kezeljünk. Mivel az adatokat nem lehet egy séma alapján felállítani ezért van szükség a NoSQL adatbázisra. 
+
+Az adatbázis létrehozásához a következő lépéseket kell betartani:
+\begin{itemize}
+	\item Telepíteni a MongoDB adatbázis kezelő rendszert.
+	\item Telepíteni a MongoDB-hez tartozó Workbench-et
+	\item Létrehozni az adatbázist a Workbench segítségével
+	\item Kollekciókat nem itt hozzuk létre. Az a Spring Boot feladata.
+\end{itemize}
+
+\subsection{Használati rendszerkövetelmények}
+
+A rendszer használatához a felhasználóknak szüksége van Internetre és egy digitális eszközre amelyen megtudják nyitni a webalkalamzást. A digitális eszköz lehet laptom, asztaligép, tablet vagy akár telefon is. 
+
+A felhasználók nincsennek egy adott operációs rendszerhez kötve. Az operációs rendszer lehet Windows, Linux, Android és iOS is. Külön telefonos applikáció még nincs, viszont a telefonok található böngészők bármelyikében meglehet tekinteni az alkalmazást.
