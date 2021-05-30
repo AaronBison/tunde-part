@@ -30,6 +30,14 @@
 \urlstyle{same}
 
 \usepackage{listings}
+\usepackage{color}
+\definecolor{javared}{rgb}{0.6,0,0} % for strings
+\definecolor{javagreen}{rgb}{0.25,0.5,0.35} % comments
+\definecolor{javapurple}{rgb}{0.5,0,0.35} % keywords
+\definecolor{javadocblue}{rgb}{0.25,0.35,0.75} % javadoc
+\definecolor{delim}{RGB}{20,105,176}
+\definecolor{numb}{RGB}{106, 109, 32}
+\definecolor{string}{rgb}{0.64,0.08,0.08}
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
@@ -62,4 +70,32 @@
 	sensitive = true,
 	morekeywords={name, runs-on, on, jobs, build, run, steps, uses}
 }
-\lstset{}
+\lstset{language=Java,
+	basicstyle=\linespread{0.5}\fontsize{10}{10}\ttfamily,
+	keywordstyle=\color{javapurple}\bfseries,
+	stringstyle=\color{javared},
+	commentstyle=\color{javagreen},
+	morecomment=[s][\color{javadocblue}]{/**}{*/},
+	numbers=left,
+	numberstyle=\fontsize{10}{10}\tiny\color{black},
+	stepnumber=1,
+	numbersep=6pt,
+	tabsize=1,
+	showspaces=false,
+	showstringspaces=false}
+\lstdefinelanguage{json}{
+	basicstyle=\linespread{0.5}\fontsize{10}{10}\ttfamily,
+	stringstyle=\color{string},
+	numbers=left,
+	numberstyle=\fontsize{10}{10}\tiny\color{black},
+	stepnumber=1,
+	numbersep=5pt,
+	tabsize=1,
+	showspaces=false,
+	showstringspaces=false,
+	showspaces=false,
+	showtabs=false,
+	breakatwhitespace=true,
+	upquote=true,
+	morestring=[b]",
+}

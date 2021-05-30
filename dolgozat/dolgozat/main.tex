@@ -1,4 +1,4 @@
-\documentclass[12pt, twosides]{report}
+\documentclass[12pt]{report}
 
 \include{preamble}
 
@@ -19,21 +19,23 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
-\includepdf[pages={1,2,3}]{pdfs/allamvizsgaBorito.pdf}
+%\includepdf[pages={1,2,3}]{pdfs/allamvizsgaBorito.pdf}
+\includepdf[pages={1}]{tdk/elolap.pdf}
 
-\section*{Extras}
-\input{chapters/abstractRo}
-\pagebreak
+%\section*{Extras}
+%\input{chapters/abstractRo}
+%\pagebreak
 
-\includepdf[pages={6}]{pdfs/allamvizsgaBorito.pdf}
+%\includepdf[pages={6}]{pdfs/allamvizsgaBorito.pdf}
 
-\section*{Kivonat}
-\input{chapters/abstractHu}
-\pagebreak
+%\section*{Kivonat}
+%\input{chapters/abstractHu}
+%\pagebreak
+\includepdf[pages={1}]{tdk/kivonatTDK.pdf}
 
-\section*{Abstract}
-\input{chapters/abstractEn}
-\pagebreak
+%\section*{Abstract}
+%\input{chapters/abstractEn}
+%\pagebreak
 
 \pagenumbering{gobble}
 
@@ -53,37 +55,28 @@
 \chapter{Szakirodalom áttekintése}
 \input{chapters/literature}
 
-\chapter{Követelmény specifikáció}
-\input{chapters/specificationRequirments/userRequirements.tex}
-\input{chapters/specificationRequirments/systemsRequirements.tex}
-\input{chapters/functionalities.tex}
-
-\chapter{Tervezés}
-\input{chapters/planning/systemarchitecturaBig.tex}
-\input{chapters/planning/systemarchitecturaLittle.tex}
-
 \chapter{Technológiai áttekintés}
 \input{chapters/technologies/databases.tex}
 \input{chapters/technologies/frameworks.tex}
 
-\chapter{Használt technológiák}
+\chapter{Követelmény specifikáció}
+\input{chapters/specificationRequirments/userRequirements.tex}
+\input{chapters/specificationRequirments/systemsRequirements.tex}
 
-%Terv
+\chapter{Tervezés}
+\input{chapters/planning/systemarchitecturaBig.tex}
+\input{chapters/planning/systemarchitecturaLittle.tex}
+\input{chapters/planning/develpomentStep.tex}
+\input{chapters/planning/modulsDescription.tex}
+%\input{chapters/planning/database.tex}
+\input{chapters/planning/versionControl.tex}
 
-%\chapter{Modulok leírása}
-%\chapter{Adatbázis leírása}
-%\chapter{UI terv}
-%\chapter{Proiect menegment}
-%\chapter{Verzió követés}
-
-\chapter{Felhsználói felület bemutatása}
+\chapter{A felhasználói felület bemutatása}
 \input{chapters/executions.tex}
 
-%következtetés
 \chapter{Összefoglalás}
 \input{chapters/summary}
-
-\chapter{Továbbfejlesztési lehetőségek}
+\input{chapters/developFurther}
 
 \addcontentsline{toc}{chapter}{Irodalomjegyzék}
 \bibliographystyle{ieeetr}

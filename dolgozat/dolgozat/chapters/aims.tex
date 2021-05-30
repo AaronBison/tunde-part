@@ -1,17 +1,19 @@
-Elsődleges cél az volt, hogy legyen egy felület ahol a Sapientia Erdélyi Magyar Tudományegyetem Marosvásárhely-i karának a 3D modelljét megtudjuk jeleníteni. Ez mellett fontos volt az is, hogy az alkalmazás ne legyen bonyolult. Legyen minél egyszerűbb, átláthatóbb, használhatóbb. Hiszem azt, hogy egy egyszerűbb rendszer használatosabb mint egy bonyolultabb.
+A projekt célja, hogy a felhasználók távolról is megtudják nézni az egyetemet. Ez elsősorban az új felvételizőknek és az első éves egyetemistáknak lenne hasznos, mivel ez által már otthon neki foghatnak áttekinteni az egyetem különböző részeit mint például, hogy hol található egy adott tanszék, vagy hol található a dékáni hivatal, vagy hogy hol található a könyvtár. Ilyen alkalmazás hasznos lehet úgy a diákok mint a tanárok, szakkoordinátorok számára, hiszen rengeteg apró de gyakori kérdésben tud segítséget nyújtani. Ugyanakkor egy egyetemen belül sokszor megfordulnak kutatók, vendég tanárok, külföldi diákok (Erasmus) így számukra is hasznos lehet egy ilyen jellegű alkalmazás.
 
-Elgondolkodtam azon is, hogy szükséges-e regisztráció majd bejelentkezés minden felhasználó részére. Idővel rájöttem, hogy ez nem szükséges hiszen ez az alkalmazás mindenki számára nyitott kell legyen, mivel az a cél, hogy megmutassuk az egyetemet belülről. Így a regisztrációs ötlet részt teljesen elvetettem.
+Fontos szempont, hogy a felület legyen elérhető majdnem minden okos eszközön, ezért határoztunk úgy hogy a projekt egy webalkalmazás legyen, mivel ezt úgyan úgy meglehet nézni telefonon, számítógépen, laptopon.
 
-Habár a regisztrációs részt teljesen elvetettem eszembe jutott, hogy az alkalmazáson néha kell frissíteni ezért kellenek egyedi felhasználók is amelyek elérik az alkalmazás azon részeit amit más nem. Így jött az ötlet, hogy csak kimondottan bejelentkezés lesz és az új user-ket egy adott státusszal rendelkező user felhasználó tud hozzá rendelni. Ez azt jelenti, hogy a visitorból(látogató) lesz egyedi felhasználó. Viszont ez a lehetőség nem mindenki számára biztosított.
+A cél megvalósításának az első lépése az volt, hogy készítsünk egy felület ahol a Sapientia Erdélyi Magyar Tudományegyetem Marosvásárhely-i karának a főépületének a 3D modelljét megtudjuk jeleníteni.
 
-Az egyedi felhasználók szempontjában is a legnagyobb cél az átláthatóság, egyszerűség, könnyen kezelhetőség. Ennek érdekében az a cél, hogy minden egyedi felhasználó számára csak az elérhető módosítási lehetőségek jelenjenek meg. Ezen azt kell érteni, hogy egy admin jogosultsággal rendelkező személy tud hozzáadni új egyedi felhasználót vagy akár törölni is, míg aki csak felhasználó jogosultsággal rendelkezik nem.
+A modell megjelenítése mellett az alkalmazás egyik legfőbb célja megvalósítani egy olyan funkciót, hogy "Vigyél el!". Ez a funkcionalitás azt jelenti, hogy az új egyetemista diák, vendég tanár, vendég hallgató vagy akár vendég kutató bejelöl egy adott helyiséget ahová szeretne eljutni az egyetem területén és az alkalmazás a modell segítségével megmutatja az oda vezető utat.
+
+Az alkalmazásnak szüksége van egy olyan funkcionalítás kivitelezésére is, ahol a felhasználók információkat (tanszékek, szakok, események) tudhatnak meg az egyetemmel kapcsolatban.
+
+Cél az is, hogy az egyetemről egy link gyűjtemény kerüljön be az alkalmazásba amellyel, útbaigazítást végzünk, olyan szempontból, hogyha valakit érdekel akár egy tanszék, hivatal vagy szak, akkor a linkre kattintva több információt tud meg az adott részről.
+
+A hiteles információk, linkek közzététele érdekében szükség van user menedzsmentre. Ez azt jelenti, hogy bejelentkező felhasználók fogják tudni, szerkeszteni, megadni esetleg törölni az egyetemmel kapcsolatos információkat. Ezek mellett ide tartozna a userek közötti menedzselés is, amely által létrejönnének szerepkörök, így bitosítva, hogy a user menedzsment megfelően fog végrehajtódni.
 
 A bejelentkező személyek számára biztosítani szeretném, a felhasználói adatok biztonságos eltárolását és kezelését is.
 
-Cél az is, hogy az egyetemről egy link gyűjtemény kerüljön be az alkalmazásba. Ezt úgy kell érteni, hogy az adott tanszékekről, szakokról egy bővebb leírást mutatni, úgy hogy a linkeken keresztül átkerülünk olyan oldalakra ahol megjelennek bővebb információk az adott dologról. Ezáltal a diákok jobban eltudják dönteni, hogy az a szak amelyet kiválasztanak mennyire lesz jó számukra.
-
-Mivel az alkalmazás első éves diákok számára készül és ők még nem ismerik az egyetem keretein belül szervezendő eseményeket sem, így az is a célok közé tartozik, hogy egy esemény naptárral is bővüljön az alkalmazás. Így az új diákok tisztában lehetnek, hogy milyen események lesznek, fogják tudni a helyszínt és dátumot is.
-
-Az alkalmazás egyik legfőbb célja megvalósítani egy olyan funkciót, hogy "Vigyél el!". Ez a funkcionalitás azt jelenti, hogy az új egyetemista diák, vendég tanár, vendég hallgató vagy akár vendég kutató bejelöl egy adott helyiséget ahová szeretne eljutni az egyetem területén és az alkalmazás a modell segítségével megmutatja az oda vezető utat.
+Mivel az egyetemre látogatók számára készül és ők még nem ismerik az egyetem keretein belül szervezendő eseményeket sem, így az is a célok közé tartozik, hogy egy esemény naptárral is bővüljön az alkalmazás. Így az új diákok tisztában lehetnek, hogy milyen események lesznek az egyetem területén.
 
 Szeretnék, egy olyan részt is biztosítani minden felhasználó számára ahol a saját véleményét tudja kifejteni. Ezen véleményeket figyelembe véve szeretném kijavítani az észlelt hibákat.

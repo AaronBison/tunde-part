@@ -1,0 +1,233 @@
+\section{Modulok leírása}
+
+Ebben a fejezetben a modulok leírásáról lesz szó. A Back-end-en megírt modulokról tudni kell, hogy minden modul rendelkezik egy controller-el, service-el és egy service implementatio-val. A controller biztosítja a kérések (GET, PUT, DELETE) megfelelő kezelését, és a megfelelő válasz visszaküldését is. A service egy interfész amelyet használ a controller. A service tartalmazza a metodusok deklarációját. A service implementatio a service-ből származik és ő felel a serviceben található deklarációknak az implementációjáért. 
+
+Ezen kívül megjelennek a modellek, amelyek az adatbázis táblákat írják le. Ezeket a modelleket egy-egy repository kezeli. A repository által tudunk az adatbázisban lévő adatokon módosítani, új adatokat hozzáadni, törölni és lekérdezni is. 
+
+A Back-end-en van bíztosítva az is, hogy egyes kéréseknél kötelező a bejelentkezés. Ezt úgy oldottam meg, hogy a kérés mellé kell egy Headert is csatolni, ami kell tartalmazzon egy Bearer Tokent. A Bearer Token egy generált kód, amely a User adataiból és az érvényességi időből áll össze, lásd \ref{btokenJSON} ábrát. A Header segítségével lesz igazolva a User, hogy bevan jelentkezve vagy sem. Ha a Header tartalmazza a Bearer tokent akkor a User be van jelentkezve különben nem. Ennek a segítségével tudja eldönteni a webszerver, hogy adott kérésekre milyen választ küldjön vissza, mivel a kérések megvannak különböztetve a Userek és a Visitorok között.
+
+	\begin{figure}[thp]
+		\centering         
+		\caption{Példa Bearer Tokenre}
+		\label{btokenJSON}
+		\begin{tabular}{c} 
+			\begin{lstlisting}[language=JSON]
+				{
+					"BearerToken" : "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2Vc2FwaTNkQGdtYWlsLm
+					NvbSIsImlhdCI6MTYxMzEzMDYzMiwiZXhwIjoxNjEzMjE3MDMyfQ.ob7gVGRZd2PoH2EGqP
+					2yBuysIO77x3C8OCDav9iJ4dWB7ks05gfEeYykvmtyB-YwRuxpD1d0VKm2lVlKfZUGw"
+				}
+			\end{lstlisting}
+		\end{tabular}
+	\end{figure}
+
+\subsection{Visitor fontosabb komponensei}
+\begin{itemize}
+	\item \textbf{Interakció a 3D modellel}
+Az interakciót a modellel gombok segítségével oldottuk meg. A gombok biztosítják az előre, hátra, jobbra, balra irányba való menést. A modell betöltéséért felelős Vue package által használt kamera poziciójának állításával tudtuk beállítani ezeket a lépés konfigurációkat.
+	
+	\item \textbf{"Vigyél el" funkció} 
+A "Vigyél el" funkció megvalósításánál is szintén létrehoztunk egy gombot amely két checkpoint között navigál el. De ezek mellett egy legördülő listát is megadtunk annak érdekében, hogy a Visitor tudja kiválasztani azt a helyet ahová szeretne menni. Ha kiválasztunk a legördülő listából egy helyet akkor az a bizonyos navigálós gomb azonnal megjelenik. A navigáció egy előre megírt tárolóból veszi ki a checkpointokat. Erről a részről viszont a kollégám (Blénesi Áron: Sapi3D tour – 3D model) dolgozatában \cite{aronDolgozat} lehet bővebben olvasni.
+	
+	\item \textbf{Fontosabb egyetemi helyek megtekintése} 
+A Visitorok megtekinthetik a Userek által megadott információkat. Viszont ezek az információk az adatbáziban vannak eltárolva így a Visitorok közvetlen nem tudják elérni. A webszerver segítségével a Front-end lekéri az adatokat az adatbázisból. A webszerver válaszként visszaküldi az adatokat a Front-endnek, amely a megkapott információkat megjeleníti a Visitorok számára. A "Vigyél el" funkció itt is megjelenik. A részlegek címei mellett megjelenik egy gomb amely segítségével a 3D modellen megmutatódik a bejárattól az odavezető út.
+\end{itemize}
+
+\subsection{User fontosabb komponensei}
+\begin{itemize}
+	\item \textbf{Jelszó hitelesítése}
+A regisztráció véglegesítéséhez szükséges a jelszó hitelesítése, amely azt takarja hogy a User megkell adja a saját jelszavát és a validációs codeTokent, amelyet a Front-end elküld egy JSON objektumként a Back-end-nek,lásd a \ref{passJSON} ábrán. Amint látható a jelszót nem kodólva küldtem mivel a bejelentkezéshez szükséges e-mail cím és jelszó páros nem jelenik meg együttesen, így a feltörés nem történhet meg. Ezek mellet a továbbiakban belesz vezetve a HTTPS prtokoll, amely egy TLS 1.2 réteget fog használni 1024 bites kulcsokkal. Így a rendszer feltörése ngyon nehéz lesz.
+	\begin{figure}[thp]
+		\centering
+		\caption{Front-end-ről érkező jelszó JSON objektum}
+		\label{passJSON}
+		\begin{tabular}{c}
+			\begin{lstlisting}[language=JSON]
+				{
+					"codeToken" : "-WfqPn0u68StNLg_m1Jnn4g8KjVb2QuO",
+					"password" : "Almakorte12",
+					"passwordAgain" : "Almakorte12"
+				}
+			\end{lstlisting}
+		\end{tabular}
+	\end{figure}
+	
+Ezek után a Back-end fogadja az adatokat és elkezdi feldolgozni. A feldolgozás első fázisa a különböző ellenőrzések, amelyeknek többsége a codeToken-t ellenőrzik.  A codeToken az adatbázisban van eltárolva és automatikusan generálódik amikor a regisztráció történik és ezt kell a User megadja a Front-end részen. A \ref{passValCheck} ábrán az első sortól a hatodik sorig történő ellenőrzés azt vizsgálja, hogy a codeToken amit a felhasználó megadott létezik-e. Ha létezik akkor megy a következő lépésre, ha nem akkor visszaküld egy hibát. A második ellenőrzés a 12. sortól a 15. sorig történik és azt ellenőrzi, hogy ezzel a codeTokennel már volt-e megadva jelszó. Ha igen akkor hibát küld vissza a Back-end, ha nem akkor lépik tovább az ellenőrzés fázison. A harmadik ellenőrzés a codeToken lejárati idejének ellenőrzése, amelyet a 17. sortól a 19. sorig láthatunk. Itt is ha az idő lejárt akkor hibát kapunk válasznak, ha nem lépünk tovább. A 20-as sortól a 25. sorig történő ellenőrzés arról szól, hogy a két megadott jelszó egyezik-e. Ha egyezik akkor átlépünk a második fázisba.
+	\begin{figure}[thp]
+		\centering
+		\caption{Jelszó hitelesítés ellenőrzése}
+		\label{passValCheck}
+		\begin{tabular}{c}
+			\begin{lstlisting}[language=JAVA]
+				if(!registartionRepository.existsByToken(
+					passwordRequest.getCodeToken()
+				))
+				{
+					throw new Exception("Wrong token!");
+				}
+				Registration registartion = registartionRepository
+					.findByToken(passwordRequest.getCodeToken())
+					.orElseThrow(() -> new RuntimeException(
+						"Error: Registartion is not found."
+					));
+				if (registartion.isEnable())
+				{
+					throw new Exception("Already exist!");
+				}
+				Calendar cal = Calendar.getInstance();
+				if (registartion.getValidDate().before(cal.getTime())) {
+					throw new Exception("Time done!");
+				}
+				if (!passwordRequest.getPassword().equals(
+					passwordRequest.getPasswordAgain()
+				))
+				{
+					throw new Exception("The passwords not equals!");
+				}
+			\end{lstlisting}
+		\end{tabular}
+	\end{figure}
+	
+A sikeres ellenőrzések után következik a jelszó elmentése az adatbázisba, amelyre láthatunk kód részletet a \ref{passSaving} ábrán. Látható a kódnak a 4. sorában, hogy egy encoder segítségével kódoljuk a jelszót és csak úgy mentjük el az adatbázisba.
+	\begin{figure}[thp]
+		\centering
+		\caption{Jelszó mentése}
+		\label{passSaving}
+		\begin{tabular}{c}
+			\begin{lstlisting}[language=JAVA]
+				Iterator<User> itr = registartion.getUser().iterator();
+				BCryptPasswordEncoder passwordEncoder = 
+						new BCryptPasswordEncoder();
+				String encodedPassword = passwordEncoder.encode(
+					passwordRequest.getPassword()
+				);
+				User user = userRepository.findById(itr.next()
+							  .getId()
+							  .toHexString())
+							 .orElseThrow(() -> new RuntimeException(
+									"Error: User is not found."
+							  ));
+				user.setPassword(encodedPassword);
+				userRepository.save(user);
+				registartion.setEnable(true);
+				registartionRepository.save(registartion);
+			\end{lstlisting}
+		\end{tabular}
+	\end{figure}
+\pagebreak
+	\item \textbf{Bejelentkezés} 
+A bejelentkezés egy regisztrált e-mail címmel és egy hitelesített jelszó párossal történik. A Front-end elküldi az adatokat JSON objektumként a Back-end-nek, amely feldolgozza, lásd a \ref{login} ábrán. A beépített authentication manager segítségével létrehozunk egy autentikációs párost a megadott e-mail címből és jelszóból. Security Context Holder segítségével ellenőrizzük, hogy az autentikációs páros benne van-e az adatbázisba. Ha benne van akkor, a beépíett jwt (JSON Web Token) token generálással generálunk egy Bearer Tokent. Ezek után lekérdezzük az User adatatit a getPrincipal() függvénnyel. A következő megkeressük, hogy a User milyen szerepkörrel rendelkezik. Az utolsó lépésben válaszként vissza küldjük a Bearer Tokent, a User id-t és a szerepkört. A Front-end megkapja ezeket az adatokat és eltárolja a localstorage nevezetű tárolóhelyben. 
+	\begin{figure}[thp]
+		\centering
+		\caption{Bejelentkezés kód szinten}
+		\label{login}
+		\begin{tabular}{c}
+			\begin{lstlisting}[language=JAVA]
+				Authentication authentication = 
+					authenticationManager.authenticate(
+						new UsernamePasswordAuthenticationToken(
+							loginRequest.getEmailAddress(), 
+							loginRequest.getPassword()
+						)
+				);
+				SecurityContextHolder.getContext()
+									 .setAuthentication(authentication);
+				String jwt = jwtUtils.generateJwtToken(authentication);
+				UserDetailsImpl userDetails = 
+				(UserDetailsImpl) authentication.getPrincipal();		
+				List<String> roles = userDetails.getAuthorities()
+						   			.stream()
+						   			.map(item -> item.getAuthority())
+						   			.collect(Collectors.toList());
+				return ResponseEntity.ok(new LoginResponse(jwt, 
+							  		userDetails.getId(), 
+							  		roles)
+				);
+			\end{lstlisting}
+		\end{tabular}
+	\end{figure}
+
+	\item \textbf{Saját adatok szerkesztése}
+A User tudja szerkeszteni saját adatatit, amelyeket újra küld a Front-end a Back-endnek. A Back-end a User id-ja alapján megkeresi az adatbázisba a Usert és modosítja az adatokat.
+	
+	\item \textbf{Egyetemi részleg, szak és egyebek megadása}
+Mindhárom elem megadása hasonló logika alapján épül fel. A Front-end küld egy JSON objektumot, amelyet a Back-end dolgoz fel. A JSON objektumok változnak. Az egyetemi részleg (tanszék, hivatal) esetén a JSON objektum tartalmazza a részleg nevét és egy linket. A szak megadásánál megjelenik a szak név, szakkoordinátor név, szakkoordinátor e-mail cím, egy terem szám, egy link és egy tanszék. Az egyebek megadásánál, a User dönti el, hogy milyen információkat ad meg. Lehet több link, több szöveg, cím is. A Back-end amiután megkapta ezeket a JSON objektumokat feldolgozza őket. A \ref{addDepartment} ábrán láthatjuk, hogy a Back-end hogyan ad hozzá egy új részleget. A másik két esetben is hasonlóan történik, csak az adatok változnak. Az első részben levan ellenőrízve, hogy a részleg létezik-e, ha nem létezik akkor departmentRepository segítségével elmentjük az adatbázisba, különben nem sikerül az elmentés és egy hibát fog visszatéríteni a Back-end a Front-endnek.
+\begin{figure}[thp]
+	\centering
+	\caption{Példa részleg megadásra kód szinten}
+	\label{addDepartment}
+	\begin{tabular}{c}
+		\begin{lstlisting}[language=JAVA]
+			if(departmentRepository.existsByDepartmentName(
+				depReq.getDepartmentName()
+			))
+			{
+				throw new Exception("Department already exist!");
+			}
+			try {
+				Department dep = new Department(
+						depReq.getDepartmentName(), 
+						depReq.getLink()
+				);
+				departmentRepository.save(dep);
+				
+			} catch (Exception e) {
+				System.out.println(e);
+				throw new Exception("Wrong add department!");
+			}
+		\end{lstlisting}
+	\end{tabular}
+\end{figure}
+
+	\item \textbf{Egyetemi részleg és szak szerkesztése}
+Az egyetemi részleg és szak szerkesztése hasonló módon működik mint a hozzáadás, a Front-end küld egy-egy JSON objektumot a Back-end-nek majd a Back-end fogadja és feldolgozza. Első sorban megkeresi az adott részleget, tanszéket majd a megkapott objektum elemeit átírja majd elmenti.
+	
+	\item \textbf{Kijelentkezés}
+Ha a User a Front-enden a kijelentkező gombra kattint, akkor a Front-enden tárolt id-ja és a Bearer Tokenje kitörlődik a localstorageból, amely egy tároló hely és a Bejelentkezésnél tárolt adatokat tartalmazza (user id, szerepkör - admin vagy user, a Bearer token). 
+	
+\end{itemize}
+\subsection{Admin fontosabb komponensei}
+\begin{itemize}
+	\item \textbf{User regisztrálása} 
+Az alkalmazás karbantartását a Userek végzik, ezért szükség volt a regisztrálásra. A regisztrálás elvégézéséhez az Admin megkell adja a User teljes nevét, egy valid e-mail címet, egy telefonszámot és a User szerepkörét is. A valid e-mail címre azért van szükség mivel a regisztráció véglegesítéséhez kell hitelesíteni a User jelszavát. Ezt a User tudja megtenni, az e-mailel amit a webszerveren belüli Back-end rész küld el, lásd \ref{emailSending} ábrán.
+	\begin{figure}[thp]
+		\centering
+		\caption{E-mail küldés}
+		\label{emailSending}
+		\begin{tabular}{c}
+			\begin{lstlisting}[language=JAVA]
+				MimeMessage mimeMessage = emailSender.createMimeMessage();
+				MimeMessageHelper helper = 
+					new MimeMessageHelper(mimeMessage, "utf-8");
+				String htmlMsg = "Udvozoljuk! 
+					Ont sikeresen jelentkeztettek az 
+					alkalmazas hasznalatara. 
+					A jelentkezes veglegesitesere 
+					a kovetkezo linken adja meg jelszavat! 
+					http://localhost:8080/#/password 
+					Azonosito kodja a kovetkezo:"
+					+ token + 
+					" Figyelem a link elerhetosege korlatozott!";
+			\end{lstlisting}
+		\end{tabular}
+	\end{figure}
+	
+Az e-mailban megjelenik egy oldal, ahol a hitelesítés kell megtörténjen és egy validációs token amely igazolja a Usert. A validációs tokent a Back-end generálja ki. A kigenerálás folyamatát meglehet tekinteni a \ref{tokenGen} ábrán. A token maga bájtokból épül fel amelyeket Spring Boot beépített secureRandom.nextBytes függvényével generáltattunk ki. Ezt majd a szintén beépített encoder segítségével kódoltunk. A kódolt tokent szintén lementettük az adatbázisba a névvel, e-mail címmel, a telefonszámmal és a User szerepkörrel.
+	\begin{figure}[thp]
+		\centering
+		\caption{Validációs token generálása}
+		\label{tokenGen}
+		\begin{tabular}{c}
+			\begin{lstlisting}[language=JAVA]
+				private String generateNewToken() {
+					byte[] randomBytes = new byte[24];
+					secureRandom.nextBytes(randomBytes);
+					return base64Encoder.encodeToString(randomBytes);
+				}
+			\end{lstlisting}
+		\end{tabular}
+	\end{figure}
+	
+	\item \textbf{User törlése}
+A User törlését is szintén az Admin végzi. A törlés e-mail cím alapján történik. A Front-end-en az Admin elküldi a kérést, hogy az adott Usert kiszeretné törölni. A kérésben van egy JSON paraméter amely a kitörlendő User e-mail címét tartalmazza. Kérést a Back-end feldolgozza és vissza küld egy választ a Front-end-nek, hogy a törlés sikeres volt vagy sem.
+\end{itemize}

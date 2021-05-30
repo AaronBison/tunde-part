@@ -1,47 +1,41 @@
 \section{Rendszerkövetelemények}
 
-\subsection{Fejlesztési rendszerkövetelmények}
-A rendszer egy webalkalmazásként legyen fejlesztve. Az alkalmazás fejlesztéséhez első sorban szükséges legalább Windows 10 operációs rendszer, vagy bármely operációs rendszer amely támogatja a Vue.js-t, Spring Boot-t, MongoDB-t.
-
-\subsubsection{Frontend}
-A Frontend részt HTML/JavaScript-ben kell  megvalósítani, keretrendszernek pedig a Vue.js-t
-kell használni, mivel egy új, progresszív keretrendszer. A Vue.js használatához a következő utasításokat kell végrehajtani:
+\subsection{Funkcionális követelmények}
+\subsubsection{Visitor}
 \begin{itemize}
-	\item nodejs és npm letöltése és installálása
-	\item vue init webpack sapi3dtour
-	\item npm install vue-router
-	\item vue add vuetify -  protopype
-	\item npm install @fortawesome/fontawesome-free -D
-	\item npm install --save axios
-	\item npm install vue-3d-model --save
+	\item A használathoz a digitális eszköz lehet laptop, asztaligép, tablet vagy akár telefon is. 
+	\item Interakció a 3D modellel a megjelenített gombok használatával. A gombok bíztosítják az előre hátra jobbra és balra menést.
+	\item A "Vigyél el" funkció használata. A modell fölött található legördülő listából való kiválasztás esetén egy új gomb megjelenésével és annak használatával látható lesz az út a bejárattól a kiválasztott helyre.
+	\item Fontos egyetemi helyek menüpont megtekintése, ahol az adatbázsban található adatok jelenítődnek meg. A címkre kattintva megjelennek a bővebb információt tartalmazó linkek. A címek mellet megjelenik egy térkép ikon is, amelyre ha rákattintanak akkor vissza kerülnek a 3D modellhez és a "Vigyél el" funkciót használva ismét megmutatódik az út a bejárattól a kiválasztott helyig.
 \end{itemize}
 
-A Frontend a következő parancssor segítségével legyen indítható: npm run dev.
-
-\subsubsection{Backend}
-A Backend rész Java-ba legyen írva, keretrendszernek legyen használva a Spring Boot, mivel a segítségével nem kell külön foglalkozni a Maven és Gradle fájlok, Tomcat szinkronizálásával. Egy Java aplikáció a Spring Booton belüli létrehozásához a következő parancsokat kell teljesíteni:
+\subsubsection{User}
 \begin{itemize}
-	\item A legújabb Java (15.0.1) instalálása az operációs rendszerre 
-	\item Spring Boot keretrendszer telepítése az operációs rendszerre
-	\item{\textit{ Spring Initializr}\footnotemark} segítségével létre hozni a projektet különböző dependenciák megadásával.
-	\footnotetext{https://start.spring.io/}
-	\item A következő dependenciák legyenek benne kezdetlegesen: MongoDB, Spring Security, Spring Web, Validation, Java Mail Sender
-	\item Fejlesztés során ezeket a dependenciákat lehet bővíteni
+	\item Jelszó hitelesítése. Az e-mail-ben kapott validációs tokent felhasználva a jelszó hitelesítés oldalon megadni a jelszót, a megfelelő formátummal (Legyen benne legalább kisbetű, nagybetű és szám. Legyen legalább 5 karakter hosszú). Az e-mailben kapott validációs token lejárati idővel rendelkezik.
+	\item Bejelentkezés a regisztrált e-mail és hitelesített jelszó megadásával történik, amint a User megnyomja a "Bejelentkezés" gombot.
+	\item Hozzáférés az adatbázisban tárolt adatokhoz.
+	\item User képes szerkeszteni a saját adatait (név, e-mail cím, telefonszám), ha rákattint a jobb sarokban lévő ember ikonra. Ezek után egy ablakba előjönnek az adatai amelyek szerkeszthetőek. A szerkesztés után a "Adatok szerkesztése" gombra kattintva az adatok bekerülnek az adatbázisba. A megadott adatok elegett kell tegyenek a megfelelő formátumoknak.
+	\item Az egyetemi részleg megadása, szerkesztése funkciónál egy rádiógomb segítségével ki tudja választani a User, hogy új részleget szeretne megadni, vagy már egy létező részleget szeretne módosítani. Ha a részleg megadását választja akkor megkell adja a részleg nevét (példaul: Dékáni Hivatal) és egy {\textit{linket}\footnotemark} amely elvisz a részleget leíró oldalra. Ezek után a "Hozzáadás" gomb megnyomásával az adatok bekerülnek az adatbázisba. A szerkesztés esetén lehet módosítani a nevet is és a linket is. A "Szerkesztés" gomb segítségével az adatbázisban szereplő adatok átíródnak.
+	\footnotetext{https://ms.sapientia.ro/hu/munkatarsak/dekani-hivatal}
+	\item A szak megadása és szerkesztése funkciónál szintén egy rádiógomb segítségével tudja eldönteni, hogy megadni szeretne egy új szakot, vagy a meglévőket szeretné modósítani. Az új szak megadásánál a következő információkat kell megadni: szak neve; szakkoordinátor neve; szakkoordinátor e-mail címe; terem száma, ahol a szakkoordinátor tudja fogadni az érdeklődőket; egy lineket a szak részletes leírásához és egy legördülő lista segítségével, hogy melyik tanszékhez tartozik az adott szak. A "Hozzáadás" gomb segítségével az adatok bekerülnek az adatbázisba. A szerkesztés esetén a fent említett adatokat lehet szerkeszteni. A szerkesztés akkor lesz végleges ha a User megnyomja a "Szerkesztés" gombot.
+	\item Egy részleghez, nem csak szakot lehet megadni hanem eseményeket, tevékenységeket is ha az Egyebek hozzáadását használja a User. Itt megkell adni egy legördülő lista segítségével, hogy a mely részleghez tartozik (például Villamosmérnöki Tanszék), egy nevet (például: Sapi-Line-Tracer), és egy lineket ahol több információ van leírva az eseményről, tevékenységről. Itt is szintén a "Hozzáadás" gomb megnyomásával kerülnek be az adatok az adatbázisba.
+	\item A User ha elvégezte a hozzáadásos, szerkesztéses feladatait, akkor a jobb felső sarokban találahtó "Kijelentkező" gombra kattintva ki is tud jelentkezni.
 \end{itemize}
 
-\subsubsection{Adatbázis}
-Az adatbázis legyen MongoDB NoSql adatbázis, amelyet az operációs rendszernek megfelelő Workbench-ben kezeljünk. Mivel az adatokat nem lehet egy séma alapján felállítani ezért van szükség a NoSQL adatbázisra. 
-
-Az adatbázis létrehozásához a következő lépéseket kell betartani:
+\subsubsection{Admin}
 \begin{itemize}
-	\item Telepíteni a MongoDB adatbázis kezelő rendszert.
-	\item Telepíteni a MongoDB-hez tartozó Workbench-et
-	\item Létrehozni az adatbázist a Workbench segítségével
-	\item Kollekciókat nem itt hozzuk létre. Az a Spring Boot feladata.
+	\item Hozzáférés az adatbázisban tárolt adatokhoz.
+	\item Userek regisztrálása és az adatok validálása a teljes név, e-mail cím, telefonszám megadásával. Az e-mail cím és a telefonszám eleget kell tegyen a megfelelő formátumoknak. A telefonszám csak számokból állhat és 10 karakterből kell álljon. Ezek után a "Hozzáadás" gomb lenyomásával az adatok eltárolása a NoSql adatbázisba és egy e-mail küldés a Usernek a jelszó hitelesítéséhez, amely tartalmaz egy validációs tokent, ami a regisztráció pillantában generálódik.
+	\item Userek törlése: a User e-mail címének kiválasztása egy legördülő listából, majd a "Felhasználó keresése" gomb lenyomásával a User adatainak megkeresése. Ezek után a "Törlés" gomb használatával a User adatainak kitörlése az adatbázisból.
 \end{itemize}
 
-\subsection{Használati rendszerkövetelmények}
+\subsection{Nem funkcionális követelmények}
 
-A rendszer használatához a felhasználóknak szüksége van Internetre és egy digitális eszközre amelyen megtudják nyitni a webalkalamzást. A digitális eszköz lehet laptom, asztaligép, tablet vagy akár telefon is. 
-
-A felhasználók nincsennek egy adott operációs rendszerhez kötve. Az operációs rendszer lehet Windows, Linux, Android és iOS is. Külön telefonos applikáció még nincs, viszont a telefonok található böngészők bármelyikében meglehet tekinteni az alkalmazást.
+\begin{itemize}
+\item A rendszer használatához a felhasználóknak szüksége van Internetre és egy digitális eszközre amelyen megtudják nyitni a webalkalamzást. 
+\item A felhasználók nincsennek egy adott operációs rendszerhez kötve. 
+\item Az operációs rendszer lehet Windows, Linux, Android és iOS is. 
+\item Külön telefonos applikáció még nincs, viszont a telefonokon található böngészők bármelyikében meglehet tekinteni az alkalmazást.
+\item A regisztrált felhasználók adatai egy NoSQL adatbázisban (MongoDB) vannak eltárolva, amely nem lokálisan van jelen a felhasználók eszközén.
+\item Az azonosítás a Spring Boot beépített autetikációs moduljával történik meg.
+\end{itemize}

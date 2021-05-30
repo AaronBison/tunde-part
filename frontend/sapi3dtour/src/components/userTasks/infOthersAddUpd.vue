@@ -4,7 +4,7 @@
         <v-divider class="mx-5 my-3"></v-divider>
         <v-radio-group class="mx-5 " v-model="selectResult" row>
             <v-radio label="Hozzáadás" value="add"></v-radio>
-            <v-radio label="Szerkesztés" value="update"></v-radio>
+            <!-- <v-radio label="Szerkesztés" value="update"></v-radio> -->
         </v-radio-group>
         <InfOthersAdd v-if="this.selectResult == 'add' "/>
     </v-card>

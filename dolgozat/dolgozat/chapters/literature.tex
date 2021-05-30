@@ -1,6 +1,6 @@
 A világhalón való keresés során sok tanulmányt találtam, amely leírja hogy egy virtuális túra egyetemeken, múzeumokban, különböző látványosságoknál mekkora befolyásoló képességgel rendelkezik. Megtudhattam, hogy sok egyetemnek van ilyen jellegű túrája más más típusban. Van amelyik egyetem a virtuális túrát képek sorozatában képzelte el, van amelyik panoráma képekben, van amelyik videókban és nem utolsó sorban jönnek azok akik 3D modellekkel valósították meg az egyetemük virtuális túráját. A következő alfejezetekben bemutatok pár hasonló témájú alkalmazást, megközelítést.
 
-\section{Telkom Egyetem kampusza 3D túrával}
+\section{Telkom Egyetem 3D kampusza}
 
 Indonézia egyik legnagyobb magánegyeteme a {\textit{Telkom University}\footnotemark} \cite{perdana2019implementation} is a virtuális 3D túrát alkalmazza az új diákok oda vonzására. A túrák tartalmaznak videó és képsorozatokat plusz 3d alapú modelleket is. Tulajdonképpen egy 3D web alapú túrát dolgoztak ki a 3D Vista használatával.
 
@@ -8,29 +8,27 @@ Indonézia egyik legnagyobb magánegyeteme a {\textit{Telkom University}\footnot
 
 Miközben fejlesztették, ezt a túrát kutatásokat végeztek, hogy mivel lenne jó elkészíteni, más egyetemek milyen technológiákat alkalmaztak hazai területeken. A következő eredmények születtek: 
 \begin{itemize}
-	\item RF Rahmat: épületekről információ szolgáltatásokat kiviteleztek Universitas Sumatera Utara (USU) környezetben.
-	\item Moloo: virtuális túrát hoz létre a WebGL és a SketchUp segítségével.
-	\item Fujita: Mobile robotokat használ virtuális túrák elkészítéséhez.
+	\item R F Rahmat előadó a Universitas Sumatera Utara (USU) egyetemen és társai: Az USU egyetem épületeiről információ szolgáltatásokat kivitelezetek.
+	\item Moloo előadó a Mauritius-i egyetemen és társai: virtuális túrát hoztak létre a WebGL és a SketchUp segítségével.
+	\item Fujita a Tokió-i egyetem tagja és társai: mobilis robotokkal készítettek virtuális túrákat.
 \end{itemize}
 
-Szeliski R. aki a fotó technikákat mutatta be, szerint is a nagy felbontású fotók és a 3D modellek együttes használatával nagyobb érdeklődési kört lehet elérni, mint ha csak külön használnák őket. 
+Szeliski R. aki a fotó technikákat mutatta be \cite{perdana2019implementation}, szerint is a nagy felbontású fotók és a 3D modellek együttes használatával nagyobb érdeklődési kört lehet elérni, mint ha csak külön használnák őket. 
 Az egyetem kiemelt kutatási stratégia terve volt, hogy ne csak a diákokat vonzzák magukhoz, hanem az IKT (Információs és kommunikációs technológia) technológiák fejlesztésében is érjenek el fejlődéseket. Ennek érdekében használtak 3D modelleket és nagy felbontású fotókat együttesen. A diákok számára nagy érdekességnek számított és ezzel elérték azt, hogy a diákok érdeklődését felkeltették.
 
-\section{Mauritiusi Egyetemen 3D virtuális túra}
+\section{Mauritiusi egyetem 3D túrája}
  
-{\textit{Mauritius}\footnotemark}-i egyetem \cite{moloo20163d} is megalkotta saját 3D virtuális túráját. A megalkotást WebGL segítségével történt. A WebGL (Web Graphics Library) könyvtár 3D-s valós idejű megjelenítést kínál. A WebGL az OpenGL-ből származik , és API-t biztosít a 3D grafikához.  A WebGL nem teljesen stabil  és néhány algoritmusa nem hatékonyan látja el a feladatait. Különböző böngészők memóriahasználata és és végrehajtási ideje eltérő amelyek mellékhatásokat idézhetnek elő a megírt alkalmazásban.
+ A {\textit{mauritiusi}\footnotemark} egyetem \cite{moloo20163d} is megalkotta saját 3D virtuális túráját. A megalkotást WebGL segítségével történt. A WebGL (Web Graphics Library) könyvtár 3D-s valós idejű megjelenítést kínál. A WebGL az OpenGL-ből származik , és API-t biztosít a 3D grafikához.  A WebGL nem teljesen stabil  és néhány algoritmusa nem hatékonyan látja el a feladatait. Különböző böngészők memóriahasználata és és végrehajtási ideje eltérő amelyek mellékhatásokat idézhetnek elő a megírt alkalmazásban.
 
 \footnotetext{https://www.middlesex.mu/about-mdx-mauritius/campus-virtual-tour}
 
 Az egyetem is szintén valós időbeni megjelenítést alkalmaz és a megfelelő működés érdekében tesztelték az alkalmazást teljesítmény szempontjából, amikor több felhasználó csatlakozik egyidejűleg.  A teszt eredményiből az egyetem arra következtetett, hogy minél összetettebb az objektum és ha még textúrával is rendelkezik akkor a teljesítmény nagyon csökken mivel a modell így nagyon nagy erőforrást igényel. 
 
-Az egyetem a megvalósításnak az egyik legegyszerűbb formáját választotta amellyel sikeresen elérték céljukat. Megalkották a virtuális túrájukat és ezt felhasználva felkeltették az jövendőbeli egyetemisták érdeklődését.
+\section{Virtuális rendszerek az Old-Segeberg városházán}
 
-\section{Virtuális rendszerek az Old-Segeberg város házán}
+A Németország-i Old-Segeberg \cite{kersten2017development} város házának is készítettek ilyen virtuális túrát egy Windows alapú interaktív szoftvert és egy virtuális valóság alkalmazást HTC Vive rendszerekkel. Mindkét rendszert kipróbálták a látogatók. A visszajelzések alapján van jövője az ilyen jellegű alkalmazásoknak is. A virtuális múzeum csúcspontjai a műalkotások pontos ábrázolása. 
 
-A Németország-i Old-Segeberg \cite{kersten2017development} város házának is készítettek ilyen virtuális túrát egy Windows alapú interaktív szoftvert és egy virtuális valóság alkalmazást HTC Vive rendszerekkel. Mindkét rendszert kipróbálták a látogatók és a visszajelzések alapján van jövője az ilyen jellegű alkalmazásoknak is. A virtuális múzeum csúcspontjai a műalkotások pontos ábrázolása. 
-
-A Windows alapú interaktív szoftvert egy PC számítógép segítségével tekinthették meg a felhasználók. A lényege az volt, hogy az oda látogató nem lépett be teljesen a virtuális világba csak kívülről tekintett bele míg a HTC Vive applikáció segítségével már a felhasználó végig ment a város házán virtuálisan. HTC Vive applikáció több interaktivitást nyújt a felhasználóknak viszont mindkét kifejlesztett rendszernek megvannak az előnyei és a hátrányai is. Majdnem minden háznál található egy PC számítógép így a Windows alapú rendszert könnyebben népszerűbbé lehet tenni mint a HTC Vive-ot.
+A Windows alapú interaktív szoftvert egy asztali számítógép segítségével tekinthették meg a felhasználók. A lényege az volt, hogy az oda látogató nem lépett be teljesen a virtuális világba csak kívülről tekintett bele míg a HTC Vive applikáció segítségével már a felhasználó végig ment a város házán virtuálisan. HTC Vive applikáció több interaktivitást nyújt a felhasználóknak viszont mindkét kifejlesztett rendszernek megvannak az előnyei és a hátrányai is. Majdnem minden háznál található egy PC számítógép így a Windows alapú rendszert könnyebben népszerűbbé lehet tenni mint a HTC Vive-ot.
 
 \section{Kuba-i Nemzeti Művészeti iskola virtuális túrája}
 
@@ -38,9 +36,9 @@ Az innovatív technológiák új lehetőségeket biztosítottak a kulturális he
 
 Ez a virtuális túra kompatibilis számítógépekkel, táblagépekkel és egyéb mobil eszközökkel. A virtuális túrában be vannak építve pdf-ek, linkek amelyek az adott részről bővebb információkat szolgáltatnak a túrázóknak. Összesen 14 gömbpanorámát, 96 hotspotot (műveletek pl. előre lépés, vissza lépés) és 40 linket. Ezen eszközök segítségével biztosítanak a felhasználóknak kényelmes virtuális túrázási lehetőséget. Az képernyőn megjelenik egy menü rendszer is amellyel tudjuk irányítani a túrát.
 
-Ezen tanulmány szerint ennek a túrának a célja az volt, hogy az Balettiskola fennmaradjon a következő nemzedékek számára is legalább virtuális közegbe. 
+Ezen tanulmány szerint ennek a túrának a célja az volt, hogy a Balettiskola fennmaradjon a következő nemzedékek számára is legalább virtuális közegbe. 
 
-\section{A játéktechnika alkalmazása virtuális túrák esetén}
+\section{Játéktechnika alkalmazása virtuális túrák esetén}
 
 A virtuális túrák információt nyújtanak multimédiás úton a felhasználóknak, azt a benyomást keltve hogy valós időben navigálnak különböző helyeken. Egy sikeres túra jelentése, hogy a felhasználó eltudja hinni, hogy ő habár virtuálisan is de járt abban az adott helyiségben. Ahhoz hogy ez a benyomás létre jőjön a modell pontos ábrázolást kell tartalmazzon az adott helyiségről. Ezen tanulmány szerint is az ilyen túrák felhasználhatóak létesítmények népszerűsítésére mivel egy interaktív élményt biztosítanak. Az ilyen jellegű túrákat össze lehet hasonlítani a számítógépes játékokkal is. Hiszen ezek a játékok annyiban különböznek, hogy nem valós időben és nem valós helyeken történnek. Persze vannak kivételek, ahol a játék egy egy része magába foglal egy valós helyszínt is. 
 

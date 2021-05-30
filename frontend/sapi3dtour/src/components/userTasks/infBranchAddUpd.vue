@@ -1,6 +1,6 @@
 <template>
     <v-card id="card">
-        <v-card-title> Szak megadása </v-card-title>
+        <v-card-title> Szak megadása, szerkesztése </v-card-title>
         <v-divider class="mx-5 my-3"></v-divider>
         <v-radio-group class="mx-5 " v-model="selectResult" row>
             <v-radio label="Hozzáadás" value="add"></v-radio>
